@@ -1,4 +1,5 @@
 import { $, el, clear, wait, flush } from "../util/dom.js";
+import { portraitSVG } from "./portrait.js";
 
 const MAX_ON_STAGE = 3;
 
@@ -76,10 +77,10 @@ export class Viewport {
     const node = el("figure", "portrait");
     node.dataset.id = id;
     node.style.setProperty("--hue", person.hue ?? 30);
-    node.append(
-      el("span", "portrait__initials", person.initials ?? "??"),
-      el("figcaption", "portrait__name", person.name)
-    );
+
+    const art = el("div", "portrait__art");
+    art.innerHTML = portraitSVG(person);   // generated locally, no user input
+    node.append(art, el("figcaption", "portrait__name", person.name));
 
     this.portraits.append(node);
     flush(node);

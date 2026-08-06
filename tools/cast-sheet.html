@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cast Sheet — Life Is Strange: Exchange</title>
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/theme.css">
+<style>
+  body { background: #0b0c0e; color: var(--bone); font-family: var(--font-body); padding: 3rem 2rem 5rem; }
+  h1 { font-family: var(--font-display); font-weight: 400; font-size: 2.4rem; letter-spacing: -0.01em; }
+  .lede { max-width: 62ch; margin: 0.8rem 0 0; color: var(--fog); font-size: 0.92rem; line-height: 1.7; }
+  .lede code { font-family: var(--font-mono); font-size: 0.85em; color: var(--bone-dim); }
+  h2 { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase;
+       color: var(--fog-dim); margin: 3.2rem 0 1.2rem; border-bottom: 1px solid rgba(232,228,220,0.1); padding-bottom: 0.6rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 2rem 1.2rem; }
+  figure { --hue: 30; }
+  .art { aspect-ratio: 3/4; border-radius: 3px; overflow: hidden;
+         -webkit-mask-image: linear-gradient(180deg,#000 0%,#000 76%,transparent 100%);
+         mask-image: linear-gradient(180deg,#000 0%,#000 76%,transparent 100%); }
+  .art svg { width: 100%; height: 100%; display: block; }
+  figcaption { margin-top: 0.3rem; }
+  .nm { font-size: 0.86rem; color: var(--bone); }
+  .rl { font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.12em;
+        text-transform: uppercase; color: hsl(var(--hue) 45% 66%); margin-top: 0.15rem; }
+  .lk { font-family: var(--font-mono); font-size: 0.56rem; color: var(--fog-dim); margin-top: 0.25rem; }
+</style>
+</head>
+<body>
+  <h1>Cast sheet</h1>
+  <p class="lede">
+    Every character's placeholder portrait, generated from the appearance canon in
+    <code>data/characters.json</code>. These are silhouettes, not art — they exist so the game is
+    presentable before real portraits land, and so the artist has one page showing hair, build,
+    skin tone and accent hue for the whole cast. Replace via <code>/assets/portraits</code>;
+    see <code>docs/DESIGN_BRIEF.md</code>.
+  </p>
+
+  <div id="out"></div>
+
+<script type="module">
+import { portraitSVG } from "../js/ui/portrait.js";
+
+const data = await (await fetch("../data/characters.json")).json();
+const cast = data.cast;
+
+const STUDENTS = ["riley","mason","pete","zoey","jake","luke","chase","amber","lila","olivia",
+                  "theo","gina","maddie","nolan","sandra","kieran","dax","ezra","sienna","jamie","taki","alice"];
+const FACULTY  = ["rhys","rowe","leighton","carter","elena","evelyn","marcus"];
+const ADULTS   = ["linda","brandon","cheryl","richard","elise","gerald","barry","holt"];
+
+const out = document.getElementById("out");
+
+function section(title, ids) {
+  const h = document.createElement("h2");
+  h.textContent = title;
+  const grid = document.createElement("div");
+  grid.className = "grid";
+
+  for (const id of ids) {
+    const p = cast[id];
+    if (!p) { console.warn("missing from characters.json:", id); continue; }
+
+    const fig = document.createElement("figure");
+    fig.style.setProperty("--hue", p.hue);
+
+    const art = document.createElement("div");
+    art.className = "art";
+    art.innerHTML = portraitSVG(p);
+
+    const cap = document.createElement("figcaption");
+    const look = p.look ?? {};
+    cap.innerHTML =
+      `<div class="nm"></div><div class="rl"></div><div class="lk"></div>`;
+    cap.querySelector(".nm").textContent = p.fullName;
+    cap.querySelector(".rl").textContent = p.role;
+    cap.querySelector(".lk").textContent =
+      `${look.hair ?? "—"} · ${look.skin ?? "—"} · ${look.build ?? "average"} · h${p.hue}`;
+
+    fig.append(art, cap);
+    grid.append(fig);
+  }
+  out.append(h, grid);
+}
+
+section("Students", STUDENTS);
+section("Faculty & staff", FACULTY);
+section("Adults & townies", ADULTS);
+</script>
+</body>
+</html>

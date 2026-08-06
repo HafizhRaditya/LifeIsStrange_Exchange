@@ -120,6 +120,20 @@ Madison — which would have broken her speaker plate and silently dropped her
 relationship deltas. If a script uses a name the ledger doesn't have, add it to
 that character's `aliases` array rather than editing the script.
 
+## Art
+
+Nothing in `/assets` yet. Backgrounds are CSS gradient placeholders
+(`.bg--<name>` in `css/theme.css`); portraits are generated rim-lit silhouettes
+(`js/ui/portrait.js`) built from each character's `look` in `characters.json`.
+
+**`docs/DESIGN_BRIEF.md` is the handoff document** — palette, type roles, the full
+asset manifest with dimensions, the six-expression system, and the interaction
+spec. `tools/cast-sheet.html` renders the whole cast on one page as the artist's
+reference.
+
+Real art must drop in without JS changes: one CSS line per background, files into
+`/assets/portraits` for characters. Keep it that way.
+
 ## Conventions
 
 - Reveal animations use `flush()` from `js/util/dom.js`, **not**
