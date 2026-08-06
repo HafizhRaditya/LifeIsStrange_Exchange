@@ -41,6 +41,24 @@
           "from": "pete",
           "text": "yeah but the lights have been on for four hours mason",
           "requires": "ep1_stepped_the_frames"
+        },
+        {
+          "id": "nx10",
+          "from": "mason",
+          "text": "ok so nobody's slept and we're all just going to pretend that's fine",
+          "requires": "ep2_circle_knows"
+        },
+        {
+          "id": "nx11",
+          "from": "pete",
+          "text": "I've watched it 40 times. I keep waiting for it to be a codec thing. it isn't a codec thing.",
+          "requires": "ep2_circle_knows"
+        },
+        {
+          "id": "nx12",
+          "from": "maddie",
+          "text": "guys I'm keeping the channel open again tonight. not for a reason. just leave it open ok",
+          "requires": "ep2_circle_knows"
         }
       ]
     },
@@ -84,7 +102,28 @@
           "text": "not going to name names but somebody finally said the thing to Jake Cross's face and I am unwell about it",
           "requires": "hall_verbal_counter"
         },
-        { "id": "ec6", "author": "Kieran Ness", "handle": "@nessquiet", "text": "wrote a poem on my board in the rain. now it's a puddle with opinions." }
+        { "id": "ec6", "author": "Kieran Ness", "handle": "@nessquiet", "text": "wrote a poem on my board in the rain. now it's a puddle with opinions." },
+        {
+          "id": "ec9",
+          "author": "Maddie Hale",
+          "handle": "@haleastorm",
+          "text": "the clip going round of a girl from my school — I know her. she wasn't crying. the audio was replaced. that's it, that's the post, unfollow if you want",
+          "requires": "ep2_maddie_defends"
+        },
+        {
+          "id": "ec10",
+          "author": "Dean Rojas",
+          "handle": "@notyourghost",
+          "text": "40k views on a nine second clip of a seventeen year old. cool town. normal town.",
+          "requires": "ep2_report_official"
+        },
+        {
+          "id": "ec11",
+          "author": "Taki Kimura",
+          "handle": "@takiwatches",
+          "text": "geotechnical survey on the east bay got revised down from 14m to 6m. filed friday. nobody will care. I care.",
+          "requires": ["ep2_end_recorded"]
+        }
       ]
     },
 

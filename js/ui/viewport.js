@@ -36,6 +36,20 @@ export class Viewport {
     clear(this.portraits);
   }
 
+  /**
+   * Riley's two seconds under.
+   *
+   * Fiz loves being underwater; Riley is terrified of it. The player spends her
+   * two seconds, not his — so the viewport goes under and there is nothing to
+   * click. Duration comes from the script, not from the animation.
+   */
+  async submerge(seconds) {
+    this.stage.classList.add("is-submerged");
+    await wait(seconds * 1000);
+    this.stage.classList.remove("is-submerged");
+    await wait(700); // let the surface settle before the next line
+  }
+
   /** Brings a speaker forward; everyone else dims. */
   async focus(speakerId) {
     if (!speakerId) return;

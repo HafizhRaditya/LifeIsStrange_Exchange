@@ -72,7 +72,17 @@ files drop in unchanged:
 { "speaker": "Fiz", "text": "(...)", "is_internal_thought": true }    // inner voice
 { "is_choice": true, "choices": [...], "responses": { ... } }         // choice block
 { "is_anomaly": true, "anomaly": "ep1_eleven_frames" }                // set piece
+{ "is_hold": true, "seconds": 3 }                                     // enforced silence
+{ "is_submerge": true, "seconds": 2 }                                 // underwater
 ```
+
+Any entry may carry `requires` / `unless` (a flag name or array of them) to play
+conditionally. That is how an Episode 1 choice changes an Episode 2 line without
+forking the scene graph — prefer it over writing a whole branch.
+
+`is_hold` is a real pause the player cannot click through. Use it where the
+script asks for a long silence; a beat the player waits out is not the same as a
+beat they read about. Don't scatter them — they cost patience.
 
 - Choice kind is detected from the text: `"quoted"` is spoken aloud,
   `[bracketed]` is an action or a pointed silence. No extra field.
@@ -98,6 +108,18 @@ scene later. When adding a choice, consider whether it deserves social fallout.
 One key, `lis_exchange_save`, carrying `schemaVersion`. When the shape changes,
 add a migration in `js/engine/state.js`. Never silently wipe a playtest.
 
+## Before you call an episode done
+
+```bash
+python tools/validate.py
+```
+
+It enforces every rule above across all episode data. It has already caught a
+live bug: `"Maddie Hale"` resolving to nothing, because her ledger name is
+Madison — which would have broken her speaker plate and silently dropped her
+relationship deltas. If a script uses a name the ledger doesn't have, add it to
+that character's `aliases` array rather than editing the script.
+
 ## Conventions
 
 - Reveal animations use `flush()` from `js/util/dom.js`, **not**
@@ -109,5 +131,7 @@ add a migration in `js/engine/state.js`. Never silently wipe a playtest.
 
 ## Status
 
-Episode 1 complete: nine scenes, fifteen choice blocks, all branches written.
-Episodes 2–5 exist as scene maps in `docs/` and need expanding to dialogue.
+Episodes 1 and 2 complete, all branches written. Episodes 3–5 exist as scene maps
+in `docs/Season1_Script_Bible.txt` and need expanding to dialogue.
+
+Run the game with `start.bat`. Opening `index.html` directly will not work.

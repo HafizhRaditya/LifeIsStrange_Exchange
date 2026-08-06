@@ -20,6 +20,11 @@ export function buildIndex(characters) {
     index.set(id, id);
     index.set(norm(person.name), id);
     index.set(norm(person.fullName), id);
+
+    // Scripts don't always use the canonical full name — Maddie Hale is
+    // "Madison Hale" in the ledger but nobody writes that in dialogue.
+    for (const alias of person.aliases ?? []) index.set(norm(alias), id);
+
     // first name alone, when unambiguous
     const first = norm(person.fullName).split(" ")[0];
     if (!index.has(first)) index.set(first, id);

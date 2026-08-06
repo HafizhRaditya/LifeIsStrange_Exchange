@@ -225,7 +225,67 @@ body {
   min-height: 1em;
 }
 
+.menu__note--error {
+  max-width: 44ch;
+  margin-inline: auto;
+  padding: 1.1rem 1.3rem;
+  font-size: 0.72rem;
+  line-height: 1.75;
+  letter-spacing: 0.02em;
+  text-align: left;
+  color: var(--bone-dim);
+  border: 1px solid rgba(180, 98, 58, 0.4);
+  border-left-width: 2px;
+  border-radius: 2px;
+  background: rgba(180, 98, 58, 0.07);
+}
+
+.menu__note--error strong {
+  display: inline-block;
+  margin-bottom: 0.4rem;
+  color: var(--bone);
+  font-weight: 500;
+}
+
+/* ===== Underwater ===== */
+.stage.is-submerged .backdrop {
+  filter: blur(7px) saturate(1.5) brightness(0.6) hue-rotate(-14deg);
+  transform: scale(1.14);
+  transition: filter 900ms var(--ease), transform 2.4s var(--ease);
+}
+
+.stage.is-submerged .dialogue,
+.stage.is-submerged .portrait,
+.stage.is-submerged .beacon-toggle {
+  opacity: 0;
+  transition: opacity 700ms var(--ease);
+  pointer-events: none;
+}
+
+.stage.is-submerged .vignette {
+  background: radial-gradient(ellipse at 50% 38%, rgba(77,122,151,0.18) 0%, rgba(6,16,24,0.9) 100%);
+  transition: background 900ms var(--ease);
+}
+
+.stage.is-submerged::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 14;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 44% 12%, rgba(180, 214, 235, 0.16), rgba(0,0,0,0) 55%),
+    linear-gradient(180deg, rgba(120,170,200,0.12), rgba(4,14,22,0.55));
+  animation: caustics 5s ease-in-out infinite alternate;
+}
+
+@keyframes caustics {
+  from { transform: translate3d(-1.5%, -1%, 0) scale(1.05); opacity: 0.85; }
+  to   { transform: translate3d(1.5%, 1%, 0) scale(1.12); opacity: 1; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .backdrop, .grain { animation: none; }
+  .stage.is-submerged::after { animation: none; }
   * { transition-duration: 1ms !important; }
 }

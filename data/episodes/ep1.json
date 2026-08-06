@@ -1,6 +1,7 @@
 {
   "episode": "1",
   "episode_title": "Blast For The Future",
+  "next_episode": "ep2",
 
   "_authoring": {
     "source": "Season 1 Script Bible + episode_01.json, Creative Director. Spine and all authored lines are his; branch responses under `responses` are expanded for the web build.",

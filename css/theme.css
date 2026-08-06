@@ -92,6 +92,32 @@
     linear-gradient(180deg, #14181d 0%, #191e24 50%, #0c0f12 100%);
 }
 
+.bg--cafeteria {
+  background:
+    linear-gradient(180deg, rgba(232,228,220,0.10), rgba(0,0,0,0) 44%),
+    linear-gradient(105deg, #33352f 0%, #3e4139 42%, #24261f 100%);
+}
+
+/* A dark room lit only by a monitor. The one warm scene in the episode. */
+.bg--nexus-voice {
+  background:
+    radial-gradient(ellipse at 50% 52%, rgba(120,110,220,0.22), rgba(0,0,0,0) 48%),
+    radial-gradient(ellipse at 50% 50%, rgba(217,164,65,0.10), rgba(0,0,0,0) 62%),
+    linear-gradient(180deg, #0c0d13 0%, #14151f 55%, #08090d 100%);
+}
+
+.bg--jones-house {
+  background:
+    linear-gradient(180deg, rgba(232,228,220,0.07), rgba(0,0,0,0) 40%),
+    linear-gradient(125deg, #37342f 0%, #45403a 45%, #26241f 100%);
+}
+
+.bg--jones-landing {
+  background:
+    radial-gradient(ellipse at 50% 92%, rgba(217,164,65,0.16), rgba(0,0,0,0) 46%),
+    linear-gradient(180deg, #191a1d 0%, #202124 48%, #0d0e10 100%);
+}
+
 .bg--dorm-night {
   background:
     radial-gradient(ellipse at 62% 66%, rgba(77,122,151,0.18), rgba(0,0,0,0) 48%),

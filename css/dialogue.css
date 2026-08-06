@@ -85,6 +85,15 @@
   text-shadow: 0 2px 22px rgba(0, 0, 0, 0.85);
 }
 
+/* An enforced silence — the box recedes rather than sitting there empty. */
+.dialogue.is-holding .dialogue__box {
+  opacity: 0.18;
+  min-height: 4rem;
+  transition: opacity 900ms var(--ease), min-height 900ms var(--ease);
+}
+
+.dialogue.is-holding .dialogue__advance { opacity: 0; }
+
 .dialogue__caret {
   display: inline-block;
   width: 0.55ch;

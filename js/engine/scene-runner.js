@@ -34,16 +34,42 @@ export class SceneRunner {
   async run() {
     while (!this.stopped && this.cursor < this.seq.length) {
       state.setPosition(state.data.position.episode, this.scene.scene_id, this.cursor);
-      await this.perform(this.seq[this.cursor]);
+      const entry = this.seq[this.cursor];
+      if (this.shouldPlay(entry)) await this.perform(entry);
       if (this.stopped) return;
       this.cursor += 1;
     }
     if (!this.stopped) await this.ui.onSceneComplete?.(this.scene);
   }
 
+  /**
+   * Conditional lines. `requires` plays only if the flag is set, `unless` only
+   * if it isn't — both accept an array. This is where track-and-converge pays
+   * off: an Episode 1 choice changes what someone says in Episode 2 without
+   * forking the scene graph.
+   */
+  shouldPlay(entry) {
+    const all = (v) => (Array.isArray(v) ? v : [v]);
+    if (entry.requires && !all(entry.requires).every((f) => state.flag(f))) return false;
+    if (entry.unless && all(entry.unless).some((f) => state.flag(f))) return false;
+    return true;
+  }
+
   async perform(entry) {
     if (entry.is_anomaly) {
       await this.ui.anomaly.play(entry.anomaly);
+      return;
+    }
+
+    // A real silence, not a line the player can click past. The pool scene is
+    // built out of these — the bible asks for the water to do the work.
+    if (entry.is_hold) {
+      await this.ui.dialogue.hold(entry.seconds ?? 3);
+      return;
+    }
+
+    if (entry.is_submerge) {
+      await this.ui.viewport.submerge(entry.seconds ?? 2);
       return;
     }
 
@@ -82,7 +108,7 @@ export class SceneRunner {
 
     for (const line of entry.responses?.[chosen.consequence_id] ?? []) {
       if (this.stopped) return;
-      await this.perform(line);
+      if (this.shouldPlay(line)) await this.perform(line);
     }
   }
 }

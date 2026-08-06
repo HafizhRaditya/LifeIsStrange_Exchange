@@ -91,6 +91,25 @@ export class Dialogue {
     resolve?.();
   }
 
+  /**
+   * An enforced silence. The box clears and the player cannot click through it.
+   * Used where the script asks for a long pause to actually be long — a beat the
+   * player waits out is not the same as a beat they read about.
+   */
+  async hold(seconds) {
+    this.token++;              // cancel any in-flight typing
+    this.typing = false;
+    this.resolveAdvance = null;
+    this.root.classList.remove("is-ready");
+    this.root.classList.add("is-holding");
+    this.lineEl.textContent = "";
+    this.speakerEl.hidden = true;
+    this.actionEl.hidden = true;
+
+    await sleep(seconds * 1000);
+    this.root.classList.remove("is-holding");
+  }
+
   hide() {
     this.root.hidden = true;
   }

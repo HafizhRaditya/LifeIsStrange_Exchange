@@ -19,14 +19,28 @@ let episode;
 boot();
 
 async function boot() {
+  // Opened straight off the filesystem: modules and fetch are both blocked by
+  // the browser here, so nothing would happen when New Game is clicked. Say so
+  // plainly instead of failing silently.
+  if (location.protocol === "file:") {
+    return fail(
+      "This page was opened directly from a folder.",
+      "The game loads its script from JSON, which browsers block over file://. " +
+      "Run start.bat instead — it serves the game locally and opens it for you."
+    );
+  }
+
   let characters, beaconData;
 
   try {
     [characters, beaconData] = await Promise.all([loadCharacters(), loadBeacon()]);
   } catch (err) {
-    note.textContent = "Data failed to load — is this being served over http?";
     console.error(err);
-    return;
+    return fail(
+      "The story files didn't load.",
+      `Serving from ${location.origin}, but data/characters.json could not be read. ` +
+      "Check the console for the failing path."
+    );
   }
 
   buildIndex(characters);
@@ -87,13 +101,38 @@ async function advanceScene(finished) {
   const i = episode.scenes.findIndex((s) => s.scene_id === finished.scene_id);
   const next = episode.scenes[i + 1];
 
-  if (!next) {
-    await ui.dialogue.think(`(End of Episode ${episode.episode} — ${episode.episode_title})`);
+  if (next) {
+    state.setPosition(state.data.position.episode, next.scene_id, 0);
+    await playScene(next, 0, true);
     return;
   }
 
-  state.setPosition(state.data.position.episode, next.scene_id, 0);
-  await playScene(next, 0, true);
+  await ui.dialogue.think(`(End of Episode ${episode.episode} — ${episode.episode_title})`);
+
+  if (!episode.next_episode) {
+    await ui.dialogue.think("(End of Season 1.)");
+    return;
+  }
+
+  const nextId = episode.next_episode;
+  episode = await loadEpisode(nextId);
+
+  const opening = episode.scenes[0];
+  state.setPosition(nextId, opening.scene_id, 0);
+  await playScene(opening, 0, true);
+}
+
+/** Replaces the menu buttons with an explanation the player can act on. */
+function fail(headline, detail) {
+  $("#btn-new").hidden = true;
+  $("#btn-continue").hidden = true;
+  note.classList.add("menu__note--error");
+  note.textContent = "";
+  note.append(
+    Object.assign(document.createElement("strong"), { textContent: headline }),
+    document.createElement("br"),
+    document.createTextNode(detail)
+  );
 }
 
 function wireInput() {

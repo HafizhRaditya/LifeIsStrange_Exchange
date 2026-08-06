@@ -9,18 +9,33 @@ dependencies, no backend. Save state lives entirely in `localStorage`.
 
 ## Running it
 
-The game loads its narrative from JSON via `fetch`, and uses ES modules. Both
-require a real HTTP origin — **opening `index.html` from the filesystem will fail
-with CORS errors.** That's the browser, not a bug.
+**Double-click `start.bat`.** That's it — it serves the game locally and opens
+your browser at it. Leave the black window open while you play.
 
-Any static server works:
+**Do not open `index.html` directly.** Nothing will happen when you click New
+Game. The game loads its script from JSON, and every browser blocks that over
+`file://` for security. It needs a real local server, which is all `start.bat`
+does. (If you do open it directly, the title screen now tells you so instead of
+failing silently.)
+
+Prefer to do it yourself:
 
 ```bash
 python -m http.server 5173
 ```
 
-Then open `http://localhost:5173`. In VS Code, the Live Server extension does the
-same thing with a click. Deploys to GitHub Pages as-is.
+In VS Code, the Live Server extension works too. Deploys to GitHub Pages as-is.
+
+## Checking the writing
+
+```bash
+python tools/validate.py
+```
+
+Enforces the rules in `CLAUDE.md` across every episode: no scene ending on a
+choice block, no Fiz line outside a choice, every speaker and relationship target
+resolving to a real character, internal thoughts parenthesised, every branch
+having written follow-up. Run it after editing any episode JSON.
 
 ## Controls
 
@@ -85,5 +100,9 @@ One key, `lis_exchange_save`, carrying a `schemaVersion`. Add a migration in
 
 ## Status
 
-Vertical slice: Episode 1, Scene 1 — all four pillars live, both thought choices
-wired end to end with visible social fallout.
+- **Episode 1 — Blast For The Future.** Complete. Nine scenes, fifteen choice
+  blocks, every branch written. Ends on the frame-stepper set piece.
+- **Episode 2 — Good Times.** Complete. Six scenes, seventeen choice blocks. The
+  pool scene's silences are real enforced pauses and Riley's two seconds under
+  are two seconds the player spends.
+- **Episodes 3–5.** Scene maps in `docs/`, awaiting expansion to dialogue.
