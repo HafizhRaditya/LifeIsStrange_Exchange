@@ -1,0 +1,114 @@
+.dialogue {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(1.4rem, 4vh, 3rem);
+  transform: translateX(-50%);
+  width: min(92vw, 900px);
+  z-index: 10;
+  animation: box-in var(--med) var(--ease) both;
+}
+
+@keyframes box-in {
+  from { opacity: 0; transform: translate(-50%, 14px); }
+  to   { opacity: 1; transform: translate(-50%, 0); }
+}
+
+.dialogue__box {
+  position: relative;
+  padding: 1.5rem clamp(1.4rem, 3vw, 2.4rem) 1.7rem;
+  background: var(--box-bg);
+  border-top: 1px solid var(--box-edge);
+  border-radius: 2px;
+  backdrop-filter: blur(14px) saturate(0.85);
+  -webkit-backdrop-filter: blur(14px) saturate(0.85);
+  box-shadow: 0 -8px 50px rgba(0,0,0,0.5);
+  min-height: 8.2rem;
+}
+
+/* thin accent rule that picks up the speaker's hue */
+.dialogue__box::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 3.5rem;
+  height: 1px;
+  background: hsl(var(--speaker-hue, 20) 55% 60%);
+  transition: width var(--med) var(--ease), background var(--med) var(--ease);
+}
+
+.dialogue__speaker {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: hsl(var(--speaker-hue, 20) 45% 68%);
+  margin-bottom: 0.6rem;
+}
+
+.dialogue__action {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.86rem;
+  color: var(--fog);
+  margin-bottom: 0.5rem;
+}
+
+.dialogue__action::before { content: "("; }
+.dialogue__action::after  { content: ")"; }
+
+.dialogue__line {
+  font-size: clamp(1.02rem, 1.55vw, 1.24rem);
+  line-height: 1.62;
+  color: var(--bone);
+  min-height: 1.62em;
+}
+
+/* Fiz's internal monologue. It carries most of the characterisation and all of
+   the unreliable narration, so it must never be mistaken for someone speaking:
+   no speaker plate, no accent rule, no hard edge — a different voice entirely. */
+.dialogue.is-thought .dialogue__box {
+  background: rgba(7, 8, 10, 0.62);
+  border-top-color: transparent;
+  box-shadow: none;
+}
+
+.dialogue.is-thought .dialogue__box::before { width: 0; }
+
+.dialogue.is-thought .dialogue__line {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1rem, 1.5vw, 1.18rem);
+  color: var(--thought);
+  opacity: 0.9;
+  letter-spacing: 0.012em;
+  text-shadow: 0 2px 22px rgba(0, 0, 0, 0.85);
+}
+
+.dialogue__caret {
+  display: inline-block;
+  width: 0.55ch;
+  margin-left: 0.08em;
+  background: var(--accent);
+  animation: blink 1s steps(2) infinite;
+}
+
+@keyframes blink { 50% { opacity: 0; } }
+
+.dialogue__advance {
+  position: absolute;
+  right: 1.3rem;
+  bottom: 0.85rem;
+  font-size: 0.8rem;
+  color: var(--fog-dim);
+  opacity: 0;
+  transition: opacity var(--fast);
+  animation: nudge 1.5s ease-in-out infinite;
+}
+
+.dialogue.is-ready .dialogue__advance { opacity: 1; }
+
+@keyframes nudge {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(3px); }
+}

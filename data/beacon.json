@@ -1,0 +1,140 @@
+{
+  "device": { "name": "Beacon", "owner": "Fiz_NR", "carrier": "ARCADIA BAY" },
+  "_note": "In-world phone content. Items with 'requires' only appear once that story flag is set — this is how choices surface as social fallout. No real-world brands, ever.",
+
+  "apps": [
+    { "id": "nexus", "name": "Nexus", "kind": "chat", "hue": 248, "glyph": "◈" },
+    { "id": "echo", "name": "Echo", "kind": "feed", "hue": 202, "glyph": "◎" },
+    { "id": "prism", "name": "Prism", "kind": "photos", "hue": 318, "glyph": "◐" },
+    { "id": "viewgrid", "name": "ViewGrid", "kind": "streams", "hue": 186, "glyph": "▦" },
+    { "id": "glimpse", "name": "Glimpse", "kind": "stories", "hue": 48, "glyph": "◇" },
+    { "id": "flicker", "name": "Flicker", "kind": "clips", "hue": 342, "glyph": "▷" },
+    { "id": "deepthread", "name": "DeepThread", "kind": "forum", "hue": 96, "glyph": "≡" },
+    { "id": "aura", "name": "Aura", "kind": "music", "hue": 156, "glyph": "♪" }
+  ],
+
+  "content": {
+    "nexus": {
+      "server": "the quiet room",
+      "channel": "#general",
+      "messages": [
+        { "id": "nx1", "from": "mason", "text": "yo. you awake or dead" },
+        { "id": "nx2", "from": "mason", "text": "second one is fine just tell me" },
+        { "id": "nx3", "from": "pete", "text": "he's awake, his light was on. I could see it from the lot." },
+        { "id": "nx4", "from": "maddie", "text": "STREAMING TONIGHT. 8pm. i need bodies in that chat, i'm serious, my numbers are in the toilet" },
+        { "id": "nx5", "from": "mason", "text": "maddie nobody says 'i need bodies' about a stream" },
+        { "id": "nx6", "from": "maddie", "text": "i say it. it's mine now." },
+        {
+          "id": "nx7",
+          "from": "pete",
+          "text": "you still in the lab? lights are on from the lot.",
+          "requires": "ep1_stepped_the_frames"
+        },
+        {
+          "id": "nx8",
+          "from": "mason",
+          "text": "he's in the lab. he's always in the lab. leave the man to his little movies",
+          "requires": "ep1_stepped_the_frames"
+        },
+        {
+          "id": "nx9",
+          "from": "pete",
+          "text": "yeah but the lights have been on for four hours mason",
+          "requires": "ep1_stepped_the_frames"
+        }
+      ]
+    },
+
+    "echo": {
+      "posts": [
+        { "id": "ec1", "author": "Tara Nguyen", "handle": "@baylight", "text": "Baylight drops Thursday. Interviewing a faculty member who has Opinions about the reconstruction budget. That's all I'm saying." },
+        { "id": "ec2", "author": "Dean Rojas", "handle": "@notyourghost", "text": "ten year anniversary content incoming. brace for every adult in this town saying 'we rebuilt stronger' while the east pier is still condemned" },
+        {
+          "id": "ec3",
+          "author": "Amber Clarke",
+          "handle": "@amberrrc",
+          "text": "THE GHOST BOY MOVED TODAY. on camera. character development?? in THIS economy??",
+          "requires": "hall_intervene_physical"
+        },
+        {
+          "id": "ec4",
+          "author": "Amber Clarke",
+          "handle": "@amberrrc",
+          "text": "imagine just walking away from me mid-stream. imagine. the disrespect is honestly kind of iconic i'll allow it",
+          "requires": "hall_withdraw_together"
+        },
+        {
+          "id": "ec5",
+          "author": "Lila West",
+          "handle": "@lilaaw",
+          "text": "some people really just stand there and take it lol. anyway. monday.",
+          "requires": "hall_bystander"
+        },
+        {
+          "id": "ec7",
+          "author": "Chase Whitmore",
+          "handle": "@chasewhit",
+          "text": "hallway clip is on Flicker. no context. that's the whole art form babe",
+          "requires": "hall_verbal_counter"
+        },
+        {
+          "id": "ec8",
+          "author": "Tara Nguyen",
+          "handle": "@baylight",
+          "text": "not going to name names but somebody finally said the thing to Jake Cross's face and I am unwell about it",
+          "requires": "hall_verbal_counter"
+        },
+        { "id": "ec6", "author": "Kieran Ness", "handle": "@nessquiet", "text": "wrote a poem on my board in the rain. now it's a puddle with opinions." }
+      ]
+    },
+
+    "prism": {
+      "posts": [
+        { "id": "pr1", "author": "Zoey Brookes", "caption": "morning light hits different when you're built for it 🤍", "likes": 412, "hue": 320 },
+        { "id": "pr2", "author": "Tara Nguyen", "caption": "campus fog series, 3/5", "likes": 188, "hue": 275 },
+        { "id": "pr3", "author": "Sienna Morales", "caption": "found this window near the old pier. nobody's cleaned it since before I was born.", "likes": 64, "hue": 30 },
+        { "id": "pr4", "author": "Nolan Burgh", "caption": "coach says shooting drills. I said same. (he did not think it was funny)", "likes": 97, "hue": 45 }
+      ]
+    },
+
+    "viewgrid": {
+      "streams": [
+        { "id": "vg1", "channel": "Maddie_HaleStorm", "title": "cozy horror + homework i will not do", "viewers": 71, "live": true, "hue": 285 },
+        { "id": "vg2", "channel": "BayWatchLive", "title": "IRL — walking the rebuilt boardwalk", "viewers": 12, "live": true, "hue": 186 },
+        { "id": "vg3", "channel": "amberrrc", "title": "IRL MOBILE — blackwell monday chaos", "viewers": 203, "live": true, "hue": 300 }
+      ]
+    },
+
+    "glimpse": {
+      "stories": [
+        { "id": "gl1", "author": "Amber Clarke", "expires": "19h", "hue": 300 },
+        { "id": "gl2", "author": "Lila West", "expires": "22h", "hue": 355 },
+        { "id": "gl3", "author": "Maddie Hale", "expires": "6h", "hue": 285 }
+      ]
+    },
+
+    "flicker": {
+      "clips": [
+        { "id": "fl1", "author": "Chase Whitmore", "caption": "blackwell characters ranked (you know who #1 is)", "plays": "48.2k", "hue": 172 },
+        { "id": "fl2", "author": "Chase Whitmore", "caption": "POV: you're the quietest guy in school and I have a camera", "plays": "31.9k", "hue": 172 }
+      ]
+    },
+
+    "deepthread": {
+      "threads": [
+        { "id": "dt1", "board": "/arcadia/", "title": "The 2013 evacuation timeline does not add up (part 6)", "replies": 214 },
+        { "id": "dt2", "board": "/arcadia/", "title": "Anyone else notice Cross Industries owns the permits on EVERY bay parcel now?", "replies": 88 },
+        { "id": "dt3", "board": "/arcadia/", "title": "asking again: where did the original police logs go", "replies": 9 }
+      ]
+    },
+
+    "aura": {
+      "nowPlaying": { "title": "Selfless", "artist": "The Strokes", "album": "The New Abnormal" },
+      "recent": [
+        { "id": "au1", "title": "Selfless", "artist": "The Strokes" },
+        { "id": "au2", "title": "Ode To The Mets", "artist": "The Strokes" },
+        { "id": "au3", "title": "Under Control", "artist": "The Strokes" }
+      ]
+    }
+  }
+}

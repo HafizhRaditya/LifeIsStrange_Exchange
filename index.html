@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Life Is Strange: Exchange</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/dialogue.css">
+  <link rel="stylesheet" href="css/thoughts.css">
+  <link rel="stylesheet" href="css/beacon.css">
+  <link rel="stylesheet" href="css/anomaly.css">
+</head>
+<body>
+
+  <!-- ===== Main viewport ===== -->
+  <main id="stage" class="stage" aria-label="Game viewport">
+    <div id="backdrop" class="backdrop"></div>
+    <div id="portraits" class="portraits" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="vignette" aria-hidden="true"></div>
+
+    <!-- [ ] place & time banner — Creative Director's field -->
+    <header id="slate" class="slate" hidden>
+      <span id="slate-location" class="slate__location"></span>
+      <span id="slate-time" class="slate__time"></span>
+      <span id="slate-weather" class="slate__weather"></span>
+    </header>
+
+    <!-- Silent Empathy: internal thoughts, deliberately not buttons -->
+    <div id="thoughts" class="thoughts" role="group" aria-label="Internal thoughts" hidden></div>
+
+    <!-- ===== Dialogue engine ===== -->
+    <section id="dialogue" class="dialogue" role="log" aria-live="polite" hidden>
+      <div class="dialogue__box">
+        <p id="speaker" class="dialogue__speaker" hidden></p>
+        <p id="action" class="dialogue__action" hidden></p>
+        <p id="line" class="dialogue__line"></p>
+        <span id="advance" class="dialogue__advance" aria-hidden="true">▾</span>
+      </div>
+    </section>
+
+    <!-- Episode 1 set piece: the eleven frames, shown rather than described -->
+    <div id="anomaly" class="anomaly" role="dialog" aria-label="Footage viewer" hidden></div>
+
+    <button id="beacon-toggle" class="beacon-toggle" aria-controls="beacon" aria-expanded="false">
+      <span class="beacon-toggle__glyph" aria-hidden="true">◗</span>
+      <span class="beacon-toggle__label">Beacon</span>
+      <span id="beacon-badge" class="beacon-toggle__badge" hidden>0</span>
+    </button>
+  </main>
+
+  <!-- ===== Beacon: slide-out phone ===== -->
+  <aside id="beacon" class="beacon" aria-label="Beacon" aria-hidden="true">
+    <div class="beacon__device">
+      <div class="beacon__statusbar">
+        <span id="beacon-carrier">ARCADIA BAY</span>
+        <span id="beacon-clock">7:42</span>
+        <span class="beacon__battery" aria-label="Battery">▮</span>
+      </div>
+      <div id="beacon-screen" class="beacon__screen"></div>
+      <button id="beacon-home" class="beacon__home" aria-label="Home">◯</button>
+    </div>
+  </aside>
+
+  <!-- ===== Title / menu ===== -->
+  <div id="menu" class="menu">
+    <div class="menu__inner">
+      <p class="menu__eyebrow">Life Is Strange</p>
+      <h1 class="menu__title">Exchange</h1>
+      <p class="menu__sub">Arcadia Bay, Oregon &middot; November 2023</p>
+      <div class="menu__actions">
+        <button id="btn-continue" class="menu__btn" hidden>Continue</button>
+        <button id="btn-new" class="menu__btn menu__btn--primary">New Game</button>
+      </div>
+      <p id="menu-note" class="menu__note"></p>
+    </div>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

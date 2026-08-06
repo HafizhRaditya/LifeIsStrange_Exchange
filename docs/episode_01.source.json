@@ -1,0 +1,913 @@
+{
+  "episode": "1",
+  "episode_title": "Blast For The Future",
+  "scenes": [
+    {
+      "episode": "1",
+      "scene_id": "ep1_dorm_morning_01",
+      "location": "Blackwell Academy — Dormitory, Room 214",
+      "characters_present": ["Fiz", "Gina Ortiz"],
+      "dialogue_sequence": [
+        {
+          "speaker": "Fiz",
+          "text": "(Four hours. The ceiling has a water stain shaped like an island. Some mornings it's Java. Some mornings it's nothing.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(One year today. Nobody's going to say it. That's fine. That's the deal.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Gina Ortiz",
+          "text": "Fiz. I can hear your alarm through the wall. It's been going for eleven minutes.",
+          "emotion": "tired_affectionate"
+        },
+        {
+          "speaker": "Gina Ortiz",
+          "text": "I'm not gonna write you up. I'm just gonna stand here judging you until you turn it off.",
+          "emotion": "dry_warm"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(She does this. Checks on me like I'm something she's responsible for. I don't know how to tell her that helps.)",
+          "is_internal_thought": true
+        },
+        {
+          "is_choice": true,
+          "choices": [
+            {
+              "choice_text": "\"Sorry. I'm up.\"",
+              "consequence_id": "gina_accepts_apology",
+              "relationship_change": null
+            },
+            {
+              "choice_text": "[Turn the alarm off. Say nothing.]",
+              "consequence_id": "gina_lingers_at_door",
+              "relationship_change": null
+            },
+            {
+              "choice_text": "\"You've been up since five, haven't you.\"",
+              "consequence_id": "gina_deflects_own_exhaustion",
+              "relationship_change": { "character": "Gina Ortiz", "value": 1 }
+            }
+          ]
+        },
+        {
+          "speaker": "Gina Ortiz",
+          "text": "Hall check's in ten. And Fiz — eat something today. Not the vending machine. Something with a shape.",
+          "emotion": "protective"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Headphones. Aura. The Strokes. The same song I've played four hundred times because it's the only thing that makes the noise in my head line up straight.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Somewhere between the door and the stairs my brain runs the thing again. A hallway. Someone raising a gun. Me, calm. Always calm, in the version where it happens.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Nobody's ever raised anything at me. My head just likes rehearsing.)",
+          "is_internal_thought": true
+        },
+        {
+          "is_choice": true,
+          "choices": [
+            {
+              "choice_text": "[Take the camera off the desk.]",
+              "consequence_id": "camera_acquired_flag",
+              "relationship_change": null
+            },
+            {
+              "choice_text": "[Leave the camera. Not today.]",
+              "consequence_id": "camera_left_behind_flag",
+              "relationship_change": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "episode": "1",
+      "scene_id": "ep1_diner_booth_02",
+      "location": "Jacquelin Diner",
+      "characters_present": ["Fiz", "Linda Jacquelin", "Brandon Montgomery"],
+      "dialogue_sequence": [
+        {
+          "speaker": "Linda Jacquelin",
+          "text": "There he is. My most reliable customer and my worst tipper.",
+          "emotion": "warm_nostalgic"
+        },
+        {
+          "speaker": "Linda Jacquelin",
+          "text": "Sit. Booth by the window's still got heat in it.",
+          "emotion": "warm_nostalgic"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(She always remembers. Even when the rest of the town tries to forget.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Linda Jacquelin",
+          "text": "You know this place used to be packed at seven? Line out the door. Fishermen, truckers, half the school skipping first period.",
+          "emotion": "wistful"
+        },
+        {
+          "speaker": "Linda Jacquelin",
+          "text": "Now it's you, Brandon back there, and whoever's lost on the coast road.",
+          "emotion": "wistful"
+        },
+        {
+          "is_choice": true,
+          "choices": [
+            {
+              "choice_text": "\"What changed?\"",
+              "consequence_id": "linda_deflects_the_storm",
+              "relationship_change": { "character": "Linda Jacquelin", "value": 1 }
+            },
+            {
+              "choice_text": "[Look at the half-burned photo behind the counter.]",
+              "consequence_id": "linda_covers_photo",
+              "relationship_change": null
+            },
+            {
+              "choice_text": "\"Just black coffee today, Linda. Thanks.\"",
+              "consequence_id": "linda_pours_coffee",
+              "relationship_change": null
+            }
+          ]
+        },
+        {
+          "speaker": "Linda Jacquelin",
+          "text": "Oh, honey. Everything changed. That's the whole answer and nobody in this town will give you a longer one.",
+          "emotion": "guarded_warmth"
+        },
+        {
+          "speaker": "Linda Jacquelin",
+          "text": "Eat your eggs.",
+          "emotion": "closing_the_subject"
+        },
+        {
+          "speaker": "Brandon Montgomery",
+          "text": "You keep looking at that picture.",
+          "emotion": "flat_unfriendly"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(He hasn't moved in twenty minutes. I didn't think he was awake.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Brandon Montgomery",
+          "text": "Everyone does, first year. Then they stop. You'll stop.",
+          "emotion": "flat_unfriendly"
+        },
+        {
+          "is_choice": true,
+          "choices": [
+            {
+              "choice_text": "\"Who are they?\"",
+              "consequence_id": "brandon_refuses_answer",
+              "relationship_change": null
+            },
+            {
+              "choice_text": "\"Did you?\"",
+              "consequence_id": "brandon_goes_quiet",
+              "relationship_change": { "character": "Brandon Montgomery", "value": 1 }
+            },
+            {
+              "choice_text": "[Say nothing. Go back to your coffee.]",
+              "consequence_id": "brandon_leaves_early",
+              "relationship_change": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "episode": "1",
+      "scene_id": "ep1_main_hall_03",
+      "location": "Blackwell Academy — Main Hallway",
+      "characters_present": ["Fiz", "Riley Jones", "Zoey Brookes", "Lila West", "Amber Clarke", "Jake Cross", "Luke Pierce"],
+      "dialogue_sequence": [
+        {
+          "speaker": "Fiz",
+          "text": "(You can hear Amber before you can see her. That's the point of Amber.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Amber Clarke",
+          "text": "OH MY GOD, everyone — everyone, look who decided to bring the same jacket for the fourth day running!",
+          "emotion": "performative_cruel"
+        },
+        {
+          "speaker": "Amber Clarke",
+          "text": "Riley! Riley, look at me. Look at the light, babe, I need your eyes in it.",
+          "emotion": "performative_cruel"
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "Amber. Get the fucking phone out of my face.",
+          "emotion": "controlled_anger"
+        },
+        {
+          "speaker": "Lila West",
+          "text": "Ooh. She talks. Write it down, someone write it down.",
+          "emotion": "sneering"
+        },
+        {
+          "speaker": "Zoey Brookes",
+          "text": "Enough, Lila. She's already embarrassing herself, you don't need to hold her hand through it.",
+          "emotion": "cold_amused"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(That's the trick. Zoey never throws the punch. She just stands close enough to be in the photo.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Jake Cross",
+          "text": "Hey. Exchange student. You dropped something.",
+          "emotion": "false_friendly"
+        },
+        {
+          "speaker": "Luke Pierce",
+          "text": "He didn't drop anything, man.",
+          "emotion": "confused_loyal"
+        },
+        {
+          "speaker": "Jake Cross",
+          "text": "He dropped his fucking passport, Luke. That was the joke. God.",
+          "emotion": "irritated"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(The hallway is doing the thing where it gets quiet and everybody keeps walking. Nobody looks. That's the town in one hallway.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(My hands are shaking. Not from fear. From having nowhere to put it.)",
+          "is_internal_thought": true
+        },
+        {
+          "is_choice": true,
+          "choices": [
+            {
+              "choice_text": "[Step between Amber's phone and Riley.]",
+              "consequence_id": "hall_intervene_physical",
+              "relationship_change": { "character": "Riley Jones", "value": 2 }
+            },
+            {
+              "choice_text": "\"That was a shit joke, Jake. Even Luke didn't get it.\"",
+              "consequence_id": "hall_verbal_counter",
+              "relationship_change": { "character": "Jake Cross", "value": -2 }
+            },
+            {
+              "choice_text": "[Take Riley's wrist. Walk. Don't engage.]",
+              "consequence_id": "hall_withdraw_together",
+              "relationship_change": { "character": "Riley Jones", "value": 1 }
+            },
+            {
+              "choice_text": "[Say nothing. Do nothing. Let it pass.]",
+              "consequence_id": "hall_bystander",
+              "relationship_change": { "character": "Riley Jones", "value": -1 }
+            }
+          ]
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "You didn't have to do that.",
+          "emotion": "quiet_grateful"
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "...I'm glad you did. But you didn't have to.",
+          "emotion": "quiet_grateful"
+        }
+      ]
+    },
+    {
+      "episode": "1",
+      "scene_id": "ep1_photo_studio_04",
+      "location": "Blackwell Academy — Photography Studio",
+      "characters_present": ["Fiz", "Mr. Owen Rhys", "Ezra Lang", "Sienna Morales", "Olivia Calder"],
+      "dialogue_sequence": [
+        {
+          "speaker": "Mr. Owen Rhys",
+          "text": "Assignment. Due Friday. One image. Here's the brief, and I want you to sit with it before you groan at me.",
+          "emotion": "energised"
+        },
+        {
+          "speaker": "Mr. Owen Rhys",
+          "text": "Photograph something this town would rather you didn't look at.",
+          "emotion": "energised"
+        },
+        {
+          "speaker": "Ezra Lang",
+          "text": "That's not a brief, that's a mood board.",
+          "emotion": "politely_dismissive"
+        },
+        {
+          "speaker": "Mr. Owen Rhys",
+          "text": "It's a brief, Ezra. You just don't like ones you can't win on technique.",
+          "emotion": "amused"
+        },
+        {
+          "speaker": "Sienna Morales",
+          "text": "I've been shooting near the old lighthouse. There's a light down there that doesn't behave.",
+          "emotion": "dreamy_intent"
+        },
+        {
+          "speaker": "Sienna Morales",
+          "text": "I mean the fog does something to it. Obviously. I'm not being weird.",
+          "emotion": "self_correcting"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(She said it like she was taking it back before anyone made her.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Ezra Lang",
+          "text": "Fiz shoots the lighthouse constantly. Might want to pick something else, Sienna. He gets precious about his spots.",
+          "emotion": "smiling_undermine"
+        },
+        {
+          "is_choice": true,
+          "choices": [
+            {
+              "choice_text": "\"It's a public cliff, Ezra.\"",
+              "consequence_id": "ezra_smiles_thinner",
+              "relationship_change": { "character": "Ezra Lang", "value": -1 }
+            },
+            {
+              "choice_text": "\"Shoot it. I'd like to see your version.\"",
+              "consequence_id": "sienna_opens_up",
+              "relationship_change": { "character": "Sienna Morales", "value": 2 }
+            },
+            {
+              "choice_text": "[Let Ezra have it. Look at the brief.]",
+              "consequence_id": "ezra_wins_the_room",
+              "relationship_change": null
+            }
+          ]
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "You'll get marked down, you know.",
+          "emotion": "matter_of_fact"
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "Not by him. By whoever reads it after him. Nobody here grades honesty well.",
+          "emotion": "matter_of_fact"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Olivia. She's been sitting two seats over all semester and this is the fourth thing she's ever said to me.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(All four have been correct.)",
+          "is_internal_thought": true
+        },
+        {
+          "is_choice": true,
+          "choices": [
+            {
+              "choice_text": "\"Then why are you doing it?\"",
+              "consequence_id": "olivia_answers_plainly",
+              "relationship_change": { "character": "Olivia Calder", "value": 1 }
+            },
+            {
+              "choice_text": "[Nod. Go back to the brief.]",
+              "consequence_id": "olivia_returns_to_notebook",
+              "relationship_change": null
+            }
+          ]
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "Because I grew up here and I'd rather be marked down than pretend.",
+          "emotion": "plain_honest"
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "You should come out to the cliffs sometime. It's not a line. I just think you'd like the quiet.",
+          "emotion": "plain_honest"
+        }
+      ]
+    },
+    {
+      "episode": "1",
+      "scene_id": "ep1_quad_lunch_05",
+      "location": "Blackwell Academy — The Quad",
+      "characters_present": ["Fiz", "Mason Cranstain", "Pete Lindson", "Kieran Ness", "Maddie Hale"],
+      "dialogue_sequence": [
+        {
+          "speaker": "Mason Cranstain",
+          "text": "Heard about the hallway. Heard Jake tried a passport joke and ate shit on it.",
+          "emotion": "delighted"
+        },
+        {
+          "speaker": "Pete Lindson",
+          "text": "Mason.",
+          "emotion": "warning"
+        },
+        {
+          "speaker": "Mason Cranstain",
+          "text": "What? I'm proud of him. Our boy's developing a mouth.",
+          "emotion": "delighted"
+        },
+        {
+          "speaker": "Pete Lindson",
+          "text": "Yeah, and Jake's developing a grudge. Those aren't the same thing.",
+          "emotion": "level"
+        },
+        {
+          "speaker": "Maddie Hale",
+          "text": "Guys — guys, hold on, I'm live. Say hi to the Grid!",
+          "emotion": "manic_cheerful"
+        },
+        {
+          "speaker": "Maddie Hale",
+          "text": "This is Fiz. He edits my thumbnails and he has never once said hello to chat. Fiz. FIZ. Four hundred people.",
+          "emotion": "manic_cheerful"
+        },
+        {
+          "is_choice": true,
+          "choices": [
+            {
+              "choice_text": "[Wave at the camera. Nothing else.]",
+              "consequence_id": "maddie_screams_with_joy",
+              "relationship_change": { "character": "Maddie Hale", "value": 1 }
+            },
+            {
+              "choice_text": "\"Hi. Please stop.\"",
+              "consequence_id": "maddie_clips_it_immediately",
+              "relationship_change": { "character": "Maddie Hale", "value": 2 }
+            },
+            {
+              "choice_text": "[Put your hand over the lens.]",
+              "consequence_id": "maddie_deflates",
+              "relationship_change": { "character": "Maddie Hale", "value": -1 }
+            }
+          ]
+        },
+        {
+          "speaker": "Kieran Ness",
+          "text": "...",
+          "emotion": "silent"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Kieran pushes his fries into the middle of the table. He does this every day. We have never discussed it.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Kieran Ness",
+          "text": "Wrote something on my board this morning. \"The town rebuilt everything except the part that remembers.\"",
+          "emotion": "flat_thoughtful"
+        },
+        {
+          "speaker": "Kieran Ness",
+          "text": "Don't know if it's good. Don't really care.",
+          "emotion": "flat_thoughtful"
+        },
+        {
+          "speaker": "Mason Cranstain",
+          "text": "That's depressing as hell, man.",
+          "emotion": "uncomfortable_laugh"
+        },
+        {
+          "speaker": "Pete Lindson",
+          "text": "It's not wrong, though.",
+          "emotion": "distant"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Pete's brother. Ten years this month. Nobody says it, and Pete keeps eating like the sentence didn't come out of him.)",
+          "is_internal_thought": true
+        },
+        {
+          "is_choice": true,
+          "choices": [
+            {
+              "choice_text": "\"Pete. You okay?\"",
+              "consequence_id": "pete_almost_says_it",
+              "relationship_change": { "character": "Pete Lindson", "value": 2 }
+            },
+            {
+              "choice_text": "[Change the subject. Give him the exit.]",
+              "consequence_id": "pete_takes_the_exit",
+              "relationship_change": { "character": "Pete Lindson", "value": 1 }
+            },
+            {
+              "choice_text": "[Let the silence sit.]",
+              "consequence_id": "quad_silence_holds",
+              "relationship_change": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "episode": "1",
+      "scene_id": "ep1_lighthouse_walk_06",
+      "location": "Lighthouse Ruins — Arcadia Bay Cliffs",
+      "characters_present": ["Fiz", "Riley Jones"],
+      "dialogue_sequence": [
+        {
+          "speaker": "Riley Jones",
+          "text": "You brought the camera.",
+          "emotion": "soft"
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "You always bring the camera when you're working something out. You know that, right?",
+          "emotion": "soft"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(I didn't know that.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "Theo asked about you last night. First question he's asked me in about a week.",
+          "emotion": "fond_tired"
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "He wanted to know if you actually listen or if you're just quiet. I said both. He thought that was funny.",
+          "emotion": "fond_tired"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(She talks about her brother the way people talk about something they're carrying up a hill.)",
+          "is_internal_thought": true
+        },
+        {
+          "is_choice": true,
+          "choices": [
+            {
+              "choice_text": "\"How is he? Actually.\"",
+              "consequence_id": "riley_admits_theo_worse",
+              "relationship_change": { "character": "Riley Jones", "value": 2 }
+            },
+            {
+              "choice_text": "\"How are you? Actually.\"",
+              "consequence_id": "riley_caught_off_guard",
+              "relationship_change": { "character": "Riley Jones", "value": 3 }
+            },
+            {
+              "choice_text": "[Frame a shot of the ruins instead.]",
+              "consequence_id": "riley_lets_him_hide",
+              "relationship_change": null
+            }
+          ]
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "Nobody asks me that. Do you know how weird that is? Everyone asks about Theo. Or Dad. Or the house.",
+          "emotion": "cracking"
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "You're the only person who doesn't ask me for something first.",
+          "emotion": "cracking"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(She's twisting the bracelet. The silver one. Her mother's. She does that when she's deciding whether to say a true thing.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "Don't go down to the water line. I mean it.",
+          "emotion": "abrupt_fear"
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "I don't do water. At all. I know it's stupid.",
+          "emotion": "embarrassed"
+        },
+        {
+          "is_choice": true,
+          "choices": [
+            {
+              "choice_text": "\"It's not stupid.\"",
+              "consequence_id": "riley_relaxes",
+              "relationship_change": { "character": "Riley Jones", "value": 1 }
+            },
+            {
+              "choice_text": "\"What happened?\"",
+              "consequence_id": "riley_shuts_down_storm_hint",
+              "relationship_change": null
+            },
+            {
+              "choice_text": "[Step back from the edge without being asked twice.]",
+              "consequence_id": "riley_notices_the_care",
+              "relationship_change": { "character": "Riley Jones", "value": 2 }
+            }
+          ]
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "Nothing happened. I was six. Everyone in this town has a water thing.",
+          "emotion": "closing_off"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(That's the second time today someone's answered a question by describing the whole town instead of themselves.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(I take the shot anyway. Ruins, fog, the water going grey behind it. 4:41 PM. I remember because the light was dying and I checked.)",
+          "is_internal_thought": true
+        }
+      ]
+    },
+    {
+      "episode": "1",
+      "scene_id": "ep1_rear_steps_07",
+      "location": "Blackwell Academy — Rear Steps",
+      "characters_present": ["Fiz", "Olivia Calder", "Marcus Islah"],
+      "dialogue_sequence": [
+        {
+          "speaker": "Olivia Calder",
+          "text": "You went out there.",
+          "emotion": "neutral"
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "You've got cliff mud on your shoes and you look like you're still standing in it.",
+          "emotion": "neutral"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(She's not smug about it. She just says things.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "My mother drowned near the docks during the evacuation. Nineteen years old, I've had ten years to say that sentence, and people still flinch.",
+          "emotion": "plain"
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "You didn't.",
+          "emotion": "plain"
+        },
+        {
+          "is_choice": true,
+          "choices": [
+            {
+              "choice_text": "\"I'm sorry.\"",
+              "consequence_id": "olivia_accepts_simply",
+              "relationship_change": { "character": "Olivia Calder", "value": 1 }
+            },
+            {
+              "choice_text": "\"Do you want me to?\"",
+              "consequence_id": "olivia_almost_smiles",
+              "relationship_change": { "character": "Olivia Calder", "value": 2 }
+            },
+            {
+              "choice_text": "[Sit down next to her. Say nothing.]",
+              "consequence_id": "olivia_shares_the_bench",
+              "relationship_change": { "character": "Olivia Calder", "value": 2 }
+            }
+          ]
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "No. That's the point. Everybody in this place has decided grief is a thing you do quietly and then stop.",
+          "emotion": "plain"
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "I'm not being dark. I'm being accurate. There's a difference and nobody here can tell.",
+          "emotion": "plain"
+        },
+        {
+          "speaker": "Marcus Islah",
+          "text": "Steps close at six, you two.",
+          "emotion": "tired_neutral"
+        },
+        {
+          "speaker": "Marcus Islah",
+          "text": "Calder. Go on.",
+          "emotion": "tired_neutral"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(He waits until she's gone. He wanted me on my own.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Marcus Islah",
+          "text": "You were out at the cliffs.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Marcus Islah",
+          "text": "Not asking. I do rounds, I know what mud looks like.",
+          "emotion": "flat"
+        },
+        {
+          "is_choice": true,
+          "choices": [
+            {
+              "choice_text": "\"Is that a problem?\"",
+              "consequence_id": "marcus_declines_to_answer",
+              "relationship_change": null
+            },
+            {
+              "choice_text": "[Show him the camera. Nothing to hide.]",
+              "consequence_id": "marcus_doesnt_take_it",
+              "relationship_change": { "character": "Marcus Islah", "value": 1 }
+            },
+            {
+              "choice_text": "[Wait him out.]",
+              "consequence_id": "marcus_respects_the_silence",
+              "relationship_change": { "character": "Marcus Islah", "value": 1 }
+            }
+          ]
+        },
+        {
+          "speaker": "Marcus Islah",
+          "text": "Kid. I'm not confiscating anything. I've never confiscated anything off you and I've had eleven chances.",
+          "emotion": "weary_honest"
+        },
+        {
+          "speaker": "Marcus Islah",
+          "text": "Careful where you point that thing.",
+          "emotion": "weary_honest"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Not a threat. I've been threatened. This was the other thing.)",
+          "is_internal_thought": true
+        }
+      ]
+    },
+    {
+      "episode": "1",
+      "scene_id": "ep1_media_lab_08",
+      "location": "Blackwell Academy — Media Lab",
+      "characters_present": ["Fiz", "Jamie Vaughn"],
+      "dialogue_sequence": [
+        {
+          "speaker": "Jamie Vaughn",
+          "text": "Rowe left the lab key with me. Don't tell anyone, he'll stop doing it.",
+          "emotion": "conspiratorial_calm"
+        },
+        {
+          "speaker": "Jamie Vaughn",
+          "text": "You cutting the lighthouse stuff? I'll shut up. I know you don't like people over your shoulder.",
+          "emotion": "friendly"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Two hours. The good kind. The kind where the noise finally has somewhere to go.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Clip four. The wide of the ruins. I've watched it eleven times because something in it keeps pulling my eye and I can't name what.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Timecode 00:04:41. Fog rolling left to right across the frame.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Then, for eleven frames — less than half a second — it rolls right to left. Same fog. Same shot. No cut.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(I step it frame by frame. There's no seam. No dropped frames. The timecode doesn't skip. It's continuous footage and the weather goes backwards inside it.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Jamie Vaughn",
+          "text": "You've gone grey, man. What.",
+          "emotion": "concerned"
+        },
+        {
+          "is_choice": true,
+          "choices": [
+            {
+              "choice_text": "[Show Jamie the clip.]",
+              "consequence_id": "jamie_sees_something_else",
+              "relationship_change": { "character": "Jamie Vaughn", "value": 2 }
+            },
+            {
+              "choice_text": "\"Nothing. Bad export.\"",
+              "consequence_id": "jamie_lets_it_go",
+              "relationship_change": null
+            },
+            {
+              "choice_text": "[Close the laptop.]",
+              "consequence_id": "anomaly_kept_private",
+              "relationship_change": null
+            }
+          ]
+        },
+        {
+          "speaker": "Jamie Vaughn",
+          "text": "...I mean. Codec's doing something weird? Interlacing, maybe. Cheap sensor in fog, it happens.",
+          "emotion": "reaching_for_normal"
+        },
+        {
+          "speaker": "Jamie Vaughn",
+          "text": "That's not — that's not what that is, is it.",
+          "emotion": "losing_confidence"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(He's giving me a rational answer. He's giving it to himself, really.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Jamie Vaughn",
+          "text": "My sister was a student here. In 2013.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Jamie Vaughn",
+          "text": "I'm not saying those are related. I'm saying I'm going home now.",
+          "emotion": "flat"
+        }
+      ]
+    },
+    {
+      "episode": "1",
+      "scene_id": "ep1_dorm_night_09",
+      "location": "Blackwell Academy — Dormitory, Room 214",
+      "characters_present": ["Fiz"],
+      "dialogue_sequence": [
+        {
+          "speaker": "Fiz",
+          "text": "(2:14 AM. I've watched it ninety times. It doesn't get less true.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(There are four rational explanations. I've tested three. The fourth is that I'm wrong about what I'm seeing, which is the one I'd like, so I don't trust it.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(A year of being polite. A year of not asking. Linda changing the subject. Riley stepping back from the water. Marcus saying careful. Sienna taking it back before anyone made her.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(I thought this town was quiet. It isn't quiet. It's holding its breath.)",
+          "is_internal_thought": true
+        },
+        {
+          "is_choice": true,
+          "choices": [
+            {
+              "choice_text": "[Send the clip to Riley.]",
+              "consequence_id": "ep1_end_tell_riley",
+              "relationship_change": { "character": "Riley Jones", "value": 2 }
+            },
+            {
+              "choice_text": "[Back it up three times. Tell no one. Start looking.]",
+              "consequence_id": "ep1_end_go_alone",
+              "relationship_change": null
+            },
+            {
+              "choice_text": "[Delete it. Go to sleep. Be a guest here.]",
+              "consequence_id": "ep1_end_delete",
+              "relationship_change": null
+            }
+          ]
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(\"I guess if bad shit happens I should just let it happen.\")",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(I've been telling myself that for a year. Tonight it sounds like something a coward says.)",
+          "is_internal_thought": true
+        }
+      ]
+    }
+  ]
+}

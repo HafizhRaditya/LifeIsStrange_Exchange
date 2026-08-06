@@ -1,0 +1,99 @@
+/* Late-autumn Arcadia Bay: rust, moss, fog. Cold blue reserved for night + water. */
+
+:root {
+  --ink:            #0b0c0e;
+  --ink-soft:       #14161a;
+  --fog:            #8c9199;
+  --fog-dim:        #5d636c;
+  --bone:           #e8e4dc;
+  --bone-dim:       #b9b3a8;
+
+  --rust:           #b4623a;
+  --rust-dim:       #7d4529;
+  --moss:           #6d7a5c;
+  --amber-warm:     #d9a441;
+  --cold:           #4d7a97;
+  --cold-deep:      #24384a;
+
+  --accent:         var(--rust);
+  --thought:        #cfd6dd;
+
+  --box-bg:         rgba(9, 10, 12, 0.86);
+  --box-edge:       rgba(232, 228, 220, 0.14);
+
+  --font-display:   ui-serif, Georgia, "Times New Roman", serif;
+  --font-body:      ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono:      ui-monospace, "Cascadia Mono", Consolas, monospace;
+
+  --ease:           cubic-bezier(0.22, 0.61, 0.36, 1);
+  --slow:           720ms;
+  --med:            340ms;
+  --fast:           160ms;
+
+  --stage-max:      1600px;
+  --beacon-w:       clamp(300px, 26vw, 360px);
+}
+
+/* Background placeholders. Swap these class bodies for real art later —
+   nothing in /js references the gradients, only the class name. */
+.bg--void        { background: radial-gradient(circle at 50% 40%, #16181c, #08090b 70%); }
+
+.bg--dorm-morning {
+  background:
+    linear-gradient(180deg, rgba(217,164,65,0.10) 0%, rgba(0,0,0,0) 42%),
+    linear-gradient(100deg, #2a2b2e 0%, #33343a 38%, #4a4640 62%, #262728 100%);
+}
+
+.bg--hallway {
+  background:
+    linear-gradient(180deg, rgba(140,145,153,0.14), rgba(0,0,0,0) 55%),
+    linear-gradient(90deg, #24262a, #34363c 50%, #1e2023);
+}
+
+.bg--lighthouse-dusk {
+  background:
+    radial-gradient(ellipse at 72% 30%, rgba(217,164,65,0.22), rgba(0,0,0,0) 55%),
+    linear-gradient(180deg, #3a3f4a 0%, #2b323d 45%, #171b21 100%);
+}
+
+.bg--pool-night {
+  background:
+    radial-gradient(ellipse at 50% 75%, rgba(77,122,151,0.38), rgba(0,0,0,0) 62%),
+    linear-gradient(180deg, #0d1319 0%, #142230 60%, #0a1016 100%);
+}
+
+.bg--diner {
+  background:
+    radial-gradient(ellipse at 22% 38%, rgba(217,164,65,0.20), rgba(0,0,0,0) 52%),
+    linear-gradient(120deg, #2c2622 0%, #3d332a 40%, #241f1c 100%);
+}
+
+.bg--studio {
+  background:
+    linear-gradient(180deg, rgba(232,228,220,0.09), rgba(0,0,0,0) 40%),
+    linear-gradient(115deg, #2a2d2e 0%, #34383a 45%, #202324 100%);
+}
+
+.bg--quad {
+  background:
+    radial-gradient(ellipse at 60% 22%, rgba(140,145,153,0.20), rgba(0,0,0,0) 58%),
+    linear-gradient(170deg, #3b4038 0%, #2f3630 48%, #1d211d 100%);
+}
+
+.bg--rear-steps {
+  background:
+    radial-gradient(ellipse at 30% 82%, rgba(217,164,65,0.12), rgba(0,0,0,0) 50%),
+    linear-gradient(190deg, #262a2f 0%, #1e2226 55%, #14171a 100%);
+}
+
+.bg--media-lab {
+  background:
+    radial-gradient(ellipse at 48% 58%, rgba(77,122,151,0.24), rgba(0,0,0,0) 55%),
+    linear-gradient(180deg, #14181d 0%, #191e24 50%, #0c0f12 100%);
+}
+
+.bg--dorm-night {
+  background:
+    radial-gradient(ellipse at 62% 66%, rgba(77,122,151,0.18), rgba(0,0,0,0) 48%),
+    linear-gradient(200deg, #12151a 0%, #171b21 55%, #0a0c0f 100%);
+}

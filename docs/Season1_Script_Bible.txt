@@ -1,0 +1,431 @@
+LIFE IS STRANGE: EXCHANGE
+Season 1 — Narrative Script Bible
+Arcadia Bay, Oregon — November 2023
+Episode 1 is delivered as a complete, playable script. Episodes 2–5 are delivered as full scene maps — every scene, its cast, its beats, its choice architecture, and its consequence IDs — ready to be expanded into dialogue on request.
+The engine-ready JSON for Episode 1 ships as a separate file: episode_01.json.
+## Canon Ledger
+Rulings locked by the Creative Director. These override any contradicting line in the source bible.
+## Renames
+Nolan Pierce → Nolan Burgh (was colliding with Luke Pierce)
+Marcus Hale → Marcus Islah (was colliding with Madison "Maddie" Hale)
+Damien "Dax" Rowe → Dax Patrickson (was colliding with Mr. Ethan Rowe)
+Kieran Holt → Kieran Ness (was colliding with Officer Darren Holt)
+Sandra Brooks → Sandra Johnson (was colliding with Zoey Brookes)
+Lena Ortiz → Gina Ortiz (was colliding with Elena Ward)
+Elena Ward — unchanged. Brandon Montgomery and Cheryl Brandstone — unchanged.
+## Corrections
+Elena Ward is 29. This is the load-bearing version: it places her at 18–19 in 2013, the same graduating cohort as Max Caulfield, which is what makes "she knew Max personally" work.
+Chief Barry Deskowsky is 56. The "48" in his appearance header is dead.
+Amber Clarke uses the loud build only — brash, theatrical, neon streetwear, LED ring-light phone case, live-narrates humiliations. The "soft sweater / quiet observer" description is dead.
+Jake Cross captains football. Nolan Burgh captains basketball. Their rivalry is cross-sport and social, not positional.
+Every stray "Ethan" in the Crosshairs material is Jake. The single stray "Logan" in Luke Pierce's profile is Luke. Ethan now belongs to exactly one character: Mr. Ethan Rowe.
+## Standing Format Rules
+Fiz never speaks in dialogue_sequence. His spoken lines exist only inside choices. His internal monologue is authored, flagged is_internal_thought, and wrapped in parentheses.
+Place and time belong to the Creative Director. Locations proposed here are placeholders and may be overridden by any [ ] tag.
+No real-world brands. In-universe platforms only: Prism, Glimpse, Flicker, Echo, Nexus, DeepThread, Aura, ViewGrid.
+Rated M. Swearing is natural to character, never decorative.
+## The Two Standing Creative Rulings
+The Anomaly — Ambiguous.
+Nothing in the season is ever stated to be impossible. What is impossible is Fiz's reading of it. Every anomalous beat is written with a mundane explanation held in reserve — logged below in the Anomaly Register — so nothing has to be walked back in Episodes 3–5.
+Olivia Calder — Played Straight.
+Zero tells. No coded lines, no lingering beats, no double meanings. Everything she says in Episodes 1–3 is sincere. The Episode 4 reveal has to hurt on a first pass and hold up on a second precisely because she was not performing.
+## Anomaly Register (Private — Writer's Reference)
+The mundane answer behind each anomaly. Veto any of these before it becomes load-bearing.
+Ep1 — Fog reverses for 11 frames in continuous footage. Mundane answer: the clip was not continuous. It was re-encoded and stitched by someone with access to the media lab archive, and the timecode was rewritten to hide the seam. Fiz is looking at a forgery, not a phenomenon.
+Alice Carter — "a photo moved on its own." Mundane answer: two near-identical prints in the same file, swapped between viewings.
+Sienna Morales — "a picture that shouldn't exist." Mundane answer: it exists. The date on it is wrong because the camera's internal clock was never set.
+Luke Pierce — "something fell from the sky into the bay." Mundane answer: a marine flare from a salvage operation Cross Industries never logged.
+Ms. Leighton — pressure and magnetic anomalies, 2013. Mundane answer: real data, real instruments, and a monitoring station that was already failing before the storm.
+Mr. Rowe — "time skips in recorded data." Mundane answer: he analysed the same forgeries. This is the thread that eventually points at the forger.
+## Season Spine
+## Episode 1 — Blast For The Future
+Fiz's observer life, the casual cruelty of Zoey and Jake's clique, the deepening bond with Riley. Ends when his own footage does something footage cannot do.
+## Episode 2 — Good Times
+The inner circle chases normalcy against escalating Glimpse and ViewGrid harassment. Emotional core: Fiz teaches Riley to swim in the Blackwell pool at night. Ends on Richard Jones and Gerald Cross, overheard.
+## Episode 3 — The Place Beyond Us
+Observers become investigators. Restricted files, Cross Industries, the Prescott bankruptcy. Ends in a physical confrontation with the Crosshairs that leaves the group exposed.
+## Episode 4 — Rendered
+The evidence leaks. Blackwell's hierarchy collapses. The twist: Olivia Calder is orchestrating the present-day psychological campaign.
+## Episode 5 — Lost and Found
+A psychological showdown with no powers to escape into. Final choice: publish the unedited truth and destroy the rebuilt town, or bury it and join the silence.
+## Episode 1 — Blast For The Future
+Full script. Nine scenes, fifteen choice blocks. Engine JSON: episode_01.json
+## Scene 1 — ep1_dorm_morning_01
+[ Blackwell Academy — Dormitory, Room 214 ]
+Present: Fiz, Gina Ortiz
+(Four hours. The ceiling has a water stain shaped like an island. Some mornings it's Java. Some mornings it's nothing.)
+(One year today. Nobody's going to say it. That's fine. That's the deal.)
+Gina Ortiz: Fiz. I can hear your alarm through the wall. It's been going for eleven minutes.   (tired_affectionate)
+Gina Ortiz: I'm not gonna write you up. I'm just gonna stand here judging you until you turn it off.   (dry_warm)
+(She does this. Checks on me like I'm something she's responsible for. I don't know how to tell her that helps.)
+CHOICE
+"Sorry. I'm up."   → gina_accepts_apology
+[Turn the alarm off. Say nothing.]   → gina_lingers_at_door
+"You've been up since five, haven't you."   → gina_deflects_own_exhaustion  —  Gina Ortiz +1
+Gina Ortiz: Hall check's in ten. And Fiz — eat something today. Not the vending machine. Something with a shape.   (protective)
+(Headphones. Aura. The Strokes. The same song I've played four hundred times because it's the only thing that makes the noise in my head line up straight.)
+(Somewhere between the door and the stairs my brain runs the thing again. A hallway. Someone raising a gun. Me, calm. Always calm, in the version where it happens.)
+(Nobody's ever raised anything at me. My head just likes rehearsing.)
+CHOICE
+[Take the camera off the desk.]   → camera_acquired_flag
+[Leave the camera. Not today.]   → camera_left_behind_flag
+## Scene 2 — ep1_diner_booth_02
+[ Jacquelin Diner ]
+Present: Fiz, Linda Jacquelin, Brandon Montgomery
+Linda Jacquelin: There he is. My most reliable customer and my worst tipper.   (warm_nostalgic)
+Linda Jacquelin: Sit. Booth by the window's still got heat in it.   (warm_nostalgic)
+(She always remembers. Even when the rest of the town tries to forget.)
+Linda Jacquelin: You know this place used to be packed at seven? Line out the door. Fishermen, truckers, half the school skipping first period.   (wistful)
+Linda Jacquelin: Now it's you, Brandon back there, and whoever's lost on the coast road.   (wistful)
+CHOICE
+"What changed?"   → linda_deflects_the_storm  —  Linda Jacquelin +1
+[Look at the half-burned photo behind the counter.]   → linda_covers_photo
+"Just black coffee today, Linda. Thanks."   → linda_pours_coffee
+Linda Jacquelin: Oh, honey. Everything changed. That's the whole answer and nobody in this town will give you a longer one.   (guarded_warmth)
+Linda Jacquelin: Eat your eggs.   (closing_the_subject)
+Brandon Montgomery: You keep looking at that picture.   (flat_unfriendly)
+(He hasn't moved in twenty minutes. I didn't think he was awake.)
+Brandon Montgomery: Everyone does, first year. Then they stop. You'll stop.   (flat_unfriendly)
+CHOICE
+"Who are they?"   → brandon_refuses_answer
+"Did you?"   → brandon_goes_quiet  —  Brandon Montgomery +1
+[Say nothing. Go back to your coffee.]   → brandon_leaves_early
+## Scene 3 — ep1_main_hall_03
+[ Blackwell Academy — Main Hallway ]
+Present: Fiz, Riley Jones, Zoey Brookes, Lila West, Amber Clarke, Jake Cross, Luke Pierce
+(You can hear Amber before you can see her. That's the point of Amber.)
+Amber Clarke: OH MY GOD, everyone — everyone, look who decided to bring the same jacket for the fourth day running!   (performative_cruel)
+Amber Clarke: Riley! Riley, look at me. Look at the light, babe, I need your eyes in it.   (performative_cruel)
+Riley Jones: Amber. Get the fucking phone out of my face.   (controlled_anger)
+Lila West: Ooh. She talks. Write it down, someone write it down.   (sneering)
+Zoey Brookes: Enough, Lila. She's already embarrassing herself, you don't need to hold her hand through it.   (cold_amused)
+(That's the trick. Zoey never throws the punch. She just stands close enough to be in the photo.)
+Jake Cross: Hey. Exchange student. You dropped something.   (false_friendly)
+Luke Pierce: He didn't drop anything, man.   (confused_loyal)
+Jake Cross: He dropped his fucking passport, Luke. That was the joke. God.   (irritated)
+(The hallway is doing the thing where it gets quiet and everybody keeps walking. Nobody looks. That's the town in one hallway.)
+(My hands are shaking. Not from fear. From having nowhere to put it.)
+CHOICE
+[Step between Amber's phone and Riley.]   → hall_intervene_physical  —  Riley Jones +2
+"That was a shit joke, Jake. Even Luke didn't get it."   → hall_verbal_counter  —  Jake Cross -2
+[Take Riley's wrist. Walk. Don't engage.]   → hall_withdraw_together  —  Riley Jones +1
+[Say nothing. Do nothing. Let it pass.]   → hall_bystander  —  Riley Jones -1
+Riley Jones: You didn't have to do that.   (quiet_grateful)
+Riley Jones: ...I'm glad you did. But you didn't have to.   (quiet_grateful)
+## Scene 4 — ep1_photo_studio_04
+[ Blackwell Academy — Photography Studio ]
+Present: Fiz, Mr. Owen Rhys, Ezra Lang, Sienna Morales, Olivia Calder
+Mr. Owen Rhys: Assignment. Due Friday. One image. Here's the brief, and I want you to sit with it before you groan at me.   (energised)
+Mr. Owen Rhys: Photograph something this town would rather you didn't look at.   (energised)
+Ezra Lang: That's not a brief, that's a mood board.   (politely_dismissive)
+Mr. Owen Rhys: It's a brief, Ezra. You just don't like ones you can't win on technique.   (amused)
+Sienna Morales: I've been shooting near the old lighthouse. There's a light down there that doesn't behave.   (dreamy_intent)
+Sienna Morales: I mean the fog does something to it. Obviously. I'm not being weird.   (self_correcting)
+(She said it like she was taking it back before anyone made her.)
+Ezra Lang: Fiz shoots the lighthouse constantly. Might want to pick something else, Sienna. He gets precious about his spots.   (smiling_undermine)
+CHOICE
+"It's a public cliff, Ezra."   → ezra_smiles_thinner  —  Ezra Lang -1
+"Shoot it. I'd like to see your version."   → sienna_opens_up  —  Sienna Morales +2
+[Let Ezra have it. Look at the brief.]   → ezra_wins_the_room
+Olivia Calder: You'll get marked down, you know.   (matter_of_fact)
+Olivia Calder: Not by him. By whoever reads it after him. Nobody here grades honesty well.   (matter_of_fact)
+(Olivia. She's been sitting two seats over all semester and this is the fourth thing she's ever said to me.)
+(All four have been correct.)
+CHOICE
+"Then why are you doing it?"   → olivia_answers_plainly  —  Olivia Calder +1
+[Nod. Go back to the brief.]   → olivia_returns_to_notebook
+Olivia Calder: Because I grew up here and I'd rather be marked down than pretend.   (plain_honest)
+Olivia Calder: You should come out to the cliffs sometime. It's not a line. I just think you'd like the quiet.   (plain_honest)
+## Scene 5 — ep1_quad_lunch_05
+[ Blackwell Academy — The Quad ]
+Present: Fiz, Mason Cranstain, Pete Lindson, Kieran Ness, Maddie Hale
+Mason Cranstain: Heard about the hallway. Heard Jake tried a passport joke and ate shit on it.   (delighted)
+Pete Lindson: Mason.   (warning)
+Mason Cranstain: What? I'm proud of him. Our boy's developing a mouth.   (delighted)
+Pete Lindson: Yeah, and Jake's developing a grudge. Those aren't the same thing.   (level)
+Maddie Hale: Guys — guys, hold on, I'm live. Say hi to the Grid!   (manic_cheerful)
+Maddie Hale: This is Fiz. He edits my thumbnails and he has never once said hello to chat. Fiz. FIZ. Four hundred people.   (manic_cheerful)
+CHOICE
+[Wave at the camera. Nothing else.]   → maddie_screams_with_joy  —  Maddie Hale +1
+"Hi. Please stop."   → maddie_clips_it_immediately  —  Maddie Hale +2
+[Put your hand over the lens.]   → maddie_deflates  —  Maddie Hale -1
+Kieran Ness: ...   (silent)
+(Kieran pushes his fries into the middle of the table. He does this every day. We have never discussed it.)
+Kieran Ness: Wrote something on my board this morning. "The town rebuilt everything except the part that remembers."   (flat_thoughtful)
+Kieran Ness: Don't know if it's good. Don't really care.   (flat_thoughtful)
+Mason Cranstain: That's depressing as hell, man.   (uncomfortable_laugh)
+Pete Lindson: It's not wrong, though.   (distant)
+(Pete's brother. Ten years this month. Nobody says it, and Pete keeps eating like the sentence didn't come out of him.)
+CHOICE
+"Pete. You okay?"   → pete_almost_says_it  —  Pete Lindson +2
+[Change the subject. Give him the exit.]   → pete_takes_the_exit  —  Pete Lindson +1
+[Let the silence sit.]   → quad_silence_holds
+## Scene 6 — ep1_lighthouse_walk_06
+[ Lighthouse Ruins — Arcadia Bay Cliffs ]
+Present: Fiz, Riley Jones
+Riley Jones: You brought the camera.   (soft)
+Riley Jones: You always bring the camera when you're working something out. You know that, right?   (soft)
+(I didn't know that.)
+Riley Jones: Theo asked about you last night. First question he's asked me in about a week.   (fond_tired)
+Riley Jones: He wanted to know if you actually listen or if you're just quiet. I said both. He thought that was funny.   (fond_tired)
+(She talks about her brother the way people talk about something they're carrying up a hill.)
+CHOICE
+"How is he? Actually."   → riley_admits_theo_worse  —  Riley Jones +2
+"How are you? Actually."   → riley_caught_off_guard  —  Riley Jones +3
+[Frame a shot of the ruins instead.]   → riley_lets_him_hide
+Riley Jones: Nobody asks me that. Do you know how weird that is? Everyone asks about Theo. Or Dad. Or the house.   (cracking)
+Riley Jones: You're the only person who doesn't ask me for something first.   (cracking)
+(She's twisting the bracelet. The silver one. Her mother's. She does that when she's deciding whether to say a true thing.)
+Riley Jones: Don't go down to the water line. I mean it.   (abrupt_fear)
+Riley Jones: I don't do water. At all. I know it's stupid.   (embarrassed)
+CHOICE
+"It's not stupid."   → riley_relaxes  —  Riley Jones +1
+"What happened?"   → riley_shuts_down_storm_hint
+[Step back from the edge without being asked twice.]   → riley_notices_the_care  —  Riley Jones +2
+Riley Jones: Nothing happened. I was six. Everyone in this town has a water thing.   (closing_off)
+(That's the second time today someone's answered a question by describing the whole town instead of themselves.)
+(I take the shot anyway. Ruins, fog, the water going grey behind it. 4:41 PM. I remember because the light was dying and I checked.)
+## Scene 7 — ep1_rear_steps_07
+[ Blackwell Academy — Rear Steps ]
+Present: Fiz, Olivia Calder, Marcus Islah
+Olivia Calder: You went out there.   (neutral)
+Olivia Calder: You've got cliff mud on your shoes and you look like you're still standing in it.   (neutral)
+(She's not smug about it. She just says things.)
+Olivia Calder: My mother drowned near the docks during the evacuation. Nineteen years old, I've had ten years to say that sentence, and people still flinch.   (plain)
+Olivia Calder: You didn't.   (plain)
+CHOICE
+"I'm sorry."   → olivia_accepts_simply  —  Olivia Calder +1
+"Do you want me to?"   → olivia_almost_smiles  —  Olivia Calder +2
+[Sit down next to her. Say nothing.]   → olivia_shares_the_bench  —  Olivia Calder +2
+Olivia Calder: No. That's the point. Everybody in this place has decided grief is a thing you do quietly and then stop.   (plain)
+Olivia Calder: I'm not being dark. I'm being accurate. There's a difference and nobody here can tell.   (plain)
+Marcus Islah: Steps close at six, you two.   (tired_neutral)
+Marcus Islah: Calder. Go on.   (tired_neutral)
+(He waits until she's gone. He wanted me on my own.)
+Marcus Islah: You were out at the cliffs.   (flat)
+Marcus Islah: Not asking. I do rounds, I know what mud looks like.   (flat)
+CHOICE
+"Is that a problem?"   → marcus_declines_to_answer
+[Show him the camera. Nothing to hide.]   → marcus_doesnt_take_it  —  Marcus Islah +1
+[Wait him out.]   → marcus_respects_the_silence  —  Marcus Islah +1
+Marcus Islah: Kid. I'm not confiscating anything. I've never confiscated anything off you and I've had eleven chances.   (weary_honest)
+Marcus Islah: Careful where you point that thing.   (weary_honest)
+(Not a threat. I've been threatened. This was the other thing.)
+## Scene 8 — ep1_media_lab_08
+[ Blackwell Academy — Media Lab ]
+Present: Fiz, Jamie Vaughn
+Jamie Vaughn: Rowe left the lab key with me. Don't tell anyone, he'll stop doing it.   (conspiratorial_calm)
+Jamie Vaughn: You cutting the lighthouse stuff? I'll shut up. I know you don't like people over your shoulder.   (friendly)
+(Two hours. The good kind. The kind where the noise finally has somewhere to go.)
+(Clip four. The wide of the ruins. I've watched it eleven times because something in it keeps pulling my eye and I can't name what.)
+(Timecode 00:04:41. Fog rolling left to right across the frame.)
+(Then, for eleven frames — less than half a second — it rolls right to left. Same fog. Same shot. No cut.)
+(I step it frame by frame. There's no seam. No dropped frames. The timecode doesn't skip. It's continuous footage and the weather goes backwards inside it.)
+Jamie Vaughn: You've gone grey, man. What.   (concerned)
+CHOICE
+[Show Jamie the clip.]   → jamie_sees_something_else  —  Jamie Vaughn +2
+"Nothing. Bad export."   → jamie_lets_it_go
+[Close the laptop.]   → anomaly_kept_private
+Jamie Vaughn: ...I mean. Codec's doing something weird? Interlacing, maybe. Cheap sensor in fog, it happens.   (reaching_for_normal)
+Jamie Vaughn: That's not — that's not what that is, is it.   (losing_confidence)
+(He's giving me a rational answer. He's giving it to himself, really.)
+Jamie Vaughn: My sister was a student here. In 2013.   (flat)
+Jamie Vaughn: I'm not saying those are related. I'm saying I'm going home now.   (flat)
+## Scene 9 — ep1_dorm_night_09
+[ Blackwell Academy — Dormitory, Room 214 ]
+Present: Fiz
+(2:14 AM. I've watched it ninety times. It doesn't get less true.)
+(There are four rational explanations. I've tested three. The fourth is that I'm wrong about what I'm seeing, which is the one I'd like, so I don't trust it.)
+(A year of being polite. A year of not asking. Linda changing the subject. Riley stepping back from the water. Marcus saying careful. Sienna taking it back before anyone made her.)
+(I thought this town was quiet. It isn't quiet. It's holding its breath.)
+CHOICE
+[Send the clip to Riley.]   → ep1_end_tell_riley  —  Riley Jones +2
+[Back it up three times. Tell no one. Start looking.]   → ep1_end_go_alone
+[Delete it. Go to sleep. Be a guest here.]   → ep1_end_delete
+("I guess if bad shit happens I should just let it happen.")
+(I've been telling myself that for a year. Tonight it sounds like something a coward says.)
+## Episode 2 — Good Times
+Normalcy under siege. The pool scene is the emotional spine of the whole season — everything before it exists to earn it, everything after it exists because of it.
+## ep2_cafeteria_clip_01
+[ Blackwell — Cafeteria ]
+Present: Fiz, Riley, Mason, Pete, Amber, Chase, Maddie
+A Flicker clip of Riley from the hallway has 40k views by first period. Chase edited it; Amber shot it. Mason wants blood, Pete wants containment, Maddie is quietly horrified because this is her platform too.
+CHOICE ARCHITECTURE
+Report it through Blackwell (→ ep2_report_official — Carter buries it, Marcus logs it anyway)
+Have Maddie counter-post (→ ep2_maddie_defends — costs her followers)
+Do nothing publicly. Go after the source file. (→ ep2_fiz_goes_technical)
+Talk to Chase alone (→ ep2_chase_civil_alone — the guilt flicker)
+## ep2_nexus_server_02
+[ Fiz's Nexus server — voice channel, late ]
+Present: Fiz, Mason, Pete, Maddie
+The good scene. Four people in a voice channel doing nothing. Mason's terrible music, Pete's dry corrections, Maddie half-asleep. The episode title, played completely straight, no irony. This is what Fiz stands to lose.
+CHOICE ARCHITECTURE
+Tell them about the anomaly (→ ep2_circle_knows)
+Keep it. Let them have the night. (→ ep2_circle_innocent)
+## ep2_diner_cheryl_03
+[ Jacquelin Diner ]
+Present: Fiz, Cheryl Brandstone, Linda Jacquelin
+Cheryl approaches Fiz for the first time. Not about the storm — about the school. She has noticed where he appears and what he photographs. Linda watches the whole conversation and does not refill anyone's coffee.
+CHOICE ARCHITECTURE
+Give her nothing (→ ep2_cheryl_rebuffed)
+Trade — her records for his footage (→ ep2_cheryl_alliance_early)
+Warn her off (→ ep2_cheryl_warned — she ignores it)
+## ep2_pool_night_04
+[ Blackwell Academy — Pool, after hours ]
+Present: Fiz, Riley
+THE SCENE. Riley cannot swim and is terrified of being underwater. Fiz does not coach, does not push, does not perform patience — he gets in first and waits. Long silences. The water sound doing the work. She goes under for two seconds and comes up furious and laughing. Play the whole beat without music. Marcus Islah's flashlight crosses the far wall once and moves on — he saw them and chose not to.
+CHOICE ARCHITECTURE
+Let her set every step (→ ep2_pool_full_trust — max Riley)
+Take her hands (→ ep2_pool_contact)
+Tell her about the footage here, in the water (→ ep2_pool_confession — reframes the entire episode)
+Almost say something else entirely (→ ep2_pool_unspoken)
+## ep2_jones_house_05
+[ The Jones House ]
+Present: Fiz, Riley, Theo Jones, Elise Turner-Jones
+Fiz is inside the cold house for the first time. Elise performing warmth. Theo speaking maybe nine words total, one of which matters. The architecture of the place doing character work.
+CHOICE ARCHITECTURE
+Talk to Theo alone (→ ep2_theo_opens_slightly)
+Be kind to Elise (→ ep2_elise_softens — pays off in Ep4)
+Look at Richard's office door (→ ep2_office_noticed)
+## ep2_overheard_06
+[ The Jones House — upstairs landing ]
+Present: Fiz, Riley, Richard Jones, Gerald Cross (offscreen)
+CLIFFHANGER. Two men below. Gerald never raises his voice — that is the horror of him. "Buried secrets in the bay." Richard is not a co-conspirator here; he is a man being reminded of something. Riley's face is the last shot, because she is not surprised.
+CHOICE ARCHITECTURE
+Record it (→ ep2_end_recorded — evidence, and a felony)
+Pull Riley away (→ ep2_end_protect)
+Ask Riley why she isn't surprised (→ ep2_end_riley_confronted)
+## Episode 3 — The Place Beyond Us
+The tonal shift from melancholy to danger. Fiz stops being a witness and becomes a participant, and the town starts treating him accordingly.
+## ep3_taki_room_01
+[ Blackwell Dorms — Taki's room ]
+Present: Fiz, Riley, Taki Kimura
+The clipping wall. Taki has been right about the wrong things for two years and nobody listened, so she over-explains. Comedy and dread in the same beat.
+CHOICE ARCHITECTURE
+Bring her in fully (→ ep3_taki_recruited)
+Take her research, keep her out of it (→ ep3_taki_used)
+Tell her she's wrong about the mechanism but right about the cover-up (→ ep3_taki_respected)
+## ep3_records_room_02
+[ Blackwell — Records, restricted wing ]
+Present: Fiz, Riley, Alice Carter
+Alice lets them in because her father overshadowed her for seventeen years and this is the first thing that is hers. The Caulfield / Price file. Fiz photographs pages rather than taking them.
+CHOICE ARCHITECTURE
+Photograph everything (→ ep3_full_file)
+Take only what proves the cover-up (→ ep3_targeted_evidence)
+Protect Alice — leave her name out (→ ep3_alice_shielded)
+## ep3_leighton_lab_03
+[ Blackwell — Science Lab, after hours ]
+Present: Fiz, Ms. Valerie Leighton
+She hands over the 2013 atmospheric data without being asked twice, and it is the most frightened anyone has looked all season. Establishes the anomalies as real instrument readings from failing equipment — the ambiguity holds.
+CHOICE ARCHITECTURE
+Ask what she thinks it means (→ ep3_leighton_refuses_to_speculate)
+Show her the eleven frames (→ ep3_leighton_identifies_forgery — major plot unlock)
+## ep3_gazette_04
+[ Arcadia Bay Gazette — back office ]
+Present: Fiz, Cheryl Brandstone
+Cheryl has the redevelopment permits. Cross Industries appears everywhere and never directly. Her editor has already warned her once. She is not brave; she is unable to stop, which is different and worse.
+CHOICE ARCHITECTURE
+Give her the file (→ ep3_cheryl_publishes_early — accelerates Ep4)
+Hold it until it's complete (→ ep3_cheryl_waits)
+## ep3_deskowsky_05
+[ Arcadia Bay Police Department ]
+Present: Fiz, Chief Barry Deskowsky, Officer Darren Holt
+Barry is unfailingly reasonable, which is why the scene is terrifying. Every sentence is policy language and every one of them closes a door. Holt lingers afterward and says something Barry would not approve of.
+CHOICE ARCHITECTURE
+Push Barry (→ ep3_barry_closes_ranks)
+Say nothing and let Holt come to you (→ ep3_holt_ally)
+## ep3_confrontation_06
+[ Blackwell — Rear parking lot, night ]
+Present: Fiz, Riley, Mason, Jake Cross, Luke Pierce, Ezra Lang
+CLIFFHANGER. Ezra brought them — jealousy, not ideology. Mason swings first and it goes badly. Luke has the clean shot at Fiz and hesitates for one full second, which nobody but Fiz notices. Marcus Islah arrives late enough to be a choice he made.
+CHOICE ARCHITECTURE
+Fight back (→ ep3_end_fight — Mason hospitalised regardless)
+Take it. Do not raise a hand. (→ ep3_end_absorb — Luke breaks)
+Get Riley out first (→ ep3_end_riley_safe — Fiz takes the worst of it)
+Name what Ezra did, out loud, in front of Jake (→ ep3_end_ezra_exposed)
+## Episode 4 — Rendered
+The reveal. Everything Fiz built his investigation on was curated for him. Olivia is not a mastermind villain — she is a person who decided the town does not get to keep pretending, and who chose Fiz because he was the only one who would not look away.
+## ep4_leak_01
+[ Blackwell — Main Hallway / Echo feed ]
+Present: Fiz, Riley, ensemble
+The evidence is out. Echo moves faster than the administration. Zoey's mother is named. Jake's father is named. The social hierarchy inverts inside one school day and nobody is happy about it, including the people who wanted it.
+CHOICE ARCHITECTURE
+Own it publicly (→ ep4_fiz_claims_leak)
+Deny it (→ ep4_fiz_denies — Riley knows)
+Say nothing (→ ep4_fiz_silent)
+## ep4_zoey_bathroom_02
+[ Blackwell — Second floor bathroom ]
+Present: Fiz, Zoey Brookes
+Zoey, undefended, for the first and only time. She is not redeemed. She is explained — and the explanation does not excuse anything, which is the point.
+CHOICE ARCHITECTURE
+Let her talk (→ ep4_zoey_humanised)
+Refuse to absolve her (→ ep4_zoey_refused)
+Walk out (→ ep4_zoey_alone)
+## ep4_gerald_office_03
+[ Cross Industries — Arcadia Bay office ]
+Present: Fiz, Gerald Cross
+The temperature drops without anyone opening a door. Gerald offers nothing and threatens nothing. He simply lays out what happens to people who continue, in the tone of a man reading a weather report. And then he tells Fiz something true: the leak did not come from Fiz's files.
+CHOICE ARCHITECTURE
+Ask what he means (→ ep4_gerald_plants_doubt)
+Refuse to engage (→ ep4_gerald_unmoved)
+Threaten him (→ ep4_gerald_pities_him)
+## ep4_forensics_04
+[ Blackwell — Media Lab ]
+Present: Fiz, Jamie Vaughn, Mr. Ethan Rowe
+Rowe finally admits what he analysed in his old job. The eleven frames are a forgery — expertly made, from source material only someone with archive access could have. The re-encode signature matches files that have been circulating since 2022. The year Olivia transferred in.
+CHOICE ARCHITECTURE
+Follow the signature (→ ep4_trace_to_olivia)
+Confront Rowe about his silence (→ ep4_rowe_guilt)
+## ep4_reveal_05
+[ Cliffs — Olivia's house ]
+Present: Fiz, Olivia Calder
+THE REVEAL. She does not gloat and she does not deny. She has been feeding him for a year: the forged frames, the lighthouse timing, the roll of film Sienna "found," the anonymous DeepThread threads. Not to hurt him. Because he was the only person at Blackwell who did not look away, and she needed one. Every kind thing she said was true. That is what makes it unbearable.
+CHOICE ARCHITECTURE
+"Was any of it real?" (→ ep4_olivia_answers_yes)
+Ask about the disappearances (→ ep4_olivia_disappearances)
+Show her the sketch (→ ep4_olivia_sketch)
+Leave without a word (→ ep4_end_walk_out)
+## Episode 5 — Lost and Found
+No powers, no rewind, no second attempt. Every unresolved relationship value in the save file is called in here.
+## ep5_aftermath_01
+[ Blackwell Dorms — Room 214 ]
+Present: Fiz, Riley
+Riley finds out how long Olivia was inside their story. What she does with that depends on every choice made since the hallway in Episode 1.
+CHOICE ARCHITECTURE
+Tell her everything (→ ep5_riley_full_truth)
+Protect her from the worst of it (→ ep5_riley_partial — she finds out anyway)
+## ep5_theo_02
+[ The Jones House — Theo's room ]
+Present: Fiz, Theo Jones
+The payoff of every quiet moment given to Theo. He says the sentence he has been carrying since he was six: "As long as no one digs near the bay, it stays buried." He does not know what it means. Fiz does.
+CHOICE ARCHITECTURE
+Tell him what it means (→ ep5_theo_told)
+Let him keep not knowing (→ ep5_theo_spared)
+## ep5_showdown_03
+[ Lighthouse Ruins ]
+Present: Fiz, Olivia Calder, Riley Jones
+The psychological showdown. Olivia's argument is not evil and it is not wrong, which is exactly the problem. No weapon, no ultimatum — just three people on a cliff and the question of what truth costs. Riley's presence here is determined by the Episode 2 pool scene.
+CHOICE ARCHITECTURE
+Argue her position back at her (→ ep5_olivia_disarmed)
+Refuse the frame entirely (→ ep5_olivia_stalemate)
+Ask her what her mother would have wanted (→ ep5_olivia_breaks)
+## ep5_final_choice_04
+[ Blackwell — Media Lab, 3:00 AM ]
+Present: Fiz
+FINAL CHOICE. Upload everything, unedited — the truth is served, Arcadia Bay's reconstruction is destroyed, Richard Jones is indicted, Riley and Theo lose the last structure they have, and Fiz's exchange ends immediately. Or bury it — the town keeps its rebuild, Riley keeps her family, Gerald Cross keeps everything, and Fiz becomes the next link in a chain of silence he spent a year despising. No third option. No good ending.
+CHOICE ARCHITECTURE
+PUBLISH (→ ep5_end_truth)
+BURY IT (→ ep5_end_silence)
+## ep5_epilogue_05
+[ Portland International Airport — Departures ]
+Present: Fiz, ensemble by save state
+Who shows up to see him off is the report card. Riley's presence, Mason's, Pete's, Maddie's, Gina's, Linda's, Marcus's — all gated on relationship values. Final internal line calls back to "I guess if bad shit happens I should just let it happen," and lands differently depending on which ending was taken.
+CHOICE ARCHITECTURE
+[Look back] (→ ep5_epilogue_look_back)
+[Don't] (→ ep5_epilogue_walk_on)
+## Notes for the Engine Build
+Relationship values are integers, unbounded, initialised at 0. Episode 5's epilogue reads them directly; no other scene should gate on an absolute threshold without a design pass.
+consequence_id values are unique across the season and safe to use as flag keys.
+Choice blocks are never terminal — every scene has at least one dialogue entry after its final choice so the player is never left on a dead branch.
+Internal thoughts should render visually distinct from spoken dialogue. They carry most of the characterisation and all of the unreliable narration.
+The Episode 1 anomaly must be shown, not described — the eleven frames need to actually play. If the engine cannot do frame-stepped video, the scene needs a redesign, not a workaround.

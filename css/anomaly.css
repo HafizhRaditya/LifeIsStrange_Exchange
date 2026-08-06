@@ -1,0 +1,128 @@
+/* The Episode 1 media-lab set piece. Deliberately looks like a scrub bar in an
+   edit suite, not like game UI — the player is doing what Fiz is doing. */
+
+.anomaly {
+  position: absolute;
+  inset: 0;
+  z-index: 25;
+  display: grid;
+  place-items: center;
+  background: rgba(4, 5, 6, 0.9);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  opacity: 0;
+  transition: opacity var(--med) var(--ease);
+}
+
+.anomaly.is-open { opacity: 1; }
+
+.anomaly__shell {
+  width: min(92vw, 700px);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.anomaly__canvas {
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(232, 228, 220, 0.14);
+  border-radius: 2px;
+  background: #11151a;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
+  image-rendering: auto;
+}
+
+.anomaly__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.55rem 0.8rem;
+  background: rgba(14, 16, 19, 0.9);
+  border: 1px solid rgba(232, 228, 220, 0.08);
+  border-radius: 3px;
+}
+
+.anomaly__tc {
+  flex: 0 0 auto;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: var(--amber-warm);
+  font-variant-numeric: tabular-nums;
+}
+
+.anomaly__scrub {
+  flex: 1;
+  appearance: none;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(232, 228, 220, 0.18);
+  cursor: pointer;
+}
+
+.anomaly__scrub::-webkit-slider-thumb {
+  appearance: none;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--bone);
+  border: none;
+}
+
+.anomaly__scrub::-moz-range-thumb {
+  width: 11px;
+  height: 11px;
+  border: none;
+  border-radius: 50%;
+  background: var(--bone);
+}
+
+.anomaly__transport { display: flex; gap: 0.3rem; }
+
+.anomaly__btn {
+  min-width: 30px;
+  padding: 0.2rem 0.35rem;
+  font-size: 0.62rem;
+  color: var(--fog);
+  border: 1px solid rgba(232, 228, 220, 0.1);
+  border-radius: 2px;
+  transition: color var(--fast), border-color var(--fast);
+}
+
+.anomaly__btn:hover { color: var(--bone); border-color: rgba(232, 228, 220, 0.3); }
+
+.anomaly__hint {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--fog-dim);
+  opacity: 0;
+  transition: opacity 1.4s var(--ease);
+}
+
+.anomaly__hint.is-shown { opacity: 1; }
+
+.anomaly__continue {
+  align-self: center;
+  margin-top: 0.4rem;
+  padding: 0.6rem 1.8rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--bone-dim);
+  border: 1px solid var(--box-edge);
+  border-radius: 2px;
+  animation: continue-in 900ms var(--ease) both;
+  transition: color var(--fast), border-color var(--fast);
+}
+
+.anomaly__continue:hover { color: var(--bone); border-color: var(--accent); }
+
+@keyframes continue-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}

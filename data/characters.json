@@ -1,0 +1,64 @@
+{
+  "_note": "Single source of truth for cast canon. The Season 1 Script Bible's Canon Ledger overrides any contradicting line in the source bible. Engine reads this for display names, portrait hues and dialogue accents. No logic in this file.",
+  "_canonLedger": {
+    "renames": "Ethan -> Jake Cross. Logan -> Luke Pierce. Nolan Pierce -> Nolan Burgh. Marcus Hale -> Marcus Islah. Damien 'Dax' Rowe -> Dax Patrickson. Kieran Holt -> Kieran Ness. Sandra Brooks -> Sandra Johnson. Lena Ortiz -> Gina Ortiz (collided with Elena Ward). Ethan now belongs to exactly one character: Mr. Ethan Rowe.",
+    "ages": "Elena Ward 29 — load-bearing, puts her in Max Caulfield's graduating cohort. Barry Deskowsky 56.",
+    "amber": "Loud build only. Neon streetwear, LED ring-light case, live-narrates humiliations.",
+    "sports": "Jake Cross captains football. Nolan Burgh captains basketball. Rivalry is cross-sport and social."
+  },
+
+  "player": {
+    "id": "fiz",
+    "name": "Fiz",
+    "fullName": "Hafizh Naufal Raditya",
+    "age": 17,
+    "origin": "Purwokerto, Indonesia",
+    "_rule": "Fiz never speaks in a dialogue sequence. His spoken lines exist ONLY inside choices, where the player selects them. His internal monologue is authored and renders in its own voice."
+  },
+
+  "cast": {
+    "riley":   { "name": "Riley",       "fullName": "Riley Jones",         "age": 17, "role": "The Confidant",            "hue": 18,  "initials": "RJ" },
+    "mason":   { "name": "Mason",       "fullName": "Mason Cranstain",     "age": 18, "role": "The Best Friend",          "hue": 42,  "initials": "MC" },
+    "pete":    { "name": "Pete",        "fullName": "Pete Lindson",        "age": 18, "role": "The Quiet Supporter",      "hue": 96,  "initials": "PL" },
+    "zoey":    { "name": "Zoey",        "fullName": "Zoey Brookes",        "age": 17, "role": "The Antagonist",           "hue": 320, "initials": "ZB" },
+    "jake":    { "name": "Jake",        "fullName": "Jake Cross",          "age": 18, "role": "The Golden Boy",           "hue": 8,   "initials": "JC" },
+    "luke":    { "name": "Luke",        "fullName": "Luke Pierce",         "age": 18, "role": "The Enforcer",             "hue": 200, "initials": "LP" },
+    "chase":   { "name": "Chase",       "fullName": "Chase Whitmore",      "age": 17, "role": "The Mouthpiece",           "hue": 172, "initials": "CW" },
+    "amber":   { "name": "Amber",       "fullName": "Amber Clarke",        "age": 17, "role": "The Instigator",           "hue": 300, "initials": "AC" },
+    "lila":    { "name": "Lila",        "fullName": "Lila West",           "age": 17, "role": "The Voice",                "hue": 355, "initials": "LW" },
+    "olivia":  { "name": "Olivia",      "fullName": "Olivia Calder",       "age": 17, "role": "The Witness",              "hue": 270, "initials": "OC" },
+    "theo":    { "name": "Theo",        "fullName": "Theodore Jones",      "age": 16, "role": "The One Who Stayed Quiet",  "hue": 210, "initials": "TJ" },
+    "gina":    { "name": "Gina",        "fullName": "Gina Ortiz",          "age": 18, "role": "Dorm RA",                  "hue": 30,  "initials": "GO" },
+    "maddie":  { "name": "Maddie",      "fullName": "Madison Hale",        "age": 17, "role": "The Cheerful Streamer",    "hue": 285, "initials": "MH" },
+    "nolan":   { "name": "Nolan",       "fullName": "Nolan Burgh",         "age": 18, "role": "The Jock-Artist",          "hue": 45,  "initials": "NB" },
+    "sandra":  { "name": "Sandra",      "fullName": "Sandra Johnson",      "age": 17, "role": "Zoey's Shadow",            "hue": 50,  "initials": "SJ" },
+    "kieran":  { "name": "Kieran",      "fullName": "Kieran Ness",         "age": 17, "role": "The Skater Poet",          "hue": 190, "initials": "KN" },
+    "dax":     { "name": "Dax",         "fullName": "Damien Patrickson",   "age": 17, "role": "The Rebel Musician",       "hue": 12,  "initials": "DP" },
+    "ezra":    { "name": "Ezra",        "fullName": "Ezra Lang",           "age": 18, "role": "The Rival",                "hue": 228, "initials": "EL" },
+    "sienna":  { "name": "Sienna",      "fullName": "Sienna Morales",      "age": 17, "role": "The Photographer",         "hue": 36,  "initials": "SM" },
+    "jamie":   { "name": "Jamie",       "fullName": "Jamie Vaughn",        "age": 17, "role": "The Filmmaker",            "hue": 258, "initials": "JV" },
+    "taki":    { "name": "Taki",        "fullName": "Taki Kimura",         "age": 17, "role": "The Activist",             "hue": 130, "initials": "TK" },
+    "alice":   { "name": "Alice",       "fullName": "Alice Carter",        "age": 17, "role": "The Principal's Daughter", "hue": 60,  "initials": "AC2" },
+
+    "marcus":  { "name": "Marcus",      "fullName": "Marcus Islah",        "age": 41, "role": "Head Night Security",      "hue": 25,  "initials": "MI" },
+    "rhys":    { "name": "Mr. Rhys",    "fullName": "Owen Rhys",           "age": 33, "role": "Photography Teacher",      "hue": 150, "initials": "OR" },
+    "rowe":    { "name": "Mr. Rowe",    "fullName": "Ethan Rowe",          "age": 33, "role": "Computer Science & Media", "hue": 186, "initials": "ER" },
+    "leighton":{ "name": "Ms. Leighton","fullName": "Valerie Leighton",    "age": 42, "role": "Science Teacher",          "hue": 168, "initials": "VL" },
+    "elena":   { "name": "Elena",       "fullName": "Elena Ward",          "age": 29, "role": "Head Resident Assistant",  "hue": 205, "initials": "EW" },
+    "evelyn":  { "name": "Nurse Moore", "fullName": "Evelyn Moore",        "age": 47, "role": "School Nurse",             "hue": 165, "initials": "EM" },
+    "linda":   { "name": "Linda",       "fullName": "Linda Jacquelin",     "age": 52, "role": "Diner Owner",              "hue": 22,  "initials": "LJ" },
+    "brandon": { "name": "Brandon",     "fullName": "Brandon Montgomery",  "age": 19, "role": "The Drifter",              "hue": 214, "initials": "BM" },
+    "cheryl":  { "name": "Cheryl",      "fullName": "Cheryl Brandstone",   "age": 24, "role": "Junior Journalist",        "hue": 82,  "initials": "CB" },
+    "richard": { "name": "Richard",     "fullName": "Richard Jones",       "age": 45, "role": "Riley's Father",           "hue": 218, "initials": "RJ2" },
+    "elise":   { "name": "Elise",       "fullName": "Elise Turner-Jones",  "age": 31, "role": "The Outsider",             "hue": 44,  "initials": "ET" },
+    "gerald":  { "name": "Gerald Cross","fullName": "Gerald Cross",        "age": 52, "role": "The Architect of Silence", "hue": 206, "initials": "GC" },
+    "barry":   { "name": "Chief Deskowsky", "fullName": "Barry Deskowsky", "age": 56, "role": "Chief of Police",          "hue": 212, "initials": "BD" },
+    "holt":    { "name": "Officer Holt","fullName": "Darren Holt",         "age": 39, "role": "APD Officer",              "hue": 196, "initials": "DH" },
+    "carter":  { "name": "Principal Carter", "fullName": "Harrison Carter","age": 50, "role": "Principal",                "hue": 40,  "initials": "HC" }
+  },
+
+  "relationships": {
+    "_model": "Integers, unbounded, initialised at 0. Per the Script Bible's engine notes, values are NOT clamped — Episode 5's epilogue reads them directly to decide who shows up at Departures.",
+    "initial": 0
+  }
+}
