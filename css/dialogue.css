@@ -1,123 +1,189 @@
+/* Three scene layouts, switched by [data-dir] on the stage.
+   A · Field Notes    — mono rail, dialogue low and left, no box. Asymmetry does the work.
+   B · Depth of Field — blurred foreground plane, the plate floats in the frame.
+   C · The Slate      — screenplay gutter. Speaker left, line right, one hard rule between.
+
+   Everything below this comment is shared; the three blocks at the bottom are the
+   only things that differ. Keep it that way — the engine has no idea which is on. */
+
 .dialogue {
   position: absolute;
-  left: 50%;
-  bottom: clamp(1.4rem, 4vh, 3rem);
-  transform: translateX(-50%);
-  width: min(92vw, 900px);
-  z-index: 10;
-  animation: box-in var(--med) var(--ease) both;
+  z-index: 5;
+  animation: riseIn var(--med) var(--ease) both;
 }
 
-@keyframes box-in {
-  from { opacity: 0; transform: translate(-50%, 14px); }
-  to   { opacity: 1; transform: translate(-50%, 0); }
+.dialogue__speaker-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1.4cqh;
 }
 
-.dialogue__box {
-  position: relative;
-  padding: 1.5rem clamp(1.4rem, 3vw, 2.4rem) 1.7rem;
-  background: var(--box-bg);
-  border-top: 1px solid var(--box-edge);
-  border-radius: 2px;
-  backdrop-filter: blur(14px) saturate(0.85);
-  -webkit-backdrop-filter: blur(14px) saturate(0.85);
-  box-shadow: 0 -8px 50px rgba(0,0,0,0.5);
-  min-height: 8.2rem;
-}
-
-/* thin accent rule that picks up the speaker's hue */
-.dialogue__box::before {
-  content: "";
-  position: absolute;
-  top: -1px;
-  left: 0;
+.dialogue__rule {
   width: 3.5rem;
   height: 1px;
-  background: hsl(var(--speaker-hue, 20) 55% 60%);
-  transition: width var(--med) var(--ease), background var(--med) var(--ease);
+  background: hsl(var(--speaker-hue, 20) 34% 62%);
+  transform-origin: left;
+  animation: ruleDraw var(--med) var(--ease);
 }
+
+@keyframes ruleDraw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 
 .dialogue__speaker {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.26em;
+  font-size: clamp(9px, 0.95cqw, 13px);
+  letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: hsl(var(--speaker-hue, 20) 45% 68%);
-  margin-bottom: 0.6rem;
+  color: hsl(var(--speaker-hue, 20) 34% 62%);
 }
-
-.dialogue__action {
-  font-family: var(--font-body);
-  font-style: italic;
-  font-size: 0.86rem;
-  color: var(--fog);
-  margin-bottom: 0.5rem;
-}
-
-.dialogue__action::before { content: "("; }
-.dialogue__action::after  { content: ")"; }
 
 .dialogue__line {
-  font-size: clamp(1.02rem, 1.55vw, 1.24rem);
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: clamp(15px, 1.5cqw, 25px);
   line-height: 1.62;
   color: var(--bone);
+  text-wrap: pretty;
+  letter-spacing: 0.002em;
   min-height: 1.62em;
 }
 
-/* Fiz's internal monologue. It carries most of the characterisation and all of
-   the unreliable narration, so it must never be mistaken for someone speaking:
-   no speaker plate, no accent rule, no hard edge — a different voice entirely. */
-.dialogue.is-thought .dialogue__box {
-  background: rgba(7, 8, 10, 0.62);
-  border-top-color: transparent;
-  box-shadow: none;
-}
-
-.dialogue.is-thought .dialogue__box::before { width: 0; }
-
-.dialogue.is-thought .dialogue__line {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: clamp(1rem, 1.5vw, 1.18rem);
-  color: var(--thought);
-  opacity: 0.9;
-  letter-spacing: 0.012em;
-  text-shadow: 0 2px 22px rgba(0, 0, 0, 0.85);
-}
-
-/* An enforced silence — the box recedes rather than sitting there empty. */
-.dialogue.is-holding .dialogue__box {
-  opacity: 0.18;
-  min-height: 4rem;
-  transition: opacity 900ms var(--ease), min-height 900ms var(--ease);
-}
-
-.dialogue.is-holding .dialogue__advance { opacity: 0; }
-
 .dialogue__caret {
-  display: inline-block;
-  width: 0.55ch;
-  margin-left: 0.08em;
-  background: var(--accent);
-  animation: blink 1s steps(2) infinite;
+  color: var(--accent);
+  opacity: 0.5;
+  animation: caret 900ms step-end infinite;
 }
 
-@keyframes blink { 50% { opacity: 0; } }
+@keyframes caret { 0%, 60% { opacity: 0.5; } 61%, 100% { opacity: 0; } }
 
 .dialogue__advance {
-  position: absolute;
-  right: 1.3rem;
-  bottom: 0.85rem;
-  font-size: 0.8rem;
+  margin-top: 1cqh;
+  font-family: var(--font-mono);
+  font-size: clamp(8px, 0.78cqw, 11px);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
   color: var(--fog-dim);
   opacity: 0;
-  transition: opacity var(--fast);
-  animation: nudge 1.5s ease-in-out infinite;
+  transition: color var(--fast), opacity var(--fast);
 }
 
 .dialogue.is-ready .dialogue__advance { opacity: 1; }
+.dialogue__advance:hover { color: var(--bone-dim); }
 
-@keyframes nudge {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(3px); }
+/* Fiz's internal monologue. Never mistakable for someone speaking:
+   no speaker plate, no rule, serif italic, dimmer, slower. */
+.dialogue.is-thought .dialogue__speaker-row { display: none; }
+
+.dialogue.is-thought .dialogue__line {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(15px, 1.55cqw, 26px);
+  color: var(--thought);
+  opacity: 0.92;
+  letter-spacing: 0.012em;
+}
+
+/* enforced silence — the plate recedes rather than sitting there empty */
+.dialogue.is-holding { opacity: 0.16; transition: opacity 900ms var(--ease); }
+.dialogue.is-holding .dialogue__advance { opacity: 0; }
+
+/* ══ A · Field Notes ═══════════════════════════════════════════════ */
+.stage[data-dir="A"] .dialogue {
+  left: 19cqw;
+  right: 8cqw;
+  bottom: 6cqh;
+  max-width: 62cqw;
+}
+
+.stage[data-dir="A"] .dialogue__plate { background: none; padding: 0; }
+
+/* ══ B · Depth of Field ════════════════════════════════════════════ */
+.stage[data-dir="B"] .dialogue {
+  right: 6cqw;
+  bottom: 7cqh;
+  width: 52cqw;
+  min-width: 260px;
+}
+
+.stage[data-dir="B"] .dialogue__plate {
+  padding: 2.4cqh 2.6cqw 2.6cqh;
+  background: rgba(9, 10, 12, 0.86);
+  border-top: 1px solid hsl(var(--speaker-hue, 20) 34% 62%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.stage[data-dir="B"] .dialogue__speaker-row { margin-bottom: 1cqh; }
+.stage[data-dir="B"] .dialogue__rule { display: none; }
+
+/* the blurred foreground plane that gives the direction its name */
+.stage[data-dir="B"]::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 30cqh;
+  z-index: 3;
+  pointer-events: none;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  background: linear-gradient(180deg, rgba(9,10,12,0) 0%, rgba(9,10,12,0.55) 45%, rgba(9,10,12,0.9) 100%);
+  -webkit-mask-image: linear-gradient(180deg, transparent, #000 40%);
+  mask-image: linear-gradient(180deg, transparent, #000 40%);
+}
+
+/* ══ C · The Slate ═════════════════════════════════════════════════ */
+.stage[data-dir="C"] .dialogue {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(9, 10, 12, 0.9);
+  border-top: 1px solid var(--hairline-lit);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.stage[data-dir="C"] .dialogue::before {
+  content: "";
+  display: block;
+  height: 2px;
+  background: hsl(var(--speaker-hue, 20) 34% 62%);
+  transform-origin: left;
+  animation: ruleDraw var(--med) var(--ease);
+  opacity: var(--hairline-opacity, 1);
+}
+
+.stage[data-dir="C"] .dialogue.is-thought::before { opacity: 0.18; }
+
+.stage[data-dir="C"] .dialogue__plate {
+  display: grid;
+  grid-template-columns: 22cqw 1fr;
+  gap: 3cqw;
+  padding: 3.4cqh 5cqw 3.8cqh;
+}
+
+.stage[data-dir="C"] .dialogue__speaker-row {
+  justify-content: flex-end;
+  margin-bottom: 0;
+  padding-top: 0.5cqh;
+}
+
+.stage[data-dir="C"] .dialogue__rule { display: none; }
+.stage[data-dir="C"] .dialogue__speaker { letter-spacing: 0.26em; text-align: right; }
+.stage[data-dir="C"] .dialogue__line { max-width: 52cqw; grid-column: 2; }
+.stage[data-dir="C"] .dialogue__advance { grid-column: 2; }
+
+/* keep the gutter reserved when Fiz is thinking, so the text doesn't jump */
+.stage[data-dir="C"] .dialogue.is-thought .dialogue__speaker-row {
+  display: block;
+  visibility: hidden;
+}
+
+@media (max-width: 720px) {
+  .stage[data-dir="C"] .dialogue__plate { grid-template-columns: 1fr; gap: 1.2cqh; }
+  .stage[data-dir="C"] .dialogue__speaker-row { justify-content: flex-start; }
+  .stage[data-dir="C"] .dialogue__line,
+  .stage[data-dir="C"] .dialogue__advance { grid-column: 1; max-width: none; }
+  .stage[data-dir="A"] .dialogue { left: 6cqw; right: 6cqw; max-width: none; }
+  .stage[data-dir="B"] .dialogue { left: 5cqw; right: 5cqw; width: auto; }
 }

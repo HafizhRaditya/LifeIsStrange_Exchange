@@ -1,0 +1,189 @@
+/* Silent Empathy — now a full-frame takeover rather than text floating over the scene.
+   The world stops and recedes, the line that put Fiz here is held on the left, and the
+   options sit on the right. He is standing there deciding, and so is the player.
+
+   The rule that survives every redesign: these must never look like buttons.
+   No fills, no borders, no hover cards. */
+
+.choices {
+  position: absolute;
+  inset: 0;
+  z-index: 9;
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  align-items: center;
+  gap: 4cqw;
+  padding: 6cqh 5cqw;
+  background: rgba(6, 7, 9, 0.62);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  animation: riseIn var(--med) var(--ease) both;
+}
+
+/* ── left: the situation Fiz is standing in ── */
+.choices__situation {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8cqh;
+  padding-right: 3cqw;
+  border-right: 1px solid var(--hairline);
+  min-width: 0;
+}
+
+.choices__where { display: flex; align-items: center; gap: 12px; }
+.choices__tick  { width: 22px; height: 1px; background: var(--accent); }
+
+.choices__loc {
+  font-family: var(--font-mono);
+  font-size: clamp(8px, 0.72cqw, 11px);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--fog-dim);
+}
+
+.choices__sit-speaker {
+  font-family: var(--font-mono);
+  font-size: clamp(9px, 0.9cqw, 13px);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: hsl(var(--sit-hue, 20) 34% 62%);
+}
+
+.choices__sit-text {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: clamp(15px, 1.6cqw, 27px);
+  line-height: 1.55;
+  color: var(--thought);
+  opacity: 0.9;
+  text-wrap: pretty;
+}
+
+.choices__sit-text.is-thought {
+  font-family: var(--font-display);
+  font-style: italic;
+}
+
+/* ── right: what he could do ── */
+.choices__panel { display: flex; flex-direction: column; gap: 2.4cqh; min-width: 0; }
+
+.choices__prompt-row { display: flex; align-items: center; gap: 12px; }
+
+.choices__prompt {
+  font-family: var(--font-mono);
+  font-size: clamp(8px, 0.75cqw, 11px);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--fog-dim);
+}
+
+.choices__hr { flex: 1; height: 1px; background: var(--hairline); }
+
+.choices__list { display: flex; flex-direction: column; gap: 2.2cqh; }
+
+.choice {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  opacity: 0;
+  transition:
+    opacity 620ms var(--ease),
+    filter 620ms var(--ease),
+    transform 620ms var(--ease);
+}
+
+.choice__text {
+  font-size: clamp(15px, 1.55cqw, 25px);
+  line-height: 1.42;
+  color: var(--bone);
+  transition: letter-spacing var(--med) var(--ease);
+}
+
+/* the only affordance: a rule that draws itself as you approach */
+.choice__rule {
+  height: 1px;
+  width: 0;
+  transition: width var(--med) var(--ease);
+}
+
+/* spoken — upright, present, waiting to be said */
+.choice--spoken .choice__text {
+  font-family: var(--font-body);
+  font-weight: 300;
+  letter-spacing: 0.004em;
+}
+.choice--spoken.is-surfaced { opacity: 0.46; }
+.choice--spoken .choice__rule { background: var(--accent); }
+.choice--spoken .choice__text::before { content: "\201C"; color: var(--accent); opacity: 0.7; }
+.choice--spoken .choice__text::after  { content: "\201D"; color: var(--accent); opacity: 0.7; }
+
+/* unsaid — serif italic, dimmer, breathing. It behaves like a thought. */
+.choice--silent .choice__text {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: 0.012em;
+}
+.choice--silent.is-surfaced { opacity: 0.32; animation: breathe 7s ease-in-out infinite 1.2s; }
+.choice--silent .choice__rule { background: rgba(140, 145, 153, 0.7); }
+
+@keyframes breathe {
+  0%, 100% { transform: translateY(0);    opacity: 0.32; }
+  50%      { transform: translateY(-3px); opacity: 0.44; }
+}
+
+.choice:hover,
+.choice:focus-visible {
+  opacity: 1;
+  outline: none;
+  animation-play-state: paused;
+}
+
+.choice:hover .choice__text,
+.choice:focus-visible .choice__text { letter-spacing: -0.005em; }
+
+.choice:hover .choice__rule,
+.choice:focus-visible .choice__rule { width: 100%; }
+
+/* taken: it holds. Unchosen: they sink and blur rather than vanishing. */
+.choice.is-chosen { opacity: 1; animation: none; }
+.choice.is-chosen .choice__rule { width: 100%; }
+.choice.is-chosen .choice__text { letter-spacing: -0.005em; }
+
+.choice.is-sunk {
+  opacity: 0.08;
+  filter: blur(3px);
+  transform: translateY(8px);
+  animation: none;
+}
+
+.choices__legend {
+  display: flex;
+  gap: 22px;
+  margin-top: 0.8cqh;
+  font-family: var(--font-mono);
+  font-size: clamp(8px, 0.7cqw, 10px);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--fog-dim);
+}
+
+.choices__legend i { font-style: normal; margin-right: 6px; }
+.legend--spoken { color: var(--accent); }
+.legend--silent { color: var(--fog); }
+
+@media (max-width: 860px) {
+  .choices {
+    grid-template-columns: 1fr;
+    align-content: center;
+    gap: 3cqh;
+    padding: 5cqh 6cqw;
+    overflow-y: auto;
+  }
+  .choices__situation { border-right: none; padding-right: 0; padding-bottom: 2cqh; border-bottom: 1px solid var(--hairline); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .choice--silent.is-surfaced { animation: none; }
+}

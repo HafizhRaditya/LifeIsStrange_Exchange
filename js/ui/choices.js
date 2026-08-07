@@ -1,81 +1,102 @@
 import { $, el, clear, wait, flush } from "../util/dom.js";
+import { getCast } from "../engine/cast.js";
 
 /**
  * Silent Empathy.
  *
- * The script bible writes two kinds of choice and marks them in the text
- * itself: "quoted" is something Fiz says out loud, [bracketed] is something he
- * does, or pointedly doesn't. The mechanic is the contrast between them, so the
- * two kinds must never look alike — spoken options sit up and wait to be said,
- * silent ones drift like the thoughts they are.
+ * A full-frame takeover: the world stops, the line that put Fiz here is held on
+ * the left, and what he could do sits on the right. He is standing there
+ * deciding, and so is the player.
  *
- * Neither should read as a button.
+ * The script marks the two kinds in the text itself — "quoted" is spoken aloud,
+ * [bracketed] is an action or a pointed silence. The contrast between them IS
+ * the mechanic, so they must never look alike, and neither may read as a button.
  */
 
 const SPOKEN = /^\s*["“]/;
 
 export class Choices {
   constructor() {
-    this.root = $("#thoughts");
+    this.root = $("#choices");
     this.stage = $("#stage");
+    this.list = $("#choice-list");
   }
 
-  present(options) {
+  present(options, context = {}) {
     return new Promise((resolve) => {
-      clear(this.root);
+      this.paint(context);
+      clear(this.list);
+
       this.root.hidden = false;
-      this.root.classList.add("is-open");
-      this.stage.classList.add("is-thinking");
+      this.stage.classList.add("is-choosing");
 
       const nodes = options.map((option) => {
         const spoken = SPOKEN.test(option.choice_text);
-        const node = el("button", `thought ${spoken ? "thought--spoken" : "thought--silent"}`);
+        const node = el("button", `choice ${spoken ? "choice--spoken" : "choice--silent"}`);
         node.type = "button";
-        node.textContent = spoken
-          ? option.choice_text.replace(/^\s*["“]|["”]\s*$/g, "")
-          : option.choice_text.replace(/^\s*\[|\]\s*$/g, "");
+
+        const text = el("span", "choice__text", strip(option.choice_text));
+        node.append(text, el("span", "choice__rule"));
 
         node.addEventListener("click", (event) => {
           event.stopPropagation();
           this.choose(nodes, node, option, resolve);
         });
 
-        this.root.append(node);
+        this.list.append(node);
         return node;
       });
 
-      // surfaced with a stagger from transition-delay, not dealt like a hand
-      for (const node of nodes) {
+      // surfaced with a stagger, not dealt like a hand of cards
+      nodes.forEach((node, i) => {
+        node.style.transitionDelay = `${i * 220}ms`;
         flush(node);
         node.classList.add("is-surfaced");
-      }
+      });
     });
+  }
+
+  /** The left column: where he is, who just spoke, and what they said. */
+  paint({ location, beat }) {
+    $("#sit-loc").textContent = location ?? "";
+
+    const speakerEl = $("#sit-speaker");
+    const textEl = $("#sit-text");
+
+    if (beat?.speakerId) {
+      const person = getCast()[beat.speakerId] ?? { name: beat.speakerId, hue: 20 };
+      this.root.style.setProperty("--sit-hue", person.hue ?? 20);
+      speakerEl.textContent = person.name;
+      speakerEl.hidden = false;
+    } else {
+      speakerEl.hidden = true;
+    }
+
+    textEl.textContent = beat?.text ?? "";
+    textEl.classList.toggle("is-thought", Boolean(beat?.thought));
   }
 
   async choose(nodes, chosen, option, resolve) {
     for (const node of nodes) {
       node.disabled = true;
+      node.style.transitionDelay = "0ms";
       node.classList.remove("is-surfaced");
-      node.classList.add(node === chosen ? "is-chosen" : "is-dismissed");
+      node.classList.add(node === chosen ? "is-chosen" : "is-sunk");
     }
 
     // the taken option holds for a beat before the world comes back
-    await wait(620);
-    chosen.classList.add("is-dismissed");
-    await wait(280);
-
+    await wait(720);
     this.close();
     resolve(option);
   }
 
   close() {
-    this.root.classList.remove("is-open");
     this.root.hidden = true;
-    this.stage.classList.remove("is-thinking");
-    clear(this.root);
+    this.stage.classList.remove("is-choosing");
+    clear(this.list);
   }
 
-  get isOpen() {
-    return !this.root.hidden;
-  }
+  get isOpen() { return !this.root.hidden; }
 }
+
+const strip = (s) => s.replace(/^\s*["“]|["”]\s*$/g, "").replace(/^\s*\[|\]\s*$/g, "");

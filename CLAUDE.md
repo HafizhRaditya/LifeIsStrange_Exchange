@@ -120,6 +120,22 @@ Madison — which would have broken her speaker plate and silently dropped her
 relationship deltas. If a script uses a name the ledger doesn't have, add it to
 that character's `aliases` array rather than editing the script.
 
+## Look
+
+Type is **Newsreader** (display/thought), **IBM Plex Sans** (speech), **IBM Plex
+Mono** (chrome). Self-hosted in `/assets/fonts` — never link a CDN, the game must
+run offline.
+
+The scene layout has **three directions**, switched by `data-dir` on `#stage` and
+picked from the title screen (persisted separately from the save):
+
+- **A · Field Notes** — mono rail down the left edge, dialogue low and unboxed.
+- **B · Depth of Field** — blurred foreground plane, plate floats bottom-right.
+- **C · The Slate** — screenplay gutter, speaker left, line right. Current default.
+
+Only `css/dialogue.css` differs between them. The engine has no idea which is on
+— keep it that way.
+
 ## Art
 
 Nothing in `/assets` yet. Backgrounds are CSS gradient placeholders
@@ -146,6 +162,7 @@ Real art must drop in without JS changes: one CSS line per background, files int
 ## Status
 
 Episodes 1 and 2 complete, all branches written. Episodes 3–5 exist as scene maps
+in `docs/Season1_Script_Bible.txt` and need expanding to dialogue.
 in `docs/Season1_Script_Bible.txt` and need expanding to dialogue.
 
 Run the game with `start.bat`. Opening `index.html` directly will not work.

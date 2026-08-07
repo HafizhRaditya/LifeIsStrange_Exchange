@@ -5,77 +5,150 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Life Is Strange: Exchange</title>
   <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/fonts.css">
   <link rel="stylesheet" href="css/theme.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/dialogue.css">
-  <link rel="stylesheet" href="css/thoughts.css">
+  <link rel="stylesheet" href="css/choices.css">
   <link rel="stylesheet" href="css/beacon.css">
   <link rel="stylesheet" href="css/anomaly.css">
+  <link rel="stylesheet" href="css/journal.css">
+  <link rel="stylesheet" href="css/title.css">
 </head>
 <body>
 
-  <!-- ===== Main viewport ===== -->
-  <main id="stage" class="stage" aria-label="Game viewport">
+  <!-- data-dir switches the scene layout: A Field Notes · B Depth of Field · C The Slate -->
+  <main id="stage" class="stage" data-dir="C" aria-label="Game viewport">
     <div id="backdrop" class="backdrop"></div>
+    <div class="backdrop__light" aria-hidden="true"></div>
     <div id="portraits" class="portraits" aria-hidden="true"></div>
-    <div class="grain" aria-hidden="true"></div>
-    <div class="vignette" aria-hidden="true"></div>
 
-    <!-- [ ] place & time banner — Creative Director's field -->
+    <!-- persistent scene chrome -->
+    <div class="chrome" aria-hidden="true">
+      <aside class="rail">
+        <div class="rail__top">
+          <span id="rail-clock" class="rail__clock"></span>
+          <span id="rail-epsc" class="rail__epsc"></span>
+        </div>
+        <div class="rail__bottom">
+          <span class="rail__tick"></span>
+          <span id="rail-beat" class="rail__beat"></span>
+        </div>
+      </aside>
+      <div class="chrome__head">
+        <span id="loc-short" class="chrome__loc"></span>
+        <span class="chrome__hr"></span>
+        <span id="chrome-clock" class="chrome__clock"></span>
+      </div>
+    </div>
+
+    <!-- [ ] place & time slate — the Creative Director's field -->
     <header id="slate" class="slate" hidden>
       <span id="slate-location" class="slate__location"></span>
+      <span class="slate__rule"></span>
       <span id="slate-time" class="slate__time"></span>
       <span id="slate-weather" class="slate__weather"></span>
     </header>
 
-    <!-- Silent Empathy: internal thoughts, deliberately not buttons -->
-    <div id="thoughts" class="thoughts" role="group" aria-label="Internal thoughts" hidden></div>
-
-    <!-- ===== Dialogue engine ===== -->
+    <!-- ===== Dialogue ===== -->
     <section id="dialogue" class="dialogue" role="log" aria-live="polite" hidden>
-      <div class="dialogue__box">
-        <p id="speaker" class="dialogue__speaker" hidden></p>
-        <p id="action" class="dialogue__action" hidden></p>
+      <div class="dialogue__plate">
+        <div id="speaker-row" class="dialogue__speaker-row">
+          <span class="dialogue__rule"></span>
+          <span id="speaker" class="dialogue__speaker"></span>
+        </div>
         <p id="line" class="dialogue__line"></p>
-        <span id="advance" class="dialogue__advance" aria-hidden="true">▾</span>
+        <button id="advance" class="dialogue__advance">Continue</button>
       </div>
     </section>
 
-    <!-- Episode 1 set piece: the eleven frames, shown rather than described -->
+    <!-- ===== Silent Empathy: full-frame choice ===== -->
+    <div id="choices" class="choices" role="group" aria-label="What Fiz does next" hidden>
+      <div class="choices__situation">
+        <div class="choices__where">
+          <span class="choices__tick"></span>
+          <span id="sit-loc" class="choices__loc"></span>
+        </div>
+        <span id="sit-speaker" class="choices__sit-speaker"></span>
+        <p id="sit-text" class="choices__sit-text"></p>
+      </div>
+      <div class="choices__panel">
+        <div class="choices__prompt-row">
+          <span class="choices__prompt">You say nothing yet</span>
+          <span class="choices__hr"></span>
+        </div>
+        <div id="choice-list" class="choices__list"></div>
+        <div class="choices__legend">
+          <span><i class="legend--spoken">“ ”</i> Spoken</span>
+          <span><i class="legend--silent">[ ]</i> Unsaid</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- enforced silence -->
+    <div id="hold" class="hold" hidden><span id="hold-label">holding</span></div>
+
+    <div class="grain" aria-hidden="true"></div>
+    <div class="vignette" aria-hidden="true"></div>
+
+    <!-- Episode 1 set piece -->
     <div id="anomaly" class="anomaly" role="dialog" aria-label="Footage viewer" hidden></div>
 
-    <button id="beacon-toggle" class="beacon-toggle" aria-controls="beacon" aria-expanded="false">
-      <span class="beacon-toggle__glyph" aria-hidden="true">◗</span>
-      <span class="beacon-toggle__label">Beacon</span>
-      <span id="beacon-badge" class="beacon-toggle__badge" hidden>0</span>
-    </button>
+    <nav class="hud">
+      <button id="beacon-toggle" class="hud__btn" aria-controls="beacon" aria-expanded="false">
+        Beacon<span id="beacon-badge" class="hud__badge" hidden>0</span>
+      </button>
+      <button id="journal-toggle" class="hud__btn" aria-controls="journal" aria-expanded="false">Journal</button>
+    </nav>
   </main>
 
-  <!-- ===== Beacon: slide-out phone ===== -->
+  <!-- ===== Beacon ===== -->
   <aside id="beacon" class="beacon" aria-label="Beacon" aria-hidden="true">
     <div class="beacon__device">
       <div class="beacon__statusbar">
-        <span id="beacon-carrier">ARCADIA BAY</span>
         <span id="beacon-clock">7:42</span>
-        <span class="beacon__battery" aria-label="Battery">▮</span>
+        <span id="beacon-carrier">ARCADIA BAY</span>
+        <span>84%</span>
       </div>
       <div id="beacon-screen" class="beacon__screen"></div>
-      <button id="beacon-home" class="beacon__home" aria-label="Home">◯</button>
     </div>
   </aside>
 
-  <!-- ===== Title / menu ===== -->
-  <div id="menu" class="menu">
-    <div class="menu__inner">
-      <p class="menu__eyebrow">Life Is Strange</p>
-      <h1 class="menu__title">Exchange</h1>
-      <p class="menu__sub">Arcadia Bay, Oregon &middot; November 2023</p>
-      <div class="menu__actions">
-        <button id="btn-continue" class="menu__btn" hidden>Continue</button>
-        <button id="btn-new" class="menu__btn menu__btn--primary">New Game</button>
-      </div>
-      <p id="menu-note" class="menu__note"></p>
+  <!-- ===== Journal ===== -->
+  <div id="journal" class="journal" aria-label="Journal" hidden>
+    <div class="journal__head">
+      <span class="journal__title">Journal</span>
+      <span id="journal-count" class="journal__count"></span>
+      <button id="journal-close" class="journal__close" aria-label="Close">Close</button>
     </div>
+    <div class="journal__body">
+      <div id="journal-cast" class="journal__cast"></div>
+      <div id="journal-detail" class="journal__detail"></div>
+    </div>
+  </div>
+
+  <!-- ===== Title ===== -->
+  <div id="menu" class="title">
+    <div class="title__left">
+      <div class="title__mark">
+        <span class="title__eyebrow">Life Is Strange</span>
+        <h1 class="title__word">Exchange</h1>
+        <span class="title__rule"></span>
+        <p class="title__logline">Arcadia Bay, November 2023. Rebuilt too neatly. Raining since Friday.</p>
+      </div>
+      <div class="title__foot">
+        <span>Season One · Five Episodes</span>
+        <span id="title-save" class="title__save">Save · Local · 214</span>
+        <div class="title__dirs" role="group" aria-label="Visual direction">
+          <span class="title__dirs-label">Look</span>
+          <button class="title__dir" data-dir="A">Field Notes</button>
+          <button class="title__dir" data-dir="B">Depth of Field</button>
+          <button class="title__dir is-on" data-dir="C">The Slate</button>
+        </div>
+      </div>
+    </div>
+    <div id="episode-list" class="title__episodes"></div>
+    <p id="menu-note" class="title__note"></p>
   </div>
 
   <script type="module" src="js/main.js"></script>

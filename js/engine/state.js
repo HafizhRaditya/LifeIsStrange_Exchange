@@ -23,6 +23,8 @@ function blank() {
     flags: {},
     choices: [],
     seen: [],
+    seenCast: [],
+    episodes: {},
     beacon: { read: [], opened: false }
   };
 }
@@ -103,11 +105,21 @@ class GameState {
     return !requirement || this.flag(requirement);
   }
 
-  /** Ordered log of consequence ids, for the Episode 5 epilogue and a future
-      choice-review screen. Flags answer "did this happen"; this answers "in what order". */
-  recordChoice(sceneId, consequenceId) {
-    this.data.choices.push({ scene: sceneId, id: consequenceId, at: Date.now() });
+  /**
+   * Ordered log of what the player actually chose. Flags answer "did this
+   * happen"; this answers "in what order, and in whose words".
+   *
+   * The Journal reads it back, and the Episode 5 epilogue will too — so it
+   * stores the choice text, not just the id. An id is not something you can
+   * show a player.
+   */
+  recordChoice(entry) {
+    this.data.choices.push({ ...entry, at: Date.now() });
     this.save();
+  }
+
+  choicesFor(characterId) {
+    return this.data.choices.filter((c) => c.who === characterId);
   }
 
   /* ---- relationships (track-and-converge model) ---- */
@@ -134,6 +146,26 @@ class GameState {
 
   markSeen(nodeId) {
     if (!this.data.seen.includes(nodeId)) this.data.seen.push(nodeId);
+  }
+
+  /** Anyone who has spoken in front of Fiz. Drives the Journal's cast list. */
+  meetCast(id) {
+    if (id && !this.data.seenCast.includes(id)) {
+      this.data.seenCast.push(id);
+      this.save();
+    }
+  }
+
+  /** Furthest scene reached per episode, for the title screen's episode select. */
+  reachEpisode(episodeId, sceneId) {
+    const ep = (this.data.episodes[episodeId] ??= { started: true, scene: sceneId });
+    ep.started = true;
+    ep.scene = sceneId;
+    this.save();
+  }
+
+  episodeState(episodeId) {
+    return this.data.episodes[episodeId] ?? null;
   }
 
   /* ---- beacon ---- */

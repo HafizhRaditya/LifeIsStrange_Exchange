@@ -64,7 +64,7 @@ export class SceneRunner {
     // A real silence, not a line the player can click past. The pool scene is
     // built out of these — the bible asks for the water to do the work.
     if (entry.is_hold) {
-      await this.ui.dialogue.hold(entry.seconds ?? 3);
+      await this.ui.dialogue.hold(entry.seconds ?? 3, entry.label);
       return;
     }
 
@@ -78,31 +78,41 @@ export class SceneRunner {
       return;
     }
 
-    const speakerId = idFor(entry.speaker);
-
     if (entry.is_internal_thought) {
       await this.ui.dialogue.think(entry.text);
       return;
     }
 
+    const speakerId = idFor(entry.speaker);
+    state.meetCast(speakerId);
     await this.ui.viewport.focus(speakerId);
     await this.ui.dialogue.say(speakerId, entry.text, entry.emotion);
   }
 
   async runChoice(entry) {
-    const chosen = await this.ui.choices.present(entry.choices);
+    // the choice screen holds the beat that put Fiz here, so the player can
+    // still see what they're answering
+    const chosen = await this.ui.choices.present(entry.choices, {
+      location: this.scene.location,
+      beat: this.ui.dialogue.lastBeat()
+    });
+
+    const change = chosen.relationship_change;
+    const who = change?.character ? idFor(change.character) : null;
 
     // consequence ids are unique across the season and safe as flag keys
     if (chosen.consequence_id) {
       state.setFlags({ [chosen.consequence_id]: true });
-      state.recordChoice(this.scene.scene_id, chosen.consequence_id);
+      state.recordChoice({
+        scene: this.scene.scene_id,
+        episode: this.scene.episode,
+        id: chosen.consequence_id,
+        text: chosen.choice_text,
+        who
+      });
     }
 
-    const change = chosen.relationship_change;
-    if (change?.character) {
-      const id = idFor(change.character);
-      if (id) state.adjustRel({ [id]: change.value });
-    }
+    if (who) state.adjustRel({ [who]: change.value });
 
     this.ui.onStateChange?.();
 

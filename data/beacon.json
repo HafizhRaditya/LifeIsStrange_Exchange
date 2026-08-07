@@ -28,19 +28,19 @@
           "id": "nx7",
           "from": "pete",
           "text": "you still in the lab? lights are on from the lot.",
-          "requires": "ep1_stepped_the_frames"
+          "requires": "ep1_marked_the_frames"
         },
         {
           "id": "nx8",
           "from": "mason",
           "text": "he's in the lab. he's always in the lab. leave the man to his little movies",
-          "requires": "ep1_stepped_the_frames"
+          "requires": "ep1_marked_the_frames"
         },
         {
           "id": "nx9",
           "from": "pete",
           "text": "yeah but the lights have been on for four hours mason",
-          "requires": "ep1_stepped_the_frames"
+          "requires": "ep1_marked_the_frames"
         },
         {
           "id": "nx10",

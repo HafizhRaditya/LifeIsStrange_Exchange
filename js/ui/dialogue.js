@@ -1,4 +1,4 @@
-import { $ } from "../util/dom.js";
+import { $, el } from "../util/dom.js";
 import { getCast } from "../engine/cast.js";
 
 const SPEED = 18;         // ms per character
@@ -9,57 +9,61 @@ export class Dialogue {
   constructor() {
     this.root = $("#dialogue");
     this.speakerEl = $("#speaker");
-    this.actionEl = $("#action");
     this.lineEl = $("#line");
+    this.holdEl = $("#hold");
+    this.stage = $("#stage");
 
+    this.caret = el("span", "dialogue__caret", "▌");
     this.typing = false;
     this.token = 0;
     this.resolveAdvance = null;
+
+    $("#advance").addEventListener("click", (e) => {
+      e.stopPropagation();
+      this.handleInput();
+    });
   }
 
-  /**
-   * An NPC line. Fiz never routes through here — his spoken lines exist only
-   * inside choices, chosen by the player.
-   */
+  /** An NPC line. Fiz never routes through here — his lines live inside choices. */
   say(speakerId, text, emotion) {
     const person = getCast()[speakerId] ?? { name: speakerId, hue: 20 };
 
     this.root.classList.remove("is-thought");
     this.root.style.setProperty("--speaker-hue", person.hue ?? 20);
     this.root.dataset.emotion = emotion ?? "";
-
     this.speakerEl.textContent = person.name;
-    this.speakerEl.hidden = false;
-    this.actionEl.hidden = true;
 
+    this.last = { speakerId, text, emotion, thought: false };
     return this.render(text, SPEED);
   }
 
-  /**
-   * Fiz's internal monologue. Carries most of the characterisation and all of
-   * the unreliable narration, so it gets its own voice — no speaker plate, no
-   * accent rule, slower reveal.
-   */
+  /** Fiz's internal monologue — its own voice, no speaker plate. */
   think(text) {
     this.root.classList.add("is-thought");
     this.root.dataset.emotion = "";
-    this.speakerEl.hidden = true;
-    this.actionEl.hidden = true;
+    this.last = { speakerId: null, text, thought: true };
     return this.render(text, THOUGHT_SPEED);
+  }
+
+  /** What the player was just looking at — the choice screen holds it on the left. */
+  lastBeat() {
+    return this.last ?? null;
   }
 
   async render(text, speed) {
     this.root.hidden = false;
     this.root.classList.remove("is-ready");
-    this.text = text;
 
     const run = ++this.token;
     this.typing = true;
+    this.text = text;
     this.lineEl.textContent = "";
+    this.lineEl.append(this.caret);
 
     for (let i = 0; i < text.length; i++) {
-      if (run !== this.token) return this.waitForAdvance(); // player skipped ahead
+      if (run !== this.token) return this.waitForAdvance();
       this.lineEl.textContent = text.slice(0, i + 1);
+      this.lineEl.append(this.caret);
       await sleep(speed + (".?!…".includes(text[i]) ? PUNCT_PAUSE : 0));
     }
 
@@ -75,44 +79,45 @@ export class Dialogue {
   }
 
   waitForAdvance() {
-    return new Promise((resolve) => {
-      this.resolveAdvance = resolve;
-    });
+    return new Promise((resolve) => { this.resolveAdvance = resolve; });
   }
 
   /** One input completes the line; the next advances. */
   handleInput() {
-    if (this.typing) {
-      this.finish();
-      return;
-    }
+    if (this.holding) return;
+    if (this.typing) { this.finish(); return; }
     const resolve = this.resolveAdvance;
     this.resolveAdvance = null;
     resolve?.();
   }
 
   /**
-   * An enforced silence. The box clears and the player cannot click through it.
-   * Used where the script asks for a long pause to actually be long — a beat the
-   * player waits out is not the same as a beat they read about.
+   * An enforced silence. The plate recedes, a mono label sits in the middle of
+   * the frame, and the player cannot click through it. A beat you wait out is
+   * not the same as a beat you read about.
    */
-  async hold(seconds) {
-    this.token++;              // cancel any in-flight typing
+  async hold(seconds, label = "holding") {
+    this.token++;
     this.typing = false;
+    this.holding = true;
     this.resolveAdvance = null;
+
     this.root.classList.remove("is-ready");
     this.root.classList.add("is-holding");
+    this.stage.classList.add("is-holding");
     this.lineEl.textContent = "";
-    this.speakerEl.hidden = true;
-    this.actionEl.hidden = true;
+    $("#hold-label").textContent = label;
+    this.holdEl.hidden = false;
 
     await sleep(seconds * 1000);
+
+    this.holdEl.hidden = true;
     this.root.classList.remove("is-holding");
+    this.stage.classList.remove("is-holding");
+    this.holding = false;
   }
 
-  hide() {
-    this.root.hidden = true;
-  }
+  hide() { this.root.hidden = true; }
 }
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));

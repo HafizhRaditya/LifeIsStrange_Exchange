@@ -17,38 +17,37 @@ export class Viewport {
     this.backdrop.className = `backdrop bg--${name || "void"}`;
   }
 
+  /** Persistent chrome: location, clock, and the episode/scene rail. */
+  setScene(scene, episode, index) {
+    const short = (scene.location ?? "").split("—").pop().trim();
+    $("#loc-short").textContent = short;
+    $("#chrome-clock").textContent = scene.meta?.time ?? "";
+    $("#rail-clock").textContent = scene.meta?.time ?? "";
+    $("#rail-epsc").innerHTML =
+      `EP ${String(episode).padStart(2, "0")}<br>SC ${String(index + 1).padStart(2, "0")}`;
+    $("#rail-beat").textContent = short.toUpperCase();
+  }
+
   /**
    * The [ ] banner. Place and time belong to the Creative Director — the engine
-   * only ever renders what the scene data says, and never invents a stamp.
+   * renders what the scene data says and never invents a stamp.
    */
   async showSlate(scene = {}) {
     $("#slate-location").textContent = scene.location ?? "";
     $("#slate-time").textContent = scene.meta?.time ?? "";
     $("#slate-weather").textContent = scene.meta?.weather ?? "";
-    this.slate.hidden = false;
-    this.slate.classList.remove("is-fading");
 
-    await wait(3200);
-    this.slate.classList.add("is-fading");
+    this.slate.hidden = false;
+    this.slate.style.animation = "none";
+    flush(this.slate);
+    this.slate.style.animation = "";
+
+    await wait(3400);
   }
 
   clearStage() {
     this.onStage = [];
     clear(this.portraits);
-  }
-
-  /**
-   * Riley's two seconds under.
-   *
-   * Fiz loves being underwater; Riley is terrified of it. The player spends her
-   * two seconds, not his — so the viewport goes under and there is nothing to
-   * click. Duration comes from the script, not from the animation.
-   */
-  async submerge(seconds) {
-    this.stage.classList.add("is-submerged");
-    await wait(seconds * 1000);
-    this.stage.classList.remove("is-submerged");
-    await wait(700); // let the surface settle before the next line
   }
 
   /** Brings a speaker forward; everyone else dims. */
@@ -57,10 +56,7 @@ export class Viewport {
 
     if (!this.onStage.includes(speakerId)) {
       this.onStage.push(speakerId);
-      if (this.onStage.length > MAX_ON_STAGE) {
-        const dropped = this.onStage.shift();
-        this.remove(dropped);
-      }
+      if (this.onStage.length > MAX_ON_STAGE) this.remove(this.onStage.shift());
       this.add(speakerId);
       await wait(180);
     }
@@ -92,5 +88,19 @@ export class Viewport {
     if (!node) return;
     node.classList.remove("is-visible");
     setTimeout(() => node.remove(), 400);
+  }
+
+  /**
+   * Riley's two seconds under.
+   *
+   * Fiz loves being underwater; she is terrified of it. The player spends her
+   * two seconds, not his — so the viewport goes under and there is nothing to
+   * click. Duration comes from the script, not from the animation.
+   */
+  async submerge(seconds) {
+    this.stage.classList.add("is-submerged");
+    await wait(seconds * 1000);
+    this.stage.classList.remove("is-submerged");
+    await wait(700); // let the surface settle before the next line
   }
 }
