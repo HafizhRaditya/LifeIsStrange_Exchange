@@ -28,7 +28,7 @@ export class Dialogue {
   say(speakerId, text, emotion) {
     const person = getCast()[speakerId] ?? { name: speakerId, hue: 20 };
 
-    this.root.classList.remove("is-thought");
+    this.root.className = "dialogue";
     this.root.style.setProperty("--speaker-hue", person.hue ?? 20);
     this.root.dataset.emotion = emotion ?? "";
     this.speakerEl.textContent = person.name;
@@ -39,10 +39,31 @@ export class Dialogue {
 
   /** Fiz's internal monologue — its own voice, no speaker plate. */
   think(text) {
-    this.root.classList.add("is-thought");
+    this.root.className = "dialogue is-thought";
     this.root.dataset.emotion = "";
     this.last = { speakerId: null, text, thought: true };
     return this.render(text, THOUGHT_SPEED);
+  }
+
+  /**
+   * The other voice. Not a person in the room and never given one — no portrait,
+   * no name, no accent hue. It reads like Fiz's own thoughts wearing someone
+   * else's grammar, which is exactly what it is.
+   */
+  other(text) {
+    this.root.className = "dialogue is-other";
+    this.root.dataset.emotion = "";
+    this.speakerEl.textContent = "???";
+    this.last = { speakerId: null, text, thought: true };
+    return this.render(text, THOUGHT_SPEED);
+  }
+
+  /** A held shot with no dialogue — the script's [ bracketed ] direction. */
+  direct(text) {
+    this.root.className = "dialogue is-direction";
+    this.root.dataset.emotion = "";
+    this.last = { speakerId: null, text, thought: false };
+    return this.render(text, SPEED);
   }
 
   /** What the player was just looking at — the choice screen holds it on the left. */

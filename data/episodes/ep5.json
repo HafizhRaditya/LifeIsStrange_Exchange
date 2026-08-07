@@ -1,0 +1,3022 @@
+{
+  "episode": "5",
+  "episode_title": "Lost and Found",
+  "scene_count": 16,
+  "scenes": [
+    {
+      "episode": "5",
+      "chapter": "Chapter 1 — The Wait",
+      "scene_id": "ep5_01_morning_after",
+      "location": "Blackwell Dormitory — Room 214",
+      "estimated_minutes": 9,
+      "characters_present": [
+        "Fiz",
+        "Gina Ortiz"
+      ],
+      "dialogue_sequence": [
+        {
+          "speaker": "Fiz",
+          "text": "(December second. Six weeks since a hallway. Nine since I got off a plane thinking a year was a long time.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(The pad came off my eye on Tuesday. The eye works. It's a bad yellow-green colour now and it works.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(The letter's taped inside the wardrobe door next to the photograph of the kitchen. Both of them. That's where the true things go.)",
+          "is_internal_thought": true
+        }
+      ],
+      "is_exploration": true,
+      "exploration": {
+        "hub_id": "hub_room_214_ep5",
+        "prompt": "Nothing to do but wait for other people's decisions.",
+        "min_required": 3,
+        "interactables": [
+          {
+            "id": "e5_phone_holt",
+            "label": "Phone — Officer Holt, three days of nothing",
+            "internal_thought": "(He took the dive log on Friday. Photocopied it, signed for it, and gave me a receipt, which nobody in this town has ever done.)",
+            "follow_up": "(Three days. The last message says: \"working on it. this is the slow part. don't help.\")",
+            "requires_flag": "ep4_ending_official",
+            "sets_flag": "waiting_on_holt"
+          },
+          {
+            "id": "e5_phone_cheryl",
+            "label": "Phone — Cheryl, the second piece",
+            "internal_thought": "(She filed it at eleven last night. It runs Thursday. There's a seventeen-year-old's name in it and I put it there.)",
+            "requires_flag": "ep4_ending_published",
+            "sets_flag": "second_piece_filed"
+          },
+          {
+            "id": "e5_mirror",
+            "label": "The mirror on the back of the door",
+            "internal_thought": "(I look now. That's new. Since the car park I've started looking, and I don't know whether that's health or surveillance.)",
+            "follow_up": "(Left eye's yellow. Right eye's fine. I have spent a lot of time thinking about how a face works when half of it is bruised.)",
+            "sets_flag": "mirror_looked"
+          },
+          {
+            "id": "e5_prayer_mat",
+            "label": "Prayer mat",
+            "internal_thought": "(Fajr's at 7:16 now. It's walked all the way round to a civilised hour, just in time for me to leave.)",
+            "follow_up": "(I've made it eleven days running. Not because anything's resolved. Because it's four minutes when nobody wants anything from me.)"
+          },
+          {
+            "id": "e5_camera",
+            "label": "The camera",
+            "internal_thought": "(Six weeks and I haven't shot a frame. The last thing on the card is sixty seconds of fog at a lighthouse.)",
+            "follow_up": "(Rhys asked me on Monday if I was still in his class. I said yes. I don't know if that was true.)",
+            "sets_flag": "camera_untouched"
+          },
+          {
+            "id": "e5_wardrobe",
+            "label": "Inside the wardrobe door",
+            "internal_thought": "(Kitchen photograph, 2015. Kitchen photograph, this year, with a cat in it. Three pages of uphill handwriting.)",
+            "follow_up": "(I called her at two in the morning and she picked up on the second ring, and I talked for fifty minutes, and she didn't say a single useful thing and it was the best fifty minutes of the year.)",
+            "requires_flag": "called_home"
+          }
+        ]
+      },
+      "post_exploration_sequence": [
+        {
+          "speaker": "Gina Ortiz",
+          "text": "Fiz. There's a car.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Gina Ortiz",
+          "text": "Harbour patrol. In the visitor bay. It's been there ten minutes and nobody's got out.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Everything in my chest goes somewhere else.)",
+          "is_internal_thought": true
+        },
+        {
+          "is_choice": true,
+          "choices": [
+            {
+              "choice_text": "\"Is it Holt?\"",
+              "consequence_id": "gina_confirms_holt",
+              "relationship_change": null
+            },
+            {
+              "choice_text": "[Get your coat.]",
+              "consequence_id": "went_straight_down",
+              "relationship_change": null
+            },
+            {
+              "choice_text": "\"Gina — thank you. For the last six weeks.\"",
+              "consequence_id": "gina_caught_off_guard",
+              "relationship_change": {
+                "character": "Gina Ortiz",
+                "value": 3
+              },
+              "sets_flag": "gina_thanked"
+            }
+          ]
+        },
+        {
+          "speaker": "Gina Ortiz",
+          "text": "Don't do that. Don't do the goodbye voice, you've got six months.",
+          "emotion": "sharp"
+        },
+        {
+          "speaker": "Gina Ortiz",
+          "text": "...You've got six months, right?",
+          "emotion": "uncertain"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(I don't know. Nobody's told me. There's a review and there's a signature and I have been not thinking about it professionally for a fortnight.)",
+          "is_internal_thought": true
+        }
+      ],
+      "background": "dorm-morning"
+    },
+    {
+      "episode": "5",
+      "chapter": "Chapter 1 — The Wait",
+      "scene_id": "ep5_02_holt_car",
+      "location": "Blackwell Academy — Visitor bay",
+      "estimated_minutes": 9,
+      "characters_present": [
+        "Fiz",
+        "Officer Darren Holt"
+      ],
+      "dialogue_sequence": [
+        {
+          "speaker": "Officer Darren Holt",
+          "text": "Get in. It's warm and I've got about four minutes before somebody asks me why I'm at a school.",
+          "emotion": "low"
+        },
+        {
+          "speaker": "Officer Darren Holt",
+          "text": "The Calder case is open. Reopened 06:40 this morning. Signed by Barry on his second-to-last day in that chair.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Reopened.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Officer Darren Holt",
+          "text": "Now here's the part I need you to actually take in, because you're seventeen and you're going to hear a green light.",
+          "emotion": "urgent"
+        },
+        {
+          "speaker": "Officer Darren Holt",
+          "text": "There is no county money for a fifty-metre recovery dive. There has never been county money for that. Reopening a case gets you a file with a new date on it.",
+          "emotion": "flat"
+        },
+        {
+          "is_choice": true,
+          "choices": [
+            {
+              "choice_text": "\"Then what changes?\"",
+              "consequence_id": "holt_explains_change",
+              "relationship_change": null
+            },
+            {
+              "choice_text": "\"Cross Industries has a survey boat and a crane.\"",
+              "consequence_id": "holt_already_thought_of_it",
+              "relationship_change": {
+                "character": "Darren Holt",
+                "value": 2
+              },
+              "sets_flag": "cross_asset_idea"
+            },
+            {
+              "choice_text": "\"So it's another file.\"",
+              "consequence_id": "holt_agrees_bitterly",
+              "relationship_change": null
+            }
+          ]
+        },
+        {
+          "speaker": "Officer Darren Holt",
+          "text": "...Yeah. I got there Sunday night at about two in the morning.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Officer Darren Holt",
+          "text": "The man's finished. He's got four lawyers telling him he's finished, a marine dumping admission he made to a schoolboy, and a phase four survey he's never going to get.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Officer Darren Holt",
+          "text": "He's also got the only vessel inside a hundred miles that can put a saturation team over that channel by Thursday.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Officer Darren Holt",
+          "text": "Somebody has to ask him. It can't be me — I'm a serving officer soliciting from a man under investigation, that's my career and it's also the case.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(And there it is.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Officer Darren Holt",
+          "text": "It can be a seventeen-year-old with nothing to lose that hasn't already been lost.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Officer Darren Holt",
+          "text": "I hate that sentence. I've had it in my mouth since Sunday and I hate every word of it and I'm saying it anyway, which is the most honest thing about me.",
+          "emotion": "flat"
+        },
+        {
+          "is_choice": true,
+          "is_key_choice": true,
+          "choices": [
+            {
+              "choice_text": "\"I'll ask him.\"",
+              "consequence_id": "agreed_to_ask_cross",
+              "relationship_change": {
+                "character": "Darren Holt",
+                "value": 2
+              },
+              "sets_flag": "will_ask_cross"
+            },
+            {
+              "choice_text": "\"Olivia should ask him. It's her father.\"",
+              "consequence_id": "holt_considers_olivia",
+              "relationship_change": null,
+              "sets_flag": "olivia_will_ask"
+            },
+            {
+              "choice_text": "\"You should. Even if it costs you.\"",
+              "consequence_id": "holt_refuses_then_thinks",
+              "relationship_change": {
+                "character": "Darren Holt",
+                "value": 1
+              },
+              "sets_flag": "holt_challenged"
+            }
+          ]
+        },
+        {
+          "speaker": "Officer Darren Holt",
+          "text": "...Her.",
+          "emotion": "thrown"
+        },
+        {
+          "speaker": "Officer Darren Holt",
+          "text": "That hadn't occurred to me. In three days that hadn't occurred to me once, and I've been calling her the Calder girl in my own head since 2017.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Officer Darren Holt",
+          "text": "That's my instalment. I told you everyone's paying one.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Officer Darren Holt",
+          "text": "Right. Out. And Fiz — whatever's on that seabed, it's been there seven years or eleven. Four more days won't hurt it.",
+          "emotion": "closing"
+        },
+        {
+          "speaker": "Officer Darren Holt",
+          "text": "It'll hurt her, though. Bear that in mind about which speed you pick.",
+          "emotion": "closing"
+        }
+      ],
+      "background": "parking-lot"
+    },
+    {
+      "episode": "5",
+      "chapter": "Chapter 1 — The Wait",
+      "scene_id": "ep5_03_mason",
+      "location": "Tillamook County General — Ward 4",
+      "estimated_minutes": 10,
+      "characters_present": [
+        "Fiz",
+        "Mason Cranstain",
+        "Pete Lindson"
+      ],
+      "dialogue_sequence": [
+        {
+          "speaker": "Pete Lindson",
+          "text": "Twelve minutes.",
+          "emotion": "careful"
+        },
+        {
+          "speaker": "Pete Lindson",
+          "text": "That's what he's holding now. It was four. Then it was seven on Sunday. Twelve as of this morning.",
+          "emotion": "careful"
+        },
+        {
+          "speaker": "Pete Lindson",
+          "text": "The consultant used the word encouraging and I nearly hugged a stranger.",
+          "emotion": "careful"
+        },
+        {
+          "speaker": "Mason Cranstain",
+          "text": "Fiz! Mate. Your face is better.",
+          "emotion": "bright"
+        },
+        {
+          "speaker": "Mason Cranstain",
+          "text": "It was a door, right? Pete says it was a door and Pete does a face when he says it.",
+          "emotion": "bright"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Twelve minutes means he can hold a conversation. Twelve minutes also means he's noticed Pete's face.)",
+          "is_internal_thought": true
+        },
+        {
+          "is_choice": true,
+          "is_key_choice": true,
+          "choices": [
+            {
+              "choice_text": "\"It wasn't a door. It was the car park. You were there.\"",
+              "consequence_id": "mason_told_finally",
+              "relationship_change": {
+                "character": "Mason Cranstain",
+                "value": 3
+              },
+              "sets_flag": "mason_knows_truth"
+            },
+            {
+              "choice_text": "\"It was a door.\"",
+              "consequence_id": "mason_lied_to_again",
+              "relationship_change": {
+                "character": "Mason Cranstain",
+                "value": -1
+              },
+              "sets_flag": "mason_still_spared"
+            },
+            {
+              "choice_text": "\"What do you remember?\"",
+              "consequence_id": "mason_remembers_some",
+              "relationship_change": {
+                "character": "Mason Cranstain",
+                "value": 1
+              },
+              "sets_flag": "mason_knows_truth"
+            }
+          ]
+        },
+        {
+          "speaker": "Mason Cranstain",
+          "text": "...I remember the van.",
+          "emotion": "slow"
+        },
+        {
+          "speaker": "Mason Cranstain",
+          "text": "I remember sitting in the van and thinking he's late, and then thinking I'll go round the front and get him, and then deciding not to because I'd have to move the van.",
+          "emotion": "slow"
+        },
+        {
+          "speaker": "Mason Cranstain",
+          "text": "That's it. Then it's Sunday and my mum's crying.",
+          "emotion": "slow"
+        },
+        {
+          "speaker": "Mason Cranstain",
+          "text": "Was it bad? Everyone does this thing where they don't say.",
+          "emotion": "direct"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Pete looks at the floor.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "It was bad. You've got a skull fracture and you've been in here nineteen days and you couldn't hold four minutes when you woke up.",
+          "emotion": "steady"
+        },
+        {
+          "speaker": "Mason Cranstain",
+          "text": "Nineteen days.",
+          "emotion": "quiet"
+        },
+        {
+          "speaker": "Mason Cranstain",
+          "text": "Okay. Okay, that's — thank you. Genuinely. Everyone's been so careful and it's been driving me insane, I've been lying here going, is nobody going to say a number.",
+          "emotion": "relieved"
+        },
+        {
+          "speaker": "Pete Lindson",
+          "text": "I didn't want to —",
+          "emotion": "wretched"
+        },
+        {
+          "speaker": "Mason Cranstain",
+          "text": "I know, Pete. I know. You've been here every day and I know that because you're the only thing I do remember.",
+          "emotion": "gentle"
+        },
+        {
+          "speaker": "Mason Cranstain",
+          "text": "Don't cry. Don't — oh, come on, that's not fair, I can't get up.",
+          "emotion": "alarmed_fond"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Nineteen days of a boy driving an hour each way to a hospital and never once saying the number out loud.)",
+          "is_internal_thought": true
+        },
+        {
+          "is_choice": true,
+          "choices": [
+            {
+              "choice_text": "\"Mason. Do you want to know why it happened?\"",
+              "consequence_id": "mason_told_everything",
+              "relationship_change": {
+                "character": "Mason Cranstain",
+                "value": 2
+              },
+              "sets_flag": "mason_full_picture"
+            },
+            {
+              "choice_text": "\"The wub's fixed, by the way.\"",
+              "consequence_id": "mason_delighted",
+              "relationship_change": {
+                "character": "Pete Lindson",
+                "value": 2
+              },
+              "sets_flag": "wub_fixed"
+            },
+            {
+              "choice_text": "[Sit down. Let the two of them have it.]",
+              "consequence_id": "mason_pete_moment",
+              "relationship_change": {
+                "character": "Pete Lindson",
+                "value": 2
+              }
+            }
+          ]
+        },
+        {
+          "speaker": "Mason Cranstain",
+          "text": "You fixed the wub.",
+          "emotion": "stricken"
+        },
+        {
+          "speaker": "Pete Lindson",
+          "text": "It was a wheel bearing.",
+          "emotion": "thick"
+        },
+        {
+          "speaker": "Mason Cranstain",
+          "text": "It was a WUB, Peter.",
+          "emotion": "joyful"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(And that's the sound. That's the first time anyone in this room has made that sound in nineteen days and I am going to keep it.)",
+          "is_internal_thought": true
+        }
+      ],
+      "background": "hospital"
+    },
+    {
+      "episode": "5",
+      "chapter": "Chapter 2 — The Water",
+      "scene_id": "ep5_04_asking_cross",
+      "location": "Cross Industries — Arcadia Bay office, mostly empty",
+      "estimated_minutes": 12,
+      "characters_present": [
+        "Fiz",
+        "Gerald Cross"
+      ],
+      "director_note": "Half the office is packed. Nobody at reception. Gerald answers the door himself and the building is silent.",
+      "dialogue_sequence": [
+        {
+          "speaker": "Fiz",
+          "text": "(Third of December. Fourteen people worked here in November. Today there's a man and a photocopier.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Gerald Cross",
+          "text": "You've come to ask me for something.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Gerald Cross",
+          "text": "That's not a guess. Nobody comes here now unless they want something and you're the fourth this week.",
+          "emotion": "flat"
+        },
+        {
+          "is_choice": true,
+          "choices": [
+            {
+              "choice_text": "\"I need your survey boat and a saturation team.\"",
+              "consequence_id": "cross_hears_the_ask",
+              "relationship_change": null,
+              "sets_flag": "asked_directly"
+            },
+            {
+              "choice_text": "\"There's a man in the north channel and it's your fault he's findable.\"",
+              "consequence_id": "cross_reacts_hard",
+              "relationship_change": null,
+              "sets_flag": "asked_hard"
+            },
+            {
+              "choice_text": "[Put the dive log photocopy on the desk. Say nothing.]",
+              "consequence_id": "cross_reads_it",
+              "relationship_change": null,
+              "sets_flag": "asked_silently"
+            }
+          ]
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(He reads it. He reads it twice, and the second time his hand goes flat on the desk to steady the page, which it did not need doing.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Gerald Cross",
+          "text": "Marcus Calder.",
+          "emotion": "very_quiet"
+        },
+        {
+          "speaker": "Gerald Cross",
+          "text": "I knew him. Not well. He did an inspection for us in 2011 on the harbour piling and he was rude about our specification and he was correct.",
+          "emotion": "very_quiet"
+        },
+        {
+          "speaker": "Gerald Cross",
+          "text": "Sixty-one metres. On air. Sixteen minutes.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Gerald Cross",
+          "text": "That's fifty-one, sorry. Fifty-one on air is already outside what any commercial outfit would sign off. He did that alone, on a hired boat, on a Friday afternoon.",
+          "emotion": "flat"
+        },
+        {
+          "is_choice": true,
+          "choices": [
+            {
+              "choice_text": "\"Will you do it?\"",
+              "consequence_id": "cross_answers",
+              "relationship_change": null
+            },
+            {
+              "choice_text": "\"His daughter's seventeen and she's been alone with that for seven years.\"",
+              "consequence_id": "cross_hears_olivia",
+              "relationship_change": null,
+              "sets_flag": "olivia_named_to_cross"
+            },
+            {
+              "choice_text": "\"It'll look like you're buying yourself out of it.\"",
+              "consequence_id": "cross_acknowledges_optics",
+              "relationship_change": null,
+              "sets_flag": "optics_named"
+            }
+          ]
+        },
+        {
+          "speaker": "Gerald Cross",
+          "text": "It will. It will look exactly like that and there is no version of this where it doesn't.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Gerald Cross",
+          "text": "My lawyers will tell me it's an admission. My insurers will tell me it voids something. And a hundred and forty people in this town will say Gerald Cross bought a headline with a dead man.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Gerald Cross",
+          "text": "All of that's correct. It's also irrelevant, and I want to explain why, because you'll misunderstand it as decency otherwise.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Gerald Cross",
+          "text": "In 2014 I decided the thing I'd done was the smallest available wrong and then I protected that decision for eleven years by never testing it. I told you that in this room three weeks ago.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Gerald Cross",
+          "text": "Well, here's the test. It's arrived. It has a name on it and a date and one word in a notes column, and if I refuse it now then everything I've told myself since 2014 was a lie the whole time.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Gerald Cross",
+          "text": "I'm not doing this for the girl. I don't know the girl. I'm doing it because I would like, once, to have been the thing I claimed to be.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(And I don't know what to do with that. I've spent nine weeks building a shape for this man and it does not have room in it for this.)",
+          "is_internal_thought": true
+        },
+        {
+          "is_choice": true,
+          "choices": [
+            {
+              "choice_text": "\"That's still not forgiveness. From me or from anyone.\"",
+              "consequence_id": "cross_agrees_completely",
+              "relationship_change": null,
+              "sets_flag": "no_absolution_given"
+            },
+            {
+              "choice_text": "\"Thank you.\"",
+              "consequence_id": "cross_refuses_thanks",
+              "relationship_change": null
+            },
+            {
+              "choice_text": "\"Jake should be there. On the boat.\"",
+              "consequence_id": "cross_breaks_slightly",
+              "relationship_change": null,
+              "sets_flag": "jake_invited"
+            }
+          ]
+        },
+        {
+          "speaker": "Gerald Cross",
+          "text": "...My son.",
+          "emotion": "unsteady"
+        },
+        {
+          "speaker": "Gerald Cross",
+          "text": "He hasn't spoken to me since the eighteenth. Not once. He answers his mother.",
+          "emotion": "unsteady"
+        },
+        {
+          "speaker": "Gerald Cross",
+          "text": "Why would you say that to me. You of all people, why would you say that.",
+          "emotion": "unsteady"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Because a boy hit me and I've had six weeks to work out that he was seventeen and his father stopped eating and nobody told him anything.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(And because a voice in my head would have said something much colder, and it's my head, and I get to pick.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Gerald Cross",
+          "text": "Thursday. Weather's fine Thursday.",
+          "emotion": "closing"
+        },
+        {
+          "speaker": "Gerald Cross",
+          "text": "Tell the officer to call me directly. Not through anyone. I'd like there to be a record that I was asked and said yes.",
+          "emotion": "closing",
+          "sets_flag": "dive_scheduled"
+        }
+      ],
+      "background": "cross-office"
+    },
+    {
+      "episode": "5",
+      "chapter": "Chapter 2 — The Water",
+      "scene_id": "ep5_05_telling_olivia",
+      "location": "The Calder House — front step",
+      "estimated_minutes": 10,
+      "characters_present": [
+        "Fiz",
+        "Olivia Calder"
+      ],
+      "dialogue_sequence": [
+        {
+          "speaker": "Fiz",
+          "text": "(She opens the door before I knock. She's done that every time and I've never once caught her at the window.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "You're here in the morning. You've never come in the morning.",
+          "emotion": "immediately_alert"
+        },
+        {
+          "is_choice": true,
+          "choices": [
+            {
+              "choice_text": "\"Thursday. Cross is putting a saturation team over the channel.\"",
+              "consequence_id": "olivia_told_plainly",
+              "relationship_change": null,
+              "sets_flag": "olivia_knows_dive"
+            },
+            {
+              "choice_text": "\"Sit down first.\"",
+              "consequence_id": "olivia_refuses_to_sit",
+              "relationship_change": null,
+              "sets_flag": "olivia_knows_dive"
+            },
+            {
+              "choice_text": "\"Holt reopened it. It's an open case as of Monday.\"",
+              "consequence_id": "olivia_hears_reopened",
+              "relationship_change": null,
+              "sets_flag": "olivia_knows_dive"
+            }
+          ]
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "...",
+          "emotion": "silent"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Nine seconds. I count them. She doesn't move and she doesn't make a sound.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "Say it again.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "Thursday. Two divers, saturation team, a support vessel and a crane. Both containers.",
+          "emotion": "steady"
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "Both.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "I need to sit on the step. I'm going to sit on the step, don't make it a thing.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(She sits down on a cold concrete step in December and puts her hands flat on her knees like somebody bracing on a plane.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "Seven years.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "I've had nine quotes and a spreadsheet and a plan to be forty-one before I could afford it.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "And it took a boy asking a bankrupt man on a Tuesday.",
+          "emotion": "flat"
+        },
+        {
+          "is_choice": true,
+          "choices": [
+            {
+              "choice_text": "\"It took seven years of your work. I just made the last phone call.\"",
+              "consequence_id": "olivia_rejects_credit",
+              "relationship_change": {
+                "character": "Olivia Calder",
+                "value": 2
+              }
+            },
+            {
+              "choice_text": "\"Holt said you should be the one who asked him. I said no. That was my call and it might have been wrong.\"",
+              "consequence_id": "olivia_processes_that",
+              "relationship_change": {
+                "character": "Olivia Calder",
+                "value": 1
+              },
+              "sets_flag": "told_her_about_holt"
+            },
+            {
+              "choice_text": "[Sit down on the step next to her.]",
+              "consequence_id": "olivia_shares_step",
+              "relationship_change": {
+                "character": "Olivia Calder",
+                "value": 3
+              },
+              "sets_flag": "sat_with_olivia"
+            }
+          ]
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "Can I say the thing I've never said out loud.",
+          "emotion": "very_quiet"
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "I don't want him to be in it.",
+          "emotion": "very_quiet"
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "Seven years of building a machine to open a box and I have never once wanted the thing to be in the box. I've wanted to be wrong. Every single day I have wanted to be wrong.",
+          "emotion": "cracking"
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "And if I'm wrong then he left. He got in a car in 2017 and drove away from a ten-year-old and didn't send anything, ever, and that's the good outcome. That's the one I'm hoping for.",
+          "emotion": "cracking"
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "Do you understand what I've been choosing between? Those are the two.",
+          "emotion": "cracking"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(She's not crying. In two years I have never seen this girl cry and she isn't now.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(She's just sitting on a step saying the worst arithmetic in Oregon out loud, flatly, because she doesn't know how to make anything smaller.)",
+          "is_internal_thought": true
+        },
+        {
+          "is_choice": true,
+          "choices": [
+            {
+              "choice_text": "\"There's a third one. He went down to check something and he didn't come up. That's not leaving and it's not being put there.\"",
+              "consequence_id": "olivia_third_option",
+              "relationship_change": {
+                "character": "Olivia Calder",
+                "value": 3
+              },
+              "sets_flag": "third_option_named"
+            },
+            {
+              "choice_text": "\"You don't have to hope for either. Thursday's Thursday.\"",
+              "consequence_id": "olivia_accepts_that",
+              "relationship_change": {
+                "character": "Olivia Calder",
+                "value": 2
+              }
+            },
+            {
+              "choice_text": "[Say nothing. Stay on the step.]",
+              "consequence_id": "olivia_stays_too",
+              "relationship_change": {
+                "character": "Olivia Calder",
+                "value": 2
+              }
+            }
+          ]
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "...A third one.",
+          "emotion": "stunned"
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "Seven years and I have had two options in my head and you've been on this for nine weeks and you've got three.",
+          "emotion": "stunned"
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "That's why it was you. I want that on the record, since Thursday might change what either of us is.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "It wasn't because you were useful. Everyone in this town is useful. It's that you keep finding the option nobody put on the table.",
+          "emotion": "flat"
+        }
+      ],
+      "background": "calder-house"
+    },
+    {
+      "episode": "5",
+      "chapter": "Chapter 3 — Lost",
+      "scene_id": "ep5_06_the_dive",
+      "location": "Arcadia Bay — North channel, aboard the survey vessel",
+      "estimated_minutes": 14,
+      "characters_present": [
+        "Fiz",
+        "Riley Jones",
+        "Olivia Calder",
+        "Officer Darren Holt",
+        "Gerald Cross"
+      ],
+      "director_note": "Six hours compressed. No score at all until the second container. Ambient only: compressor, comms static, water. Olivia stands at the rail for the entire scene and does not sit down once.",
+      "dialogue_sequence": [
+        {
+          "speaker": "Fiz",
+          "text": "(Thursday. Flat grey water, no wind, and a boat with eleven people on it who all know exactly why they're here and nobody saying it.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Officer Darren Holt",
+          "text": "Right. Ground rules, and I'm saying them once because I'm the only one here with a legal problem.",
+          "emotion": "brisk"
+        },
+        {
+          "speaker": "Officer Darren Holt",
+          "text": "Nobody touches anything. Nobody photographs anything. If there are remains, this becomes a scene and everyone on this deck who isn't police goes below and stays there.",
+          "emotion": "brisk"
+        },
+        {
+          "speaker": "Officer Darren Holt",
+          "text": "Miss Calder — that includes you. Especially you. I'm sorry.",
+          "emotion": "careful"
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "I know how a scene works. I've read the procedure. I read it when I was twelve.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Gerald Cross is at the back of the deck in a coat that costs more than the boat, not speaking to anyone, having paid for all of it and asked for nothing.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Jake isn't here. I looked. Of course he isn't here.)",
+          "is_internal_thought": true
+        }
+      ],
+      "is_exploration": true,
+      "exploration": {
+        "hub_id": "hub_the_dive",
+        "prompt": "Six hours. The comms speaker is the only thing anyone is listening to.",
+        "min_required": 5,
+        "sequential": true,
+        "interactables": [
+          {
+            "id": "dv_first_descent",
+            "label": "First descent — 09:40",
+            "internal_thought": "(Two divers. Forty-one minutes down. The speaker gives us breathing and the occasional flat sentence about visibility.)"
+          },
+          {
+            "id": "dv_container_one",
+            "label": "Container one — 10:21",
+            "internal_thought": "(\"It's a twenty-foot box. Doors are seaward. Corrosion's advanced but the seal's held on the lower third.\")",
+            "follow_up": "(\"We're through. It's paper. It's — yeah. It's paper, all the way back. Compressed. It's like a wall of pulp.\")",
+            "sets_flag": "container_one_opened"
+          },
+          {
+            "id": "dv_cross_reacts",
+            "label": "Gerald Cross, at the rail",
+            "internal_thought": "(He hasn't moved. He's listening to a man describe eleven years of his own decision as a wall of pulp and he hasn't moved.)",
+            "follow_up": "(He says one thing, to nobody: \"That's the records room.\" And then he goes and stands somewhere else.)",
+            "requires_flag": "container_one_opened"
+          },
+          {
+            "id": "dv_riley",
+            "label": "Riley",
+            "internal_thought": "(On the boat. Second time in her life. She's got a hand on the rail and she's counting in fours and she hasn't stopped watching Olivia once.)",
+            "follow_up": "(\"I'm not here for the box,\" she says, when I ask. \"Somebody's got to be looking at her when it happens.\")",
+            "sets_flag": "riley_watching_olivia"
+          },
+          {
+            "id": "dv_yearbooks",
+            "label": "13:02 — something recognisable",
+            "internal_thought": "(\"There's a bound stack. Hardbacks. Whole run of them, must be three hundred plus. Covers are gone but the boards are holding.\")",
+            "follow_up": "(Four hundred were printed. Three hundred and ninety-nine went in the water and one stayed on a shelf in a locked archive because somebody rescued it.)",
+            "requires_flag": "container_one_opened",
+            "sets_flag": "yearbooks_found"
+          },
+          {
+            "id": "dv_second_descent",
+            "label": "Second descent — 14:15",
+            "internal_thought": "(Forty metres north-east. Half-buried. Nobody on this deck is breathing properly.)",
+            "sets_flag": "second_descent",
+            "required": true
+          },
+          {
+            "id": "dv_container_two",
+            "label": "Container two — 14:58",
+            "internal_thought": "(\"Doors are open. Repeat, doors are already open, maybe eighteen inches. There's a crowbar on the sill.\")",
+            "follow_up": "(A crowbar. Somebody opened it from the outside, at fifty-one metres, on air.)",
+            "requires_flag": "second_descent",
+            "sets_flag": "doors_already_open"
+          },
+          {
+            "id": "dv_contents_two",
+            "label": "15:04 — what's inside",
+            "internal_thought": "(\"It's equipment. Metal. Big horn assemblies — six of them, and racks, and a cabinet.\")",
+            "follow_up": "(\"Cabinet's got a plate on it. County of Tillamook. Coastal Warning System. Control Unit.\")",
+            "requires_flag": "doors_already_open",
+            "sets_flag": "sirens_recovered"
+          }
+        ]
+      },
+      "post_exploration_sequence": [
+        {
+          "speaker": "Officer Darren Holt",
+          "text": "Say that again for the recording.",
+          "emotion": "very_careful"
+        },
+        {
+          "speaker": "Officer Darren Holt",
+          "text": "The county's coastal warning system. The actual units. Somebody put the sirens in the sea.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Gerald Cross",
+          "text": "Not me.",
+          "emotion": "immediate"
+        },
+        {
+          "speaker": "Gerald Cross",
+          "text": "I want that said now, in front of a police officer, while a boat is recording. Not me. One container, November 2013, paper.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Officer Darren Holt",
+          "text": "I believe you, and I've never said that to a man in your position in nine years.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Officer Darren Holt",
+          "text": "Because there's a docket for yours. There's no docket for this one. Somebody scrapped municipal equipment in the same place because the same place had already worked once.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(A habit. Not a conspiracy. Somebody in a county depot in 2014 with a damaged siren system and a disposal problem and a memory of what happened to the last awkward thing.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(That's how it works here. Not one great crime. One great crime, and then eleven years of people copying it because it was there.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "The crowbar.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "Ask them about the crowbar.",
+          "emotion": "flat"
+        },
+        {
+          "is_choice": true,
+          "is_key_choice": true,
+          "choices": [
+            {
+              "choice_text": "\"Holt. Ask them what's on the sill.\"",
+              "consequence_id": "dive_asked_crowbar",
+              "relationship_change": null,
+              "sets_flag": "crowbar_asked"
+            },
+            {
+              "choice_text": "\"Olivia. You don't have to be on deck for this.\"",
+              "consequence_id": "olivia_refuses_to_go",
+              "relationship_change": {
+                "character": "Olivia Calder",
+                "value": 2
+              },
+              "sets_flag": "crowbar_asked"
+            },
+            {
+              "choice_text": "[Stand next to her. Don't say anything.]",
+              "consequence_id": "stood_with_olivia",
+              "relationship_change": {
+                "character": "Olivia Calder",
+                "value": 3
+              },
+              "sets_flag": "crowbar_asked"
+            }
+          ]
+        },
+        {
+          "speaker": "Officer Darren Holt",
+          "text": "Surface to diver one. Describe the tool on the sill. Slowly.",
+          "emotion": "level"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Static. Breathing. Eleven people on a deck.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Officer Darren Holt",
+          "text": "...Say again.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Officer Darren Holt",
+          "text": "Diver reports a pry bar, and a cylinder. Single twelve-litre steel, no harness, lying in the silt about two metres from the doors.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Officer Darren Holt",
+          "text": "And no remains. Nothing. He's very clear about that — nothing organic, nothing in the box, nothing in the immediate area.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "...",
+          "emotion": "silent"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(A cylinder with no harness on it. Which means it came off. Which means he took it off, at fifty-one metres, in the dark, after sixteen minutes on air.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Officer Darren Holt",
+          "text": "Miss Calder. I have to say this properly and I'm going to be exact.",
+          "emotion": "gentle"
+        },
+        {
+          "speaker": "Officer Darren Holt",
+          "text": "Nobody put your father in a box. There is no evidence of that and there never was.",
+          "emotion": "gentle"
+        },
+        {
+          "speaker": "Officer Darren Holt",
+          "text": "What's down there is a man who dived alone, twice, to a depth that would give most people narcosis inside four minutes, and opened something with a crowbar, and got into difficulty.",
+          "emotion": "gentle"
+        },
+        {
+          "speaker": "Officer Darren Holt",
+          "text": "The channel runs out to open water on a spring ebb. That's — I'm sorry. That's where he'll have gone.",
+          "emotion": "gentle",
+          "sets_flag": "calder_resolved"
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "So he wasn't murdered and he didn't leave.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "He died opening a box of broken sirens that I could have got out of a filing cabinet at my own school.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(And that's it. That's the answer. Seven years, forty-one forgeries, a girl's reputation, a boy's skull.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(For a truth that was sitting on page thirty-one of a bound report in a school archive the whole time.)",
+          "is_internal_thought": true
+        }
+      ],
+      "background": "harbour"
+    },
+    {
+      "episode": "5",
+      "chapter": "Chapter 3 — Lost",
+      "scene_id": "ep5_07_lighthouse",
+      "location": "Lighthouse Ruins — Arcadia Bay Cliffs, 4:30 PM",
+      "estimated_minutes": 13,
+      "characters_present": [
+        "Fiz",
+        "Olivia Calder",
+        "Riley Jones"
+      ],
+      "director_note": "The showdown. Same location as ep1_12, same time of day, same dying light. Weather turning — the swell is building and the script should show it before anyone mentions it.",
+      "dialogue_sequence": [
+        {
+          "speaker": "Fiz",
+          "text": "(She got off the boat and walked. Didn't answer anyone. Riley and I followed her up the cliff path at about forty metres back for twenty minutes.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(4:30. The light's going. Same light as the first time I stood here.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "Don't come closer yet. I'm not being dramatic, I just need to say this from here.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "I've been standing at this stone since I was ten and reading my mother's name and telling her I was going to find him.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "I've said it out loud probably two hundred times. To a rock.",
+          "emotion": "flat"
+        },
+        {
+          "is_choice": true,
+          "choices": [
+            {
+              "choice_text": "\"You did find him.\"",
+              "consequence_id": "olivia_rejects_that",
+              "relationship_change": null,
+              "sets_flag": "showdown_found"
+            },
+            {
+              "choice_text": "\"Say the rest of it.\"",
+              "consequence_id": "olivia_continues",
+              "relationship_change": null,
+              "sets_flag": "showdown_continue"
+            },
+            {
+              "choice_text": "[Stay where you are. Wait.]",
+              "consequence_id": "olivia_takes_the_space",
+              "relationship_change": {
+                "character": "Olivia Calder",
+                "value": 1
+              },
+              "sets_flag": "showdown_continue"
+            }
+          ]
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "Here's the sum and I've been doing it since 15:04 and it doesn't come out.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "Sienna Morales spent two months believing she was strange. Taki Kimura took her wall down. Cheryl Brandstone nearly printed a forgery in a statewide newspaper and will carry that for the rest of her career.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "Mason Cranstain holds twelve minutes.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "And the thing I bought with all of that was: he wasn't murdered.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "Which I could have had for free, from a report in a cabinet, if I'd been the kind of person who could believe a boring answer.",
+          "emotion": "cracking"
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "Olivia —",
+          "emotion": "careful"
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "Don't. Don't make it smaller. Everyone in this town makes things smaller and it's how we got here.",
+          "emotion": "hard"
+        },
+        {
+          "is_choice": true,
+          "is_key_choice": true,
+          "choices": [
+            {
+              "choice_text": "\"It's not the whole sum. Barry Deskowsky read page two because of you.\"",
+              "consequence_id": "olivia_hears_ledger",
+              "relationship_change": {
+                "character": "Olivia Calder",
+                "value": 2
+              },
+              "sets_flag": "counter_ledger_given"
+            },
+            {
+              "choice_text": "\"You're right. It doesn't come out. It's never going to come out.\"",
+              "consequence_id": "olivia_startled_by_agreement",
+              "relationship_change": {
+                "character": "Olivia Calder",
+                "value": 3
+              },
+              "sets_flag": "agreed_with_her"
+            },
+            {
+              "choice_text": "\"What would your father say about the sum?\"",
+              "consequence_id": "olivia_breaks",
+              "relationship_change": {
+                "character": "Olivia Calder",
+                "value": 1
+              },
+              "sets_flag": "father_invoked"
+            },
+            {
+              "choice_text": "[Say nothing. Let it be as bad as it is.]",
+              "consequence_id": "olivia_grateful_for_silence",
+              "relationship_change": {
+                "character": "Olivia Calder",
+                "value": 2
+              },
+              "sets_flag": "silence_held"
+            }
+          ]
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "...You're agreeing with me.",
+          "emotion": "thrown"
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "Everyone's spent three weeks telling me it was worth it or it wasn't my fault, and you're standing there agreeing.",
+          "emotion": "thrown"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "It doesn't come out. It's not going to. You did a real harm for a real reason and both of those are permanent.",
+          "emotion": "steady"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "I'm not going to help you balance it. I'd be doing it for me.",
+          "emotion": "steady"
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "...Thank you.",
+          "emotion": "very_quiet"
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "That's the first honest thing anybody's said to me since Thursday and it's the worst one and thank you.",
+          "emotion": "very_quiet"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(And then she goes down the path toward the water line, the one Riley told me not to take on the fourth of November.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "Olivia. OLIVIA.",
+          "emotion": "alarmed"
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "I'm putting the dive log in the water. That's all. That's genuinely all.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "I've had it since I was ten and it's his and it should go where he went and I'm not going to explain it better than that.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(The swell's up. It's been coming up for an hour and I've been watching it for an hour and I didn't say anything because I was busy having a conversation.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(The rocks at the base of the ruins go under and come back every eleven seconds. I know that because I count. I have counted every single thing since I got here.)",
+          "is_internal_thought": true
+        },
+        {
+          "is_choice": true,
+          "timed": true,
+          "timer_seconds": 8,
+          "choices": [
+            {
+              "choice_text": "\"Olivia — the surge. Come back up.\"",
+              "consequence_id": "warned_her",
+              "relationship_change": null,
+              "sets_flag": "warned_olivia"
+            },
+            {
+              "choice_text": "[Go down after her.]",
+              "consequence_id": "went_down_after",
+              "relationship_change": null,
+              "sets_flag": "went_down_first"
+            },
+            {
+              "choice_text": "[Riley — get to the road. Signal.]",
+              "consequence_id": "sent_riley_up",
+              "relationship_change": null,
+              "sets_flag": "riley_sent_up"
+            }
+          ]
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(She's four metres from the edge with a leather book in her hand when the set comes through.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(It isn't dramatic. That's the thing nobody tells you about water — it isn't dramatic. It's just suddenly at her waist and then she isn't standing.)",
+          "is_internal_thought": true
+        }
+      ],
+      "background": "lighthouse-dusk"
+    },
+    {
+      "episode": "5",
+      "chapter": "Chapter 3 — Lost",
+      "scene_id": "ep5_08_the_water",
+      "location": "Below the lighthouse ruins — the water line",
+      "estimated_minutes": 9,
+      "characters_present": [
+        "Fiz",
+        "Olivia Calder",
+        "Riley Jones"
+      ],
+      "director_note": "Fast, disorienting, and short. Sound goes underwater and stays there. No music. This is the only action sequence in the season and it should feel like an accident, not a set piece.",
+      "dialogue_sequence": [
+        {
+          "speaker": "Fiz",
+          "text": "(I'm in before I've decided to be. That's happened to me twice this year and both times it was the right call and I want that noted somewhere.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Cold. Properly cold, the kind that takes your chest, and I have been swimming three nights a week in a pool at twenty-eight degrees and that has prepared me for absolutely none of this.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(But I'm not frightened. I've never been frightened under water. That's the one thing I've got and it's enough to get an arm round her.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "— let go, you idiot, let GO —",
+          "emotion": "choking"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(She's fighting me. Not panic. She's trying to push me toward the rocks, which is the correct thing to do and the worst possible thing to do.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Eleven seconds. The set comes back through and it puts us both into the wall.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Something on the left side of my head. Same side. Of course it's the same side.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(And then the sound goes away. Everything goes to that soft heavy nothing that I have loved since I was six years old.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(It's very quiet down here. It's the quietest place there is. I've always said that.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Somewhere a long way above me somebody is shouting a name, and it isn't mine, and it isn't Olivia's.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(It's Riley. Riley Jones is shouting her own name at herself.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "RILEY. GET IN. GET IN, RILEY.",
+          "emotion": "screaming"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(And the last thing I get is a shape coming down through the grey with its arms out, from a girl who could not put her face in a swimming pool nine weeks ago.)",
+          "is_internal_thought": true
+        }
+      ],
+      "background": "lighthouse-dusk"
+    },
+    {
+      "episode": "5",
+      "chapter": "Chapter 3 — Lost",
+      "scene_id": "ep5_09_the_fight",
+      "location": "Nowhere. The diner, the hallway, the pool, the car park — all at once, badly stitched.",
+      "estimated_minutes": 16,
+      "characters_present": [
+        "Fiz",
+        "???"
+      ],
+      "director_note": "The fight. The only scene in the season with score from the first frame. The environment cuts between all four previous dream locations mid-sentence, and the geography does not resolve. This is also the scene where the glasses come off — hold it until the very end and do not telegraph it.",
+      "dialogue_sequence": [
+        {
+          "speaker": "Fiz",
+          "text": "(The diner with rain inside it. Then the hallway that doesn't end. Then the pool with no water. Then the car park.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(All of it, cutting, not settling. And him in the middle of it, standing, waiting, with his hands loose at his sides.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "???",
+          "speaker_id": "dark_side",
+          "text": "You're not supposed to be here yet.",
+          "emotion": "urgent"
+        },
+        {
+          "speaker": "???",
+          "speaker_id": "dark_side",
+          "text": "This is the wrong time. Go back up.",
+          "emotion": "urgent"
+        },
+        {
+          "is_choice": true,
+          "choices": [
+            {
+              "choice_text": "\"I can't. I don't know how.\"",
+              "consequence_id": "fight_honest",
+              "relationship_change": null
+            },
+            {
+              "choice_text": "\"You've wanted this for nine weeks.\"",
+              "consequence_id": "fight_accusation",
+              "relationship_change": null
+            },
+            {
+              "choice_text": "\"It's quiet here.\"",
+              "consequence_id": "fight_the_bad_answer",
+              "relationship_change": null,
+              "sets_flag": "fiz_wanted_to_stay"
+            }
+          ]
+        },
+        {
+          "speaker": "???",
+          "speaker_id": "dark_side",
+          "text": "No.",
+          "emotion": "hard"
+        },
+        {
+          "speaker": "???",
+          "speaker_id": "dark_side",
+          "text": "No, you don't get that one. You don't get to find out that drowning is peaceful and then use it.",
+          "emotion": "hard"
+        },
+        {
+          "speaker": "???",
+          "speaker_id": "dark_side",
+          "text": "Get up.",
+          "emotion": "hard"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(And he hits me.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Properly. Open-handed, across the face, hard enough that the car park tilts.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "???",
+          "speaker_id": "dark_side",
+          "text": "GET UP.",
+          "emotion": "roaring"
+        },
+        {
+          "is_choice": true,
+          "is_key_choice": true,
+          "choices": [
+            {
+              "choice_text": "[Hit him back.]",
+              "consequence_id": "fight_fought_back",
+              "relationship_change": null,
+              "sets_flag": "fight_physical"
+            },
+            {
+              "choice_text": "[Get up. Don't hit him.]",
+              "consequence_id": "fight_stood_up",
+              "relationship_change": null,
+              "sets_flag": "fight_stood"
+            },
+            {
+              "choice_text": "[Stay down.]",
+              "consequence_id": "fight_stayed_down",
+              "relationship_change": null,
+              "sets_flag": "fight_refused"
+            }
+          ]
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(So I hit him. For the first time in my life I hit somebody, and it's me, which is either the funniest thing that has ever happened or the saddest.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(It's a bad punch. Mason's punch. The punch of somebody who has never hit anyone.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "???",
+          "speaker_id": "dark_side",
+          "text": "There it is.",
+          "emotion": "satisfied"
+        },
+        {
+          "speaker": "???",
+          "speaker_id": "dark_side",
+          "text": "Nine weeks. Nine weeks of you telling me you don't have this in you.",
+          "emotion": "satisfied"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(And then we go at each other in a car park that keeps becoming a diner, and it is ugly and clumsy and neither of us is any good at it, and it goes on for a long time.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(And at some point I realise he is not trying to win. He has not once tried to win. He's keeping me moving.)",
+          "is_internal_thought": true
+        },
+        {
+          "is_choice": true,
+          "choices": [
+            {
+              "choice_text": "\"You're not fighting me. You're keeping me awake.\"",
+              "consequence_id": "fight_realised",
+              "relationship_change": null,
+              "sets_flag": "fight_understood"
+            },
+            {
+              "choice_text": "\"Why won't you finish it?\"",
+              "consequence_id": "fight_asked",
+              "relationship_change": null,
+              "sets_flag": "fight_understood"
+            },
+            {
+              "choice_text": "[Stop. Just stop.]",
+              "consequence_id": "fight_stopped",
+              "relationship_change": null,
+              "sets_flag": "fight_understood"
+            }
+          ]
+        },
+        {
+          "speaker": "???",
+          "speaker_id": "dark_side",
+          "text": "Obviously.",
+          "emotion": "breathing_hard"
+        },
+        {
+          "speaker": "???",
+          "speaker_id": "dark_side",
+          "text": "What did you think I was? Christ, Hafizh. Nine weeks and you still think I'm the villain of this.",
+          "emotion": "breathing_hard"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "You told me my kindness was fear.",
+          "emotion": "hoarse"
+        },
+        {
+          "speaker": "???",
+          "speaker_id": "dark_side",
+          "text": "It was! Some of it was! And you fixed it, and I stopped saying it, and you didn't notice I stopped.",
+          "emotion": "hard"
+        },
+        {
+          "speaker": "???",
+          "speaker_id": "dark_side",
+          "text": "Four weeks ago I told you to open a letter. Last week I said you were the first person who ever argued with me instead of flinching. I have not called you a coward since a car park in November.",
+          "emotion": "hard"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(He's right. He's right and I have been so busy being frightened of him that I have not been listening to him for a month.)",
+          "is_internal_thought": true
+        },
+        {
+          "is_choice": true,
+          "is_key_choice": true,
+          "choices": [
+            {
+              "choice_text": "\"Then take the glasses off.\"",
+              "consequence_id": "fight_glasses_asked",
+              "relationship_change": null,
+              "sets_flag": "asked_glasses_final"
+            },
+            {
+              "choice_text": "\"What are you, then?\"",
+              "consequence_id": "fight_asked_what",
+              "relationship_change": null,
+              "sets_flag": "asked_glasses_final"
+            },
+            {
+              "choice_text": "\"I'm sorry.\"",
+              "consequence_id": "fight_apologised",
+              "relationship_change": null,
+              "sets_flag": "apologised_to_self"
+            }
+          ]
+        },
+        {
+          "speaker": "???",
+          "speaker_id": "dark_side",
+          "text": "...Yeah. Okay.",
+          "emotion": "quiet"
+        },
+        {
+          "speaker": "???",
+          "speaker_id": "dark_side",
+          "text": "You've earned it. And you're about to be somewhere else, so it's now or it's never.",
+          "emotion": "quiet"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(He takes them off.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(My face. Obviously my face, I've known for a month.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Right eye clear. Left eye swollen shut, purple-black, six stitches through the brow.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(The exact injury I got in the car park. In a face that has been wearing sunglasses since the fourth of November, three weeks before it happened.)",
+          "is_internal_thought": true
+        },
+        {
+          "is_choice": true,
+          "choices": [
+            {
+              "choice_text": "\"That's from the car park. That hadn't happened yet.\"",
+              "consequence_id": "ds_explains_the_eye",
+              "relationship_change": null,
+              "sets_flag": "eye_understood"
+            },
+            {
+              "choice_text": "\"You're not blind.\"",
+              "consequence_id": "ds_explains_the_eye",
+              "relationship_change": null,
+              "sets_flag": "eye_understood"
+            },
+            {
+              "choice_text": "[Say nothing. Look at it.]",
+              "consequence_id": "ds_explains_the_eye",
+              "relationship_change": null,
+              "sets_flag": "eye_understood"
+            }
+          ]
+        },
+        {
+          "speaker": "???",
+          "speaker_id": "dark_side",
+          "text": "No. I'm not blind.",
+          "emotion": "quiet"
+        },
+        {
+          "speaker": "???",
+          "speaker_id": "dark_side",
+          "text": "It's shut. It's been shut the whole time.",
+          "emotion": "quiet"
+        },
+        {
+          "speaker": "???",
+          "speaker_id": "dark_side",
+          "text": "You got off a plane and you decided to be a guest. You decided nothing here could reach you, because you'd be gone in a year and it wasn't your town and it wasn't your storm.",
+          "emotion": "quiet"
+        },
+        {
+          "speaker": "???",
+          "speaker_id": "dark_side",
+          "text": "And then it reached you anyway, over and over, and every time it did you put it in me and closed the door.",
+          "emotion": "quiet"
+        },
+        {
+          "speaker": "???",
+          "speaker_id": "dark_side",
+          "text": "I'm not your dark side. That's a film thing. That's you being seventeen and owning two DVDs.",
+          "emotion": "quiet"
+        },
+        {
+          "speaker": "???",
+          "speaker_id": "dark_side",
+          "text": "I'm the part that noticed it hurt.",
+          "emotion": "quiet",
+          "sets_flag": "ds_true_nature"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Oh.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "???",
+          "speaker_id": "dark_side",
+          "text": "Somebody had to keep score. You wouldn't. So I did it, and I did it in the only voice you'd listen to, which was the cruel one, because you have never once listened to a kind one about yourself.",
+          "emotion": "quiet"
+        },
+        {
+          "speaker": "???",
+          "speaker_id": "dark_side",
+          "text": "Nine weeks of me being horrible to you. And every single thing I said was: this is costing you something, and you are pretending it isn't.",
+          "emotion": "quiet"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(I'm crying. In a car park that's a diner that's a pool, at the bottom of the sea, I am crying at my own face.)",
+          "is_internal_thought": true
+        },
+        {
+          "is_choice": true,
+          "is_key_choice": true,
+          "choices": [
+            {
+              "choice_text": "\"It hurt. All of it. It's hurt since October.\"",
+              "consequence_id": "fight_admitted",
+              "relationship_change": null,
+              "sets_flag": "fiz_admitted_pain"
+            },
+            {
+              "choice_text": "\"I don't need you to keep score anymore.\"",
+              "consequence_id": "fight_released",
+              "relationship_change": null,
+              "sets_flag": "fiz_released_him"
+            },
+            {
+              "choice_text": "\"Stay. I'd rather have you than not.\"",
+              "consequence_id": "fight_kept_him",
+              "relationship_change": null,
+              "sets_flag": "fiz_kept_him"
+            }
+          ]
+        },
+        {
+          "speaker": "???",
+          "speaker_id": "dark_side",
+          "text": "Say it again. Out loud, properly, not to me.",
+          "emotion": "urgent"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "It hurt.",
+          "emotion": "breaking"
+        },
+        {
+          "speaker": "???",
+          "speaker_id": "dark_side",
+          "text": "Good.",
+          "emotion": "quiet"
+        },
+        {
+          "speaker": "???",
+          "speaker_id": "dark_side",
+          "text": "That's the whole job. Nine weeks for four words.",
+          "emotion": "quiet"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(He puts the glasses in my hand. Not on. In my hand.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "???",
+          "speaker_id": "dark_side",
+          "text": "There's a girl in the water going after somebody she's frightened of, because you taught her how in a swimming pool in November.",
+          "emotion": "urgent"
+        },
+        {
+          "speaker": "???",
+          "speaker_id": "dark_side",
+          "text": "So kick. Hard. Now.",
+          "emotion": "urgent"
+        },
+        {
+          "speaker": "???",
+          "speaker_id": "dark_side",
+          "text": "Go on. I'll be around. I'm you, you enormous idiot — where exactly do you think I'd go.",
+          "emotion": "warm"
+        }
+      ],
+      "background": "dream"
+    },
+    {
+      "episode": "5",
+      "chapter": "Chapter 4 — Found",
+      "scene_id": "ep5_10_waking",
+      "location": "Tillamook County General — Ward 4, the next morning",
+      "estimated_minutes": 10,
+      "characters_present": [
+        "Fiz",
+        "Riley Jones",
+        "Olivia Calder"
+      ],
+      "director_note": "Deliberately the same ward Mason has been in for three weeks. Two beds down.",
+      "dialogue_sequence": [
+        {
+          "speaker": "Fiz",
+          "text": "(Ward 4. Two beds down from Mason, which means I have to look at him while I'm being told what happened to me.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "Nine minutes.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "Between you going under and the coastguard. Nine minutes. I want you to have that number because you like numbers.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Her hair's still wet. It's eleven in the morning and her hair is still wet, which means she hasn't been home.)",
+          "is_internal_thought": true
+        },
+        {
+          "is_choice": true,
+          "choices": [
+            {
+              "choice_text": "\"You went in.\"",
+              "consequence_id": "riley_confirms_went_in",
+              "relationship_change": {
+                "character": "Riley Jones",
+                "value": 3
+              },
+              "sets_flag": "riley_water_acknowledged"
+            },
+            {
+              "choice_text": "\"Is Olivia —\"",
+              "consequence_id": "olivia_is_fine",
+              "relationship_change": null
+            },
+            {
+              "choice_text": "[Look at her. Say nothing yet.]",
+              "consequence_id": "riley_talks_first",
+              "relationship_change": {
+                "character": "Riley Jones",
+                "value": 2
+              }
+            }
+          ]
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "I went in.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "I'd like to tell you I was brave. I wasn't. I was standing on a rock screaming my own name at myself like an absolute lunatic for about four seconds first.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "And then I thought: twenty-eight degrees. It's not the sea.",
+          "emotion": "cracking"
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "Which is the stupidest thought a human being has ever had, because it was the sea, it was extremely the sea —",
+          "emotion": "cracking"
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "But it got me off the rock.",
+          "emotion": "cracking"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(A terrible line. I said it on a dock at six in the morning three weeks ago and she said it was the worst thing I'd ever said to her.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "Don't look pleased. Don't you dare look pleased, you nearly died.",
+          "emotion": "wrecked"
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "And I'm going to be angry about that later, properly, for about a week. Fair warning.",
+          "emotion": "wrecked"
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "She got you both. She got me to the rocks and went back.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "Nine weeks ago she couldn't put her face in a pool. I've read every witness statement in this county and I've never read one like the one she gave last night.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "Stop it. Both of you. I will get in the sea again just to get away from this conversation.",
+          "emotion": "embarrassed"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Olivia's got a blanket round her and a plastic cup she isn't drinking from and she's sitting in a hospital corridor chair, which is the only place she's ever said she's any use.)",
+          "is_internal_thought": true
+        },
+        {
+          "is_choice": true,
+          "choices": [
+            {
+              "choice_text": "\"The dive log?\"",
+              "consequence_id": "olivia_lost_it",
+              "relationship_change": null,
+              "sets_flag": "log_in_the_water"
+            },
+            {
+              "choice_text": "\"You tried to push me toward the rocks.\"",
+              "consequence_id": "olivia_flat_about_it",
+              "relationship_change": {
+                "character": "Olivia Calder",
+                "value": 2
+              }
+            },
+            {
+              "choice_text": "\"Don't leave. Whatever happens next, don't do it on your own.\"",
+              "consequence_id": "olivia_undone",
+              "relationship_change": {
+                "character": "Olivia Calder",
+                "value": 3
+              },
+              "sets_flag": "olivia_asked_to_stay"
+            }
+          ]
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "It's gone. It went out of my hand in the first one.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "Which is exactly what I went down there to do, and I have spent all night deciding whether that's poetry or whether the universe is just extremely stupid.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "It's stupid. I've decided it's stupid. Poetry is a thing people do to make an unbearable sum come out even.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Mason Cranstain",
+          "text": "Is that Fiz? Why's Fiz in a bed?",
+          "emotion": "confused"
+        },
+        {
+          "speaker": "Mason Cranstain",
+          "text": "Was it a door?",
+          "emotion": "hopeful"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Riley makes a noise that is half a sob and half a laugh, and then everyone in Ward 4 is doing it, including a nurse.)",
+          "is_internal_thought": true
+        }
+      ],
+      "background": "hospital"
+    },
+    {
+      "episode": "5",
+      "chapter": "Chapter 4 — Found",
+      "scene_id": "ep5_11_elena",
+      "location": "Blackwell Academy — the stairwell landing",
+      "estimated_minutes": 10,
+      "characters_present": [
+        "Fiz",
+        "Elena Ward"
+      ],
+      "director_note": "Same landing, same time of night, same two people as ep1_17. She is sitting in exactly the same place with exactly the same coffee.",
+      "dialogue_sequence": [
+        {
+          "speaker": "Elena Ward",
+          "text": "One in the morning. Again.",
+          "emotion": "tired"
+        },
+        {
+          "speaker": "Elena Ward",
+          "text": "You've been out of hospital nine hours and you're on my staircase. Sit down before you fall down.",
+          "emotion": "tired"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Same step. Same folder. Same coffee she isn't drinking.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Elena Ward",
+          "text": "The review's concluded. I'm not supposed to tell you before Monday and I'm going to tell you now because I have spent six weeks being the person who tells you true things late.",
+          "emotion": "flat"
+        },
+        {
+          "is_choice": true,
+          "choices": [
+            {
+              "choice_text": "\"Just say it.\"",
+              "consequence_id": "elena_says_it",
+              "relationship_change": null
+            },
+            {
+              "choice_text": "\"You don't have to. You'll get in trouble.\"",
+              "consequence_id": "elena_doesnt_care",
+              "relationship_change": {
+                "character": "Elena Ward",
+                "value": 2
+              }
+            },
+            {
+              "choice_text": "[Sit down. Wait.]",
+              "consequence_id": "elena_takes_her_time",
+              "relationship_change": {
+                "character": "Elena Ward",
+                "value": 1
+              }
+            }
+          ]
+        },
+        {
+          "speaker": "Elena Ward",
+          "text": "Your sponsorship stands. Harrison signed the renewal at four o'clock this afternoon, which was the last thing he did as principal, because he resigned at five.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Oh.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Elena Ward",
+          "text": "He asked me to tell you it wasn't a favour. He said, and I'm quoting, \"tell him I have signed a great many things I regret and I'd like the last one on the pile to be one I don't.\"",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Elena Ward",
+          "text": "Then he cleared his office in forty minutes and drove his daughter home.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Alice stayed in the room. That's what did it. Not me — Alice.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Elena Ward",
+          "text": "Now. My turn, and then you can go to bed.",
+          "emotion": "shifting"
+        },
+        {
+          "speaker": "Elena Ward",
+          "text": "In October you asked me if I knew them. Caulfield and Price. And I said Max sat two rows in front of me for two years and asked you not to have asked me.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Elena Ward",
+          "text": "That was true and it was cowardly and I've had six weeks of it sitting on me.",
+          "emotion": "flat"
+        },
+        {
+          "is_choice": true,
+          "choices": [
+            {
+              "choice_text": "\"You don't owe me the rest.\"",
+              "consequence_id": "elena_says_she_does",
+              "relationship_change": {
+                "character": "Elena Ward",
+                "value": 2
+              }
+            },
+            {
+              "choice_text": "\"Tell me.\"",
+              "consequence_id": "elena_tells_him",
+              "relationship_change": null,
+              "sets_flag": "elena_full_story"
+            },
+            {
+              "choice_text": "[Wait.]",
+              "consequence_id": "elena_tells_him",
+              "relationship_change": {
+                "character": "Elena Ward",
+                "value": 1
+              },
+              "sets_flag": "elena_full_story"
+            }
+          ]
+        },
+        {
+          "speaker": "Elena Ward",
+          "text": "I was on the yearbook committee. That's me, third from the left, sixteen years old with a terrible fringe, in the one copy that exists.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Elena Ward",
+          "text": "In 2014 somebody from the school came round collecting them. Said there was a printing error and they'd reissue.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Elena Ward",
+          "text": "I gave mine up. Eighteen years old, and a man in a school jumper said printing error, and I handed over the only photograph I had of a girl I sat behind for two years.",
+          "emotion": "cracking"
+        },
+        {
+          "speaker": "Elena Ward",
+          "text": "That's my instalment. Everyone in this town has one and that's mine and it's small and it's been eleven years.",
+          "emotion": "cracking"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(There's a boy who read four hundred yearbooks off a sonar screen last Thursday.)",
+          "is_internal_thought": true
+        },
+        {
+          "is_choice": true,
+          "choices": [
+            {
+              "choice_text": "\"There's one left. It's in the archive. It's been there the whole time.\"",
+              "consequence_id": "elena_told_about_copy",
+              "relationship_change": {
+                "character": "Elena Ward",
+                "value": 3
+              },
+              "requires_flag": "yearbook_2013_found",
+              "sets_flag": "elena_gets_yearbook"
+            },
+            {
+              "choice_text": "\"You were eighteen and a man in a jumper lied to you.\"",
+              "consequence_id": "elena_accepts_that",
+              "relationship_change": {
+                "character": "Elena Ward",
+                "value": 2
+              }
+            },
+            {
+              "choice_text": "[Say nothing. Sit with her.]",
+              "consequence_id": "elena_grateful",
+              "relationship_change": {
+                "character": "Elena Ward",
+                "value": 2
+              }
+            }
+          ]
+        },
+        {
+          "speaker": "Elena Ward",
+          "text": "...There's a copy.",
+          "emotion": "very_quiet"
+        },
+        {
+          "speaker": "Elena Ward",
+          "text": "In this building. Forty metres from where I've been sitting on Tuesday nights for two years.",
+          "emotion": "very_quiet"
+        },
+        {
+          "speaker": "Elena Ward",
+          "text": "Hafizh. Go to bed. I need to walk to the library and I would like to do it on my own.",
+          "emotion": "unsteady"
+        }
+      ],
+      "background": "stairwell"
+    },
+    {
+      "episode": "5",
+      "chapter": "Chapter 4 — Found",
+      "scene_id": "ep5_12_the_choice",
+      "location": "Blackwell Academy — Media Lab, 3:00 AM",
+      "estimated_minutes": 15,
+      "characters_present": [
+        "Fiz",
+        "Riley Jones",
+        "Cheryl Brandstone",
+        "Olivia Calder"
+      ],
+      "director_note": "The final choice. All four are present and all four disagree. No score. This scene must not be rushed and the four options must each be argued by someone who believes it.",
+      "dialogue_sequence": [
+        {
+          "speaker": "Fiz",
+          "text": "(Three in the morning in a media lab. Four people, one laptop, and everything.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Two hundred and forty photographs of documents. A forty-one page report. Sonar imagery with GPS in the file. A haulage docket. Sienna's barge. Elise's drive. Chase's strategy document with six names on the distribution list.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(And forty-one entries in a box marked MADE, catalogued by the person who made them, with the dates and the places and whether they worked.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Cheryl Brandstone",
+          "text": "I'll give you the honest professional position and then I'll shut up, because I've realised over six weeks that I'm not actually the adult in these rooms.",
+          "emotion": "level"
+        },
+        {
+          "speaker": "Cheryl Brandstone",
+          "text": "Unedited, everything, all at once: it is the biggest story this state has had in a decade. It also names a county clerk who was twenty-six, a recovery driver's employer, four teachers, and a seventeen-year-old forger.",
+          "emotion": "level"
+        },
+        {
+          "speaker": "Cheryl Brandstone",
+          "text": "It ends the reconstruction. Phase four dies, Cross Industries is wound up, and about ninety people in this town lose a job in a place with no other jobs.",
+          "emotion": "level"
+        },
+        {
+          "speaker": "Cheryl Brandstone",
+          "text": "It also means nobody in Arcadia Bay ever has to wonder again. Which is worth something and I refuse to tell you how much.",
+          "emotion": "level"
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "Say the other one.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Cheryl Brandstone",
+          "text": "Bury it. The 2013 piece already ran and it stands on its own. Everything else goes in a drawer.",
+          "emotion": "level"
+        },
+        {
+          "speaker": "Cheryl Brandstone",
+          "text": "Riley's father keeps a career. Zoey's mother stays a footnote. Olivia stays a girl who lost her parents. Gerald Cross keeps enough to pay for a boat that already went out.",
+          "emotion": "level"
+        },
+        {
+          "speaker": "Cheryl Brandstone",
+          "text": "And you become the eleventh person in eleven years to decide this town can't survive knowing things. Which is precisely, exactly what Barry Deskowsky decided at 18:52 on the eleventh of October 2013.",
+          "emotion": "level"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(There it is. That's the trap and she's laid it out square.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "I want it out.",
+          "emotion": "steady"
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "All of it. My father included. I've had three weeks to get soft about it and I've gone the other way.",
+          "emotion": "steady"
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "He knew there were things in that channel and he redesigned a seafront around it and told a council it was silt. And he has never once, in eleven years, said one true sentence to my brother about the sirens.",
+          "emotion": "steady"
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "Theo was four and he was right and everyone let him think he was mad. I'm not protecting the person who did that. Not even for the house.",
+          "emotion": "steady"
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "Then you should publish me too.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "I mean that operationally, not as a gesture. If you put out the real evidence and leave out the forgeries, then in four months somebody finds one of my forty-one and everything true in that story dies with it.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "You cannot publish a truth with a hole in it. I know that better than anybody alive because I've spent two years exploiting exactly that.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(She's arguing for her own destruction on methodological grounds. That's the most Olivia Calder sentence ever constructed and it might be the bravest thing in this room.)",
+          "is_internal_thought": true
+        },
+        {
+          "is_choice": true,
+          "choices": [
+            {
+              "choice_text": "\"You're seventeen. There's a difference between an adult's decision and a child's.\"",
+              "consequence_id": "olivia_rejects_that_hard",
+              "relationship_change": {
+                "character": "Olivia Calder",
+                "value": 1
+              }
+            },
+            {
+              "choice_text": "\"Riley. If we do this your father doesn't come back from it.\"",
+              "consequence_id": "riley_knows",
+              "relationship_change": {
+                "character": "Riley Jones",
+                "value": 1
+              }
+            },
+            {
+              "choice_text": "\"Cheryl — what happens to Mason's medical bills if Cross is wound up?\"",
+              "consequence_id": "cheryl_doesnt_know",
+              "relationship_change": null,
+              "sets_flag": "mason_cost_raised"
+            },
+            {
+              "choice_text": "[Say nothing. Think.]",
+              "consequence_id": "room_waits",
+              "relationship_change": null
+            }
+          ]
+        },
+        {
+          "speaker": "Cheryl Brandstone",
+          "text": "...I don't know. Honestly. Probably a settlement that takes four years instead of one.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Cheryl Brandstone",
+          "text": "That's the thing nobody puts in the article. Every version of this costs a specific person a specific thing and none of the columns balance.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(It doesn't come out. It's never going to come out.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(A voice at the back of my head, and for the first time in nine weeks it isn't arguing with me. It's just waiting, the way you wait for somebody you trust.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "Fiz. It's yours. Everyone in this room has said their bit and it's yours and nobody's going to be angry.",
+          "emotion": "steady"
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "That's a lie, obviously. Somebody's going to be extremely angry. But not with you.",
+          "emotion": "steady"
+        },
+        {
+          "is_choice": true,
+          "is_episode_defining": true,
+          "is_final_choice": true,
+          "choices": [
+            {
+              "choice_text": "[PUBLISH. Unedited. Everything, including Olivia.]",
+              "consequence_id": "ep5_end_publish_all",
+              "relationship_change": null,
+              "sets_flag": "ending_truth"
+            },
+            {
+              "choice_text": "[BURY IT. All of it. Nobody else pays.]",
+              "consequence_id": "ep5_end_bury_all",
+              "relationship_change": null,
+              "sets_flag": "ending_silence"
+            },
+            {
+              "choice_text": "[PUBLISH the town. Bury Olivia.]",
+              "consequence_id": "ep5_end_partial",
+              "relationship_change": {
+                "character": "Olivia Calder",
+                "value": 3
+              },
+              "sets_flag": "ending_partial"
+            },
+            {
+              "choice_text": "[Give it to the people in it. Let each of them decide their own paragraph.]",
+              "consequence_id": "ep5_end_distributed",
+              "relationship_change": null,
+              "sets_flag": "ending_distributed"
+            }
+          ]
+        },
+        {
+          "speaker": "Cheryl Brandstone",
+          "text": "...That's not journalism.",
+          "emotion": "quiet"
+        },
+        {
+          "speaker": "Cheryl Brandstone",
+          "text": "That's genuinely not how any of this works and I've been doing it six years.",
+          "emotion": "quiet"
+        },
+        {
+          "speaker": "Olivia Calder",
+          "text": "It's also the only version where nobody finds out about themselves from a newspaper.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Third option. Nobody put it on the table.)",
+          "is_internal_thought": true
+        }
+      ],
+      "background": "media-lab"
+    },
+    {
+      "episode": "5",
+      "chapter": "Chapter 5 — Departures",
+      "scene_id": "ep5_13_consequences",
+      "location": "Arcadia Bay — over the following weeks",
+      "estimated_minutes": 10,
+      "characters_present": [
+        "Fiz"
+      ],
+      "scene_type": "consequence_montage",
+      "director_note": "Rendered as a series of short beats, each gated on the final choice. Fiz narrates in past tense — the only time in the season he does. No dialogue.",
+      "dialogue_sequence": [
+        {
+          "speaker": "Fiz",
+          "text": "(It ran on the nineteenth of December.)",
+          "is_internal_thought": true,
+          "branch_variant": {
+            "ending_silence": "(It never ran. That's the whole sentence and it took me until March to be able to write it down.)",
+            "ending_partial": "(It ran on the nineteenth of December with one girl's name not in it.)",
+            "ending_distributed": "(Nothing ran on the nineteenth. Eleven people got an email with their own paragraph in it and four weeks to decide.)"
+          }
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Cross Industries entered administration on the fourth of January. Ninety-one jobs. The phase four survey was cancelled and the north channel was never deepened, which means the containers are still down there and always will be.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Gerald Cross was charged in February with three counts under the marine dumping regulations. He pleaded guilty at the first hearing against the advice of four lawyers and did not make a statement.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Barry Deskowsky gave a two-hour interview to the county coroner's office in January. Voluntarily. He named the other three men in the control room and one of them is still alive and it was not Gerald Cross.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Richard Jones's practice was dissolved in March. He wrote to Theo in February — eleven pages, by hand — and Theo read it twice and put it in a drawer and hasn't answered, and Riley says that's allowed.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Marcus Calder's case was closed on the twenty-second of January as a diving fatality. There's a paragraph in it about a man who went down to check something. It's four sentences and it took seven years and it is the only thing his daughter ever asked anyone for.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(They added his name to the stone in April. Not the storm list — a second, smaller one underneath, for the people it took afterwards. There are six names on it. Nobody expected six.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Mason came home on the eleventh of January. He holds everything now except the nineteen days, which are gone for good. He says he doesn't want them.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Olivia Calder was charged in February.)",
+          "is_internal_thought": true,
+          "branch_variant": {
+            "ending_partial": "(Olivia Calder was never charged. She walked into the county office in March by herself and gave a full statement anyway, and the deputy DA declined to prosecute a minor for a document nobody had printed.)",
+            "ending_silence": "(Olivia Calder was never charged with anything, and in March she asked me whether that was a kindness or a filing decision, and I couldn't answer her.)"
+          }
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Sienna Morales's photograph of a barge won a state student prize in May. She insisted the citation say found, not taken. Nobody understood why and she didn't explain.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Taki Kimura put her wall back up in February with three colours on it.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Linda Jacquelin got a phone call in January from a woman in Nevada. She hasn't told me what was said and she never will, and for about three weeks afterwards she was unbearable to be around because she kept crying into the eggs.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(And nothing happened to most of it. That's the part nobody warns you about. A town doesn't end. It just gets a bit quieter and then a bit louder and then it's May.)",
+          "is_internal_thought": true
+        }
+      ],
+      "background": "beach"
+    },
+    {
+      "episode": "5",
+      "chapter": "Chapter 5 — Departures",
+      "scene_id": "ep5_14_last_swim",
+      "location": "Arcadia Bay — the north beach, late May",
+      "estimated_minutes": 11,
+      "characters_present": [
+        "Fiz",
+        "Riley Jones"
+      ],
+      "director_note": "Warm light for the first time in the entire season. Everything until now has been overcast. This is the only scene with sun in it.",
+      "dialogue_sequence": [
+        {
+          "speaker": "Riley Jones",
+          "text": "Nine days.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "I've been not saying the number for about six weeks and I'm done not saying it. Nine days.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(The sun's out. It's been out for four days and the whole town looks like a different place, which feels like a trick.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "Right. In.",
+          "emotion": "determined"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "Riley, it's May in Oregon. That water is about eleven degrees.",
+          "emotion": "flat"
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "I know exactly what temperature it is. I've been checking it for a month like an absolute freak.",
+          "emotion": "bright"
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "In.",
+          "emotion": "bright"
+        },
+        {
+          "is_choice": true,
+          "choices": [
+            {
+              "choice_text": "[Go in first. Wait.]",
+              "consequence_id": "swim_went_first",
+              "relationship_change": {
+                "character": "Riley Jones",
+                "value": 2
+              },
+              "sets_flag": "swim_pattern_repeated"
+            },
+            {
+              "choice_text": "[Let her go first this time.]",
+              "consequence_id": "swim_she_went_first",
+              "relationship_change": {
+                "character": "Riley Jones",
+                "value": 3
+              },
+              "sets_flag": "swim_she_led"
+            },
+            {
+              "choice_text": "\"Together.\"",
+              "consequence_id": "swim_together",
+              "relationship_change": {
+                "character": "Riley Jones",
+                "value": 3
+              },
+              "sets_flag": "swim_together"
+            }
+          ]
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(She goes in first. She doesn't wait for me and she doesn't look back and she gets to her waist in about nine seconds.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "IT'S SO COLD. IT'S SO COLD, FIZ, WHY DIDN'T YOU STOP ME —",
+          "emotion": "shrieking"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Twenty minutes. She goes under four times. The last one she stays down long enough that I count to eleven and start to move.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "I saw you start to come. I did that on purpose.",
+          "emotion": "smug"
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "You count to eleven. You've been counting to eleven since October, you think nobody's noticed.",
+          "emotion": "smug"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Afterwards we sit on the stones with Mason's terrible fire blanket round us because Mason keeps a fire blanket in the boot now, which is a whole thing he won't explain.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "Okay. The thing.",
+          "emotion": "nervous"
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "I said in November there was a thing I wasn't saying, and then I didn't say it for six months, which is a personal record even for me.",
+          "emotion": "nervous"
+        },
+        {
+          "is_choice": true,
+          "is_key_choice": true,
+          "choices": [
+            {
+              "choice_text": "\"Say it.\"",
+              "consequence_id": "riley_says_it",
+              "relationship_change": {
+                "character": "Riley Jones",
+                "value": 2
+              },
+              "sets_flag": "riley_confessed"
+            },
+            {
+              "choice_text": "\"Don't. Not nine days out. It'd be cruel to both of us.\"",
+              "consequence_id": "riley_agrees_sadly",
+              "relationship_change": {
+                "character": "Riley Jones",
+                "value": 1
+              },
+              "sets_flag": "riley_unsaid"
+            },
+            {
+              "choice_text": "\"I'll say mine first.\"",
+              "consequence_id": "fiz_says_it_first",
+              "relationship_change": {
+                "character": "Riley Jones",
+                "value": 3
+              },
+              "sets_flag": "fiz_confessed_first"
+            },
+            {
+              "choice_text": "[Take her hand. Count to eleven.]",
+              "consequence_id": "riley_understands",
+              "relationship_change": {
+                "character": "Riley Jones",
+                "value": 3
+              },
+              "sets_flag": "riley_understood_wordlessly"
+            }
+          ]
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "...Eleven.",
+          "emotion": "wet_laugh"
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "You absolute — you can't answer a confession with arithmetic, Fiz.",
+          "emotion": "wet_laugh"
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "Okay. Here's what I actually want and it's not the romantic version, so brace.",
+          "emotion": "steady"
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "I don't want a promise. I've had a house full of people making promises about coming back and I'm not doing that to either of us.",
+          "emotion": "steady"
+        },
+        {
+          "speaker": "Riley Jones",
+          "text": "I want you to write. Actual letters, on paper, with the good stamps, like your mum. Because I've read that letter — you left it out, I read it, I'm not sorry — and I want somebody to write to me like that once in my life.",
+          "emotion": "steady"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Nine days.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(I say yes. Obviously I say yes.)",
+          "is_internal_thought": true
+        }
+      ],
+      "background": "beach"
+    },
+    {
+      "episode": "5",
+      "chapter": "Chapter 5 — Departures",
+      "scene_id": "ep5_15_airport",
+      "location": "Portland International Airport — Departures",
+      "estimated_minutes": 14,
+      "characters_present": [
+        "Fiz"
+      ],
+      "director_note": "The report card. Who is present is gated entirely on relationship values and flags from all five episodes. Render each arrival as a separate beat with its own line. If a character is absent, do not mention them — absence should be felt, not narrated.",
+      "dialogue_sequence": [
+        {
+          "speaker": "Fiz",
+          "text": "(Ninth of June. Two bags, one of which is entirely photographs.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Departures at Portland is a horrible room. Too bright, too loud, and designed by somebody who has never had to say goodbye to anyone.)",
+          "is_internal_thought": true
+        }
+      ],
+      "is_exploration": true,
+      "exploration": {
+        "hub_id": "hub_departures",
+        "prompt": "Forty minutes before the gate. Whoever came, came.",
+        "min_required": 1,
+        "gated_presence": true,
+        "interactables": [
+          {
+            "id": "dep_riley",
+            "label": "Riley",
+            "internal_thought": "(She drove. Three hours in Mason's car with the fixed wheel bearing, and she's brought the sketchbook, and she hasn't opened it once.)",
+            "follow_up": "(She gives me a drawing at the barrier. The bay from the ridge, in pencil, and in the bottom corner, small, two figures at a poolside. She's dated it November.)",
+            "presence_condition": "Riley Jones >= 8"
+          },
+          {
+            "id": "dep_mason",
+            "label": "Mason",
+            "internal_thought": "(He drove. Obviously he drove. He's been cleared to drive for six weeks and he's told approximately nine hundred people.)",
+            "follow_up": "(\"Was it a door?\" he says, at the barrier, with his entire face. He's going to do that bit for the rest of my life and I am going to let him.)",
+            "presence_condition": "Mason Cranstain >= 5"
+          },
+          {
+            "id": "dep_pete",
+            "label": "Pete",
+            "internal_thought": "(He doesn't say anything for the whole forty minutes. He carries the heavy bag from the car park without being asked and he stands slightly behind everyone.)",
+            "follow_up": "(At the barrier he says: \"Daniel would've liked you.\" Then he shakes my hand like a man of fifty and walks off before I can answer.)",
+            "presence_condition": "Pete Lindson >= 8"
+          },
+          {
+            "id": "dep_maddie",
+            "label": "Maddie",
+            "internal_thought": "(Filming. Of course filming. Then she puts the phone in her pocket at the barrier and doesn't take it out again, which from Maddie Hale is a twenty-one gun salute.)",
+            "presence_condition": "Maddie Hale >= 4"
+          },
+          {
+            "id": "dep_kieran",
+            "label": "Kieran",
+            "internal_thought": "(He came. He came three hours in a car with Mason Cranstain, which for Kieran Ness is an act of violence against himself.)",
+            "follow_up": "(He hands me a piece of paper. One line: \"The town rebuilt everything except the part that remembers. It's remembering now. It's very loud.\")",
+            "presence_condition": "Kieran Ness >= 5"
+          },
+          {
+            "id": "dep_olivia",
+            "label": "Olivia",
+            "internal_thought": "(She's at the edge of it, in black, in an airport in June, exactly where she always stands.)",
+            "follow_up": "(\"I'm not going to say thank you,\" she says. \"You'd have to do something with it.\" And then, flatly, looking at the departures board: \"I hope you have a completely uneventful life.\" And she means it, and it is the kindest sentence anyone has ever said to me.)",
+            "presence_condition": "Olivia Calder >= 6 AND NOT ending_published"
+          },
+          {
+            "id": "dep_gina",
+            "label": "Gina",
+            "internal_thought": "(Drove herself. Separately. Because she is not officially anything to me and she came anyway.)",
+            "follow_up": "(\"Eat something on the plane. Something with a shape.\")",
+            "presence_condition": "Gina Ortiz >= 4"
+          },
+          {
+            "id": "dep_theo",
+            "label": "Theo",
+            "internal_thought": "(Riley didn't tell me he was coming. I don't think Riley knew he was coming.)",
+            "follow_up": "(He's brought a laptop. He shows me eleven seconds of a build — a coastline, wireframe, with six towers on it. \"They work,\" he says. \"In mine they don't stop.\")",
+            "presence_condition": "Theo Jones >= 6"
+          },
+          {
+            "id": "dep_letter",
+            "label": "The letter in your jacket",
+            "internal_thought": "(Three pages of uphill handwriting, folded into eighths now, carried since December.)",
+            "follow_up": "(Twelve hours from now a woman in Purwokerto is going to be at an arrivals barrier, and I am going to have to explain a great deal.)"
+          }
+        ]
+      },
+      "post_exploration_sequence": [
+        {
+          "speaker": "Fiz",
+          "text": "(And then it's the barrier and the horrible bright corridor and a man asking for my boarding pass.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(A year ago I got off a plane and decided to be a guest. To keep my head down, be pleasant, take some photographs, and go home without touching anything.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(\"I guess if bad shit happens I should just let it happen.\")",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(I said that to myself in October, in a dorm room, at two in the morning, and I thought it was wisdom.)",
+          "is_internal_thought": true
+        },
+        {
+          "is_choice": true,
+          "is_final_choice": true,
+          "choices": [
+            {
+              "choice_text": "[Look back.]",
+              "consequence_id": "ep5_looked_back",
+              "relationship_change": null,
+              "sets_flag": "looked_back"
+            },
+            {
+              "choice_text": "[Don't.]",
+              "consequence_id": "ep5_walked_on",
+              "relationship_change": null,
+              "sets_flag": "walked_on"
+            }
+          ]
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(I look back.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(They're all still standing there. Every one of them is still standing there, at a barrier, in a horrible bright room, watching a boy they met nine months ago walk down a corridor.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(And somewhere at the back of my head, quietly, with no edge on it at all —)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "???",
+          "speaker_id": "dark_side",
+          "text": "Told you it bought you something.",
+          "emotion": "warm"
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Yeah.)",
+          "is_internal_thought": true
+        },
+        {
+          "speaker": "Fiz",
+          "text": "(Yeah. You did.)",
+          "is_internal_thought": true
+        }
+      ],
+      "background": "airport"
+    },
+    {
+      "episode": "5",
+      "chapter": "Chapter 5 — Departures",
+      "scene_id": "ep5_16_tag",
+      "location": "Arcadia Bay — the lighthouse ruins, late June",
+      "estimated_minutes": 3,
+      "characters_present": [],
+      "scene_type": "epilogue_tag",
+      "dialogue_sequence": [
+        {
+          "speaker": "NARRATION",
+          "text": "[No dialogue. Morning. Sun on the water for the second time in the season.]",
+          "is_stage_direction": true
+        },
+        {
+          "speaker": "NARRATION",
+          "text": "[The memorial stone. The letters are clean — somebody still comes up here with a brush.]",
+          "is_stage_direction": true
+        },
+        {
+          "speaker": "NARRATION",
+          "text": "[A second, smaller stone beside it now. Six names. The last one added this spring: CALDER, M.]",
+          "is_stage_direction": true
+        },
+        {
+          "speaker": "NARRATION",
+          "text": "[Flowers wedged in the rebar. Fresh, two days old, wrapped in newspaper rather than cellophane — somebody who doesn't buy flowers, buying flowers.]",
+          "is_stage_direction": true
+        },
+        {
+          "speaker": "NARRATION",
+          "text": "[Hold. Then, far below, at the water line, a girl in a black coat with a brush in her hand, working her way along the bottom row of names.]",
+          "is_stage_direction": true
+        },
+        {
+          "speaker": "NARRATION",
+          "text": "[She is not alone. There is a second person crouched beside her, out of focus, holding the bucket.]",
+          "is_stage_direction": true
+        },
+        {
+          "speaker": "NARRATION",
+          "text": "[Cut to black.]",
+          "is_stage_direction": true
+        },
+        {
+          "speaker": "NARRATION",
+          "text": "[Title card: LIFE IS STRANGE: EXCHANGE]",
+          "is_stage_direction": true
+        }
+      ],
+      "background": "lighthouse-dusk"
+    }
+  ],
+  "next_episode": null,
+  "_source": "episode_05.json",
+  "_imported_by": "tools/import_episodes.py — do not hand-edit backgrounds here"
+}

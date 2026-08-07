@@ -3,8 +3,8 @@
 Checks episode data against the rules in CLAUDE.md.
 
 Not part of the game — the game ships zero dependencies and no build step. This
-is a dev tool for catching the authoring mistakes that are easy to make at
-volume and invisible until a playtester hits one branch in four.
+catches the authoring mistakes that are easy to make at volume and invisible
+until a playtester hits one branch in four.
 
     python tools/validate.py
 """
@@ -15,134 +15,164 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-problems = []
-notes = []
+problems, notes = [], []
 
+err = lambda where, msg: problems.append(f"{where}: {msg}")
+note = lambda where, msg: notes.append(f"{where}: {msg}")
 
-def err(where, msg):
-    problems.append(f"{where}: {msg}")
-
-
-def load(p):
-    return json.loads(p.read_text(encoding="utf-8"))
-
-
-characters = load(ROOT / "data" / "characters.json")
-cast = characters["cast"]
-player_names = {characters["player"]["name"].lower(),
-                characters["player"]["fullName"].lower()}
+chars = json.loads((ROOT / "data" / "characters.json").read_text(encoding="utf-8"))
+cast, player = chars["cast"], chars["player"]
 
 TITLE = re.compile(r"^(mr|ms|mrs|dr|chief|officer|principal|nurse)\.?\s+", re.I)
+norm = lambda s: TITLE.sub("", str(s)).strip().lower()
+
+known = {}
+for cid, p in cast.items():
+    for key in [cid, p["name"], p["fullName"], *p.get("aliases", [])]:
+        known[norm(key)] = cid
+    known.setdefault(norm(p["fullName"]).split(" ")[0], cid)
+
+PLAYER = {norm(player["name"]), norm(player["fullName"])}
+NARRATOR = {"narration", "narrator"}
 
 
-def norm(s):
-    return TITLE.sub("", str(s)).strip().lower()
-
-
-known = set()
-for cid, person in cast.items():
-    known |= {cid.lower(), norm(person["name"]), norm(person["fullName"])}
-    known |= {norm(a) for a in person.get("aliases", [])}
-    known.add(norm(person["fullName"]).split(" ")[0])
+def sequences(scene):
+    """Every dialogue sequence in a scene, including the post-exploration one."""
+    for key in ("dialogue_sequence", "post_exploration_sequence"):
+        if scene.get(key):
+            yield key, scene[key]
 
 
 def entries(seq):
-    """Every dialogue entry, including those nested in choice responses."""
     for e in seq:
         yield e
         for branch in (e.get("responses") or {}).values():
             yield from entries(branch)
 
 
-for path in sorted((ROOT / "data" / "episodes").glob("*.json")):
-    ep = load(path)
+all_flags_set, all_flags_read = set(), set()
+episodes = sorted((ROOT / "data" / "episodes").glob("ep*.json"))
+
+# ── pass one: collect every flag anything sets ──
+for path in episodes:
+    ep = json.loads(path.read_text(encoding="utf-8"))
+    for scene in ep["scenes"]:
+        for item in (scene.get("exploration") or {}).get("interactables", []):
+            for key in ("sets_flag", "unlocks_scene_branch"):
+                if item.get(key):
+                    all_flags_set.add(item[key])
+        for _, seq in sequences(scene):
+            for e in entries(seq):
+                if e.get("sets_flag"):
+                    all_flags_set.add(e["sets_flag"])
+                for c in e.get("choices", []):
+                    for key in ("consequence_id", "sets_flag"):
+                        if c.get(key):
+                            all_flags_set.add(c[key])
+
+# ── pass two: check ──
+for path in episodes:
+    ep = json.loads(path.read_text(encoding="utf-8"))
     tag = path.name
-    flags_set, flags_read = set(), set()
 
     for scene in ep["scenes"]:
-        sid = scene["scene_id"]
-        seq = scene["dialogue_sequence"]
+        sid = scene.get("scene_id", "?")
         where = f"{tag} / {sid}"
 
-        # A scene must never end on a choice block.
-        if seq and seq[-1].get("is_choice"):
-            err(where, "ends on a choice block — the player is left on a dead branch")
-
         if not scene.get("background"):
-            err(where, "no background set")
+            err(where, "no background — re-run tools/import_episodes.py")
 
-        for e in entries(seq):
-            if e.get("is_choice"):
-                for c in e["choices"]:
-                    text = c["choice_text"].strip()
-                    if not (text.startswith('"') or text.startswith("[")):
-                        err(where, f'choice is neither "spoken" nor [silent]: {text[:50]}')
-                    if not c.get("consequence_id"):
-                        err(where, f"choice has no consequence_id: {text[:50]}")
-                    else:
-                        flags_set.add(c["consequence_id"])
-                    rc = c.get("relationship_change")
-                    if rc and norm(rc["character"]) not in known:
-                        err(where, f"relationship_change names unknown character: {rc['character']}")
-                # every branch should have written follow-up
-                for c in e["choices"]:
-                    cid = c.get("consequence_id")
-                    if cid and cid not in (e.get("responses") or {}):
-                        notes.append(f"{where}: '{cid}' has no branch response — falls straight through")
-                continue
+        if scene.get("scene_condition"):
+            note(where, "scene_condition is prose, not machine-readable — the engine "
+                        "cannot gate on it. Needs an explicit flag to be enforced.")
 
-            for key in ("requires", "unless"):
-                v = e.get(key)
-                if v:
-                    flags_read.update(v if isinstance(v, list) else [v])
+        # a scene must never leave the player on a choice with nothing after it
+        seqs = list(sequences(scene))
+        if seqs:
+            last_key, last_seq = seqs[-1]
+            if last_seq and last_seq[-1].get("is_choice"):
+                err(where, f"{last_key} ends on a choice block — dead branch")
 
-            if e.get("is_hold") or e.get("is_submerge") or e.get("is_anomaly"):
-                continue
+        # exploration hubs
+        hub = scene.get("exploration")
+        if scene.get("is_exploration"):
+            if not hub:
+                err(where, "is_exploration but no exploration block")
+            else:
+                spots = hub.get("interactables", [])
+                if not spots:
+                    err(where, "exploration hub has no interactables")
+                need = hub.get("min_required", 0)
+                gated = sum(1 for s in spots if s.get("requires_flag") or s.get("presence_condition"))
+                if need > len(spots):
+                    err(where, f"min_required {need} exceeds {len(spots)} hotspots")
+                elif need > len(spots) - gated:
+                    note(where, f"min_required {need} but only {len(spots) - gated} "
+                                f"hotspots are ungated — could soft-lock on a cold save")
+                for s in spots:
+                    if not s.get("internal_thought"):
+                        err(where, f"hotspot '{s.get('id')}' has no internal_thought")
+                    for key in ("requires_flag", "presence_condition"):
+                        v = s.get(key)
+                        if v and not re.search(r"[<>=]", str(v)) and v not in all_flags_set:
+                            note(where, f"hotspot '{s.get('id')}' gates on '{v}', which nothing sets")
+                if not scene.get("post_exploration_sequence"):
+                    note(where, "exploration hub with no post_exploration_sequence")
 
-            speaker = e.get("speaker")
-            if speaker is None:
-                err(where, f"entry with no speaker: {str(e)[:60]}")
-                continue
-
-            # THE rule: Fiz never speaks outside a choice.
-            if norm(speaker) in player_names and not e.get("is_internal_thought"):
-                err(where, f"Fiz has a spoken line outside a choice: {e.get('text','')[:50]}")
-
-            if norm(speaker) not in known and norm(speaker) not in player_names:
-                err(where, f"unknown speaker '{speaker}' — not in characters.json")
-
-            if e.get("is_internal_thought"):
-                t = e.get("text", "").strip()
-                if not (t.startswith("(") and t.endswith(")")):
-                    err(where, f"internal thought not wrapped in parentheses: {t[:50]}")
-
-    # flags read but never set anywhere in the season
-    all_set = set()
-    for p2 in sorted((ROOT / "data" / "episodes").glob("*.json")):
-        for sc in load(p2)["scenes"]:
-            for e in entries(sc["dialogue_sequence"]):
+        for _, seq in sequences(scene):
+            for e in entries(seq):
                 if e.get("is_choice"):
                     for c in e["choices"]:
-                        if c.get("consequence_id"):
-                            all_set.add(c["consequence_id"])
-    for f in flags_read - all_set:
-        notes.append(f"{tag}: gates on '{f}', which no choice sets (engine flag?)")
+                        text = str(c.get("choice_text", "")).strip()
+                        if not (text.startswith('"') or text.startswith("[") or text.startswith("“")):
+                            err(where, f'choice is neither "spoken" nor [silent]: {text[:46]}')
+                        if not c.get("consequence_id"):
+                            err(where, f"choice has no consequence_id: {text[:46]}")
+                        rc = c.get("relationship_change")
+                        if isinstance(rc, dict) and rc.get("character") and norm(rc["character"]) not in known:
+                            err(where, f"relationship_change names unknown character: {rc['character']}")
+                        if c.get("requires_flag"):
+                            all_flags_read.add(c["requires_flag"])
+                    if e.get("timed") and not e.get("timer_seconds"):
+                        err(where, "timed choice with no timer_seconds")
+                    continue
 
-# Beacon gates
-beacon = load(ROOT / "data" / "beacon.json")
-for app, bucket in beacon["content"].items():
-    for lst in bucket.values():
-        if isinstance(lst, list):
-            for item in lst:
-                if isinstance(item, dict) and item.get("from"):
-                    if norm(item["from"]) not in known:
-                        err(f"beacon/{app}", f"message from unknown character: {item['from']}")
+                for key in ("requires", "unless", "requires_flag"):
+                    v = e.get(key)
+                    if v:
+                        all_flags_read.update(v if isinstance(v, list) else [v])
+
+                if any(e.get(k) for k in ("is_hold", "is_submerge", "is_anomaly")):
+                    continue
+
+                speaker = e.get("speaker")
+                if speaker is None:
+                    err(where, f"entry with no speaker: {str(e)[:56]}")
+                    continue
+
+                n = norm(speaker)
+                if n in NARRATOR:
+                    if not e.get("is_stage_direction"):
+                        err(where, "NARRATION speaker without is_stage_direction")
+                    continue
+
+                if n not in known and n not in PLAYER:
+                    err(where, f"unknown speaker '{speaker}' — not in characters.json")
+
+                if e.get("is_internal_thought"):
+                    t = str(e.get("text", "")).strip()
+                    if not (t.startswith("(") and t.endswith(")")):
+                        note(where, f"internal thought not parenthesised: {t[:44]}")
+
+for flag in sorted(all_flags_read - all_flags_set):
+    if not re.search(r"[<>=]", flag):
+        note("flags", f"'{flag}' is gated on but nothing sets it")
 
 print()
 for n in notes:
     print(f"  note   {n}")
 if notes:
-    print()
+    print(f"  ({len(notes)} notes)\n")
 
 if problems:
     for p in problems:

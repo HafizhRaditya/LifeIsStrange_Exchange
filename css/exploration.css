@@ -1,0 +1,118 @@
+/* Exploration hubs — a room Fiz stands in and looks at things.
+   Hotspots are labels, not objects: this is a game about noticing, not hunting
+   pixels. They sit above the dialogue so a thought can play underneath. */
+
+.exploration {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 16cqh;
+  bottom: 34cqh;
+  z-index: 8;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4cqh;
+  padding: 0 8cqw;
+  overflow-y: auto;
+  transition: opacity var(--med) var(--ease);
+}
+
+/* while a thought is playing, the room recedes so the words own the frame */
+.exploration.is-reading { opacity: 0.18; pointer-events: none; }
+
+.expl__head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+.expl__tick { width: 22px; height: 1px; background: var(--accent); align-self: center; }
+
+.expl__prompt {
+  flex: 1;
+  min-width: 12ch;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(14px, 1.5cqw, 24px);
+  line-height: 1.5;
+  color: var(--bone-dim);
+  text-wrap: pretty;
+}
+
+.expl__count {
+  font-family: var(--font-mono);
+  font-size: clamp(8px, 0.72cqw, 11px);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--fog-dim);
+}
+
+.expl__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr));
+  gap: 1.6cqh 3cqw;
+  align-content: start;
+}
+
+.spot {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 0.4cqh 0;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity var(--med) var(--ease), transform var(--med) var(--ease);
+}
+
+.spot.is-in { opacity: 0.55; transform: none; }
+
+.spot__label {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: clamp(14px, 1.3cqw, 21px);
+  line-height: 1.35;
+  color: var(--bone);
+  transition: letter-spacing var(--med) var(--ease), color var(--med) var(--ease);
+}
+
+.spot__rule {
+  height: 1px;
+  width: 0;
+  background: var(--accent);
+  transition: width var(--med) var(--ease);
+}
+
+.spot:hover, .spot:focus-visible { opacity: 1; outline: none; }
+.spot:hover .spot__rule, .spot:focus-visible .spot__rule { width: 100%; }
+.spot:hover .spot__label { letter-spacing: -0.004em; }
+
+/* looked at once — there may still be a second thing to find */
+.spot.is-seen { opacity: 0.36; }
+.spot.is-seen .spot__label { color: var(--bone-dim); }
+.spot.is-seen .spot__rule { width: 100%; background: rgba(140, 145, 153, 0.35); }
+
+/* nothing left here */
+.spot.is-spent { opacity: 0.2; }
+.spot.is-spent .spot__label { color: var(--fog); text-decoration: line-through; text-decoration-thickness: 1px; }
+.spot.is-spent:hover { opacity: 0.32; }
+.spot.is-spent .spot__rule { background: rgba(140, 145, 153, 0.2); }
+
+.expl__done {
+  align-self: flex-start;
+  margin-top: 1cqh;
+  padding: 9px 20px;
+  font-family: var(--font-mono);
+  font-size: clamp(9px, 0.8cqw, 12px);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  animation: riseIn var(--med) var(--ease) both;
+  transition: background var(--fast);
+}
+
+.expl__done:hover { background: rgba(180, 98, 58, 0.1); }
+
+.stage.is-exploring .portrait { filter: brightness(0.24) saturate(0.3) blur(2px); }
+
+@media (max-width: 720px) {
+  .exploration { top: 12cqh; bottom: 40cqh; padding: 0 6cqw; }
+  .expl__grid { grid-template-columns: 1fr; }
+}

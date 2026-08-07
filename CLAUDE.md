@@ -22,9 +22,11 @@ python -m http.server 5173 --directory "E:/My Project/Code Project/Life Is Stran
 
 ## The five writing rules
 
-1. **Fiz never speaks in a `dialogue_sequence`.** His spoken lines exist *only*
-   inside choices, where the player selects them. He is the player. If you find
-   yourself authoring a Fiz line outside a choice block, stop.
+1. **Fiz's voice.** His spoken lines normally exist only inside choices, where
+   the player selects them. **Revised by the Creative Director in the full-season
+   scripts:** he also speaks aloud in the dream scenes and in a handful of
+   two-hander beats — about 60 lines across the season, authored deliberately.
+   Follow the script. Don't invent new Fiz speech outside those.
 2. **Internal monologue is authored**, flagged `is_internal_thought`, wrapped in
    parentheses, and renders in its own voice. It carries most of the
    characterisation and all of the unreliable narration.
@@ -34,6 +36,10 @@ python -m http.server 5173 --directory "E:/My Project/Code Project/Life Is Stran
    Echo, Nexus, DeepThread, Aura, ViewGrid. Real pop culture (The Strokes, Taxi
    Driver) is canon, as in the original game.
 5. **Rated M.** Swearing is natural to character, never decorative.
+
+**The other voice.** `???` (`speaker_id: "dark_side"`) is Fiz's intrusive voice,
+carrying the dream scenes and the Episode 5 confrontation. It gets no portrait,
+no accent hue and no name plate of its own — it is not a person in the room.
 
 ## The two standing creative rulings
 
@@ -74,7 +80,20 @@ files drop in unchanged:
 { "is_anomaly": true, "anomaly": "ep1_eleven_frames" }                // set piece
 { "is_hold": true, "seconds": 3 }                                     // enforced silence
 { "is_submerge": true, "seconds": 2 }                                 // underwater
+{ "speaker": "???", "speaker_id": "dark_side", "text": "..." }        // the other voice
+{ "speaker": "NARRATION", "text": "[...]", "is_stage_direction": true } // held shot
 ```
+
+**Exploration scenes** carry `is_exploration`, an `exploration` hub
+(`prompt`, `min_required`, `interactables[]`) and a `post_exploration_sequence`.
+Each hotspot has an `internal_thought` and optionally a `follow_up` for the
+second look — which is the character: he notices, then notices again, and the
+second look is the one that costs him. Hotspots gate on `requires_flag` or on a
+`presence_condition` like `"Riley Jones >= 8"` (see `js/engine/conditions.js`).
+
+Choice blocks may carry `timed` + `timer_seconds` (running out picks the last
+option), and `is_key_choice` / `is_episode_defining` / `is_final_choice`, which
+change the prompt and weight of the screen.
 
 Any entry may carry `requires` / `unless` (a flag name or array of them) to play
 conditionally. That is how an Episode 1 choice changes an Episode 2 line without
@@ -107,6 +126,19 @@ scene later. When adding a choice, consider whether it deserves social fallout.
 
 One key, `lis_exchange_save`, carrying `schemaVersion`. When the shape changes,
 add a migration in `js/engine/state.js`. Never silently wipe a playtest.
+
+## Importing scripts
+
+Episode JSON from the Creative Director goes through:
+
+```bash
+python tools/import_episodes.py <folder-with-episode_0*.json>
+```
+
+It assigns each scene a `background` from its location, fails loudly on anything
+it can't map, and drops gates that can never open. **Never hand-edit
+`data/episodes/*.json`** — the importer overwrites them. Fix the source or the
+importer.
 
 ## Before you call an episode done
 
@@ -161,8 +193,16 @@ Real art must drop in without JS changes: one CSS line per background, files int
 
 ## Status
 
-Episodes 1 and 2 complete, all branches written. Episodes 3–5 exist as scene maps
-in `docs/Season1_Script_Bible.txt` and need expanding to dialogue.
-in `docs/Season1_Script_Bible.txt` and need expanding to dialogue.
+Full season imported: **99 scenes, 26 chapters, ~39,400 words, 192 choice blocks,
+18 exploration hubs with 127 hotspots.** All five episodes playable end to end.
+
+Open with the Creative Director:
+
+- `scene_condition` on four scenes (`ep1_10_carter_office`, `ep3_04_nolan_gym`,
+  `ep3_08_rowe_confirms`, `ep4_07_elise_drive`) is prose, not machine-readable.
+  The engine cannot gate on it. Needs explicit flags.
+- `ep1_15_media_lab` and `ep5_06_the_dive` set `min_required` above their ungated
+  hotspot count. The engine clamps so it can't soft-lock, but a cold save sees a
+  lower bar than intended.
 
 Run the game with `start.bat`. Opening `index.html` directly will not work.

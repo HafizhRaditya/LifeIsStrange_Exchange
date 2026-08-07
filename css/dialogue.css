@@ -84,6 +84,43 @@
   letter-spacing: 0.012em;
 }
 
+/* The other voice. Not a person in the room, so it gets no accent hue and no
+   portrait — it reads like Fiz's own thoughts wearing someone else's grammar. */
+.dialogue.is-other .dialogue__rule { display: none; }
+
+.dialogue.is-other .dialogue__speaker {
+  color: rgba(200, 120, 120, 0.72);
+  letter-spacing: 0.42em;
+}
+
+.dialogue.is-other .dialogue__line {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(15px, 1.55cqw, 26px);
+  color: #d9c2c2;
+  letter-spacing: 0.014em;
+  text-shadow: 0 0 26px rgba(180, 60, 60, 0.14);
+}
+
+/* A held shot with no dialogue in it. Camera language, not speech. */
+.dialogue.is-direction .dialogue__speaker-row { display: none; }
+
+.dialogue.is-direction .dialogue__line {
+  font-family: var(--font-mono);
+  font-weight: 300;
+  font-size: clamp(11px, 1.02cqw, 15px);
+  line-height: 1.85;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--fog);
+}
+
+.stage[data-dir="C"] .dialogue.is-direction::before,
+.stage[data-dir="C"] .dialogue.is-other::before { opacity: 0.18; }
+
+.stage[data-dir="C"] .dialogue.is-direction .dialogue__speaker-row { display: block; visibility: hidden; }
+
 /* enforced silence — the plate recedes rather than sitting there empty */
 .dialogue.is-holding { opacity: 0.16; transition: opacity 900ms var(--ease); }
 .dialogue.is-holding .dialogue__advance { opacity: 0; }

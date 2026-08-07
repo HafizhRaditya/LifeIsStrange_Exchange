@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/dialogue.css">
   <link rel="stylesheet" href="css/choices.css">
+  <link rel="stylesheet" href="css/exploration.css">
   <link rel="stylesheet" href="css/beacon.css">
   <link rel="stylesheet" href="css/anomaly.css">
   <link rel="stylesheet" href="css/journal.css">
@@ -85,6 +86,9 @@
       </div>
     </div>
 
+    <!-- exploration hub -->
+    <div id="exploration" class="exploration" aria-label="Look around" hidden></div>
+
     <!-- enforced silence -->
     <div id="hold" class="hold" hidden><span id="hold-label">holding</span></div>
 
@@ -147,7 +151,19 @@
         </div>
       </div>
     </div>
-    <div id="episode-list" class="title__episodes"></div>
+    <div class="title__right">
+      <div class="title__actions">
+        <button id="btn-continue" class="title__action title__action--primary" hidden>
+          <span class="title__action-label">Continue</span>
+          <span id="continue-where" class="title__action-sub"></span>
+        </button>
+        <button id="btn-new" class="title__action">
+          <span class="title__action-label">New Game</span>
+          <span class="title__action-sub">Episode 1 — Blast For The Future</span>
+        </button>
+      </div>
+      <div id="episode-list" class="title__episodes"></div>
+    </div>
     <p id="menu-note" class="title__note"></p>
   </div>
 

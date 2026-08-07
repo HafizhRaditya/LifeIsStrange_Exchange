@@ -19,6 +19,17 @@
   },
 
   "cast": {
+    "dark_side": {
+      "name": "???",
+      "fullName": "???",
+      "role": "The Other Voice",
+      "hue": 0,
+      "initials": "??",
+      "_note": "Fiz's intrusive voice. Appears in the dream scenes and once, at length, in Episode 5. Never named, never given a portrait — it is not a person in the room. Scripts address it as speaker '???' with speaker_id 'dark_side'.",
+      "noPortrait": true,
+      "aliases": ["???"]
+    },
+
     "riley":   { "name": "Riley",       "fullName": "Riley Jones",         "age": 17, "role": "The Confidant",            "hue": 18,  "initials": "RJ",  "look": { "hair": "bun",   "skin": "pale",  "build": "slim" } },
     "mason":   { "name": "Mason",       "fullName": "Mason Cranstain",     "age": 18, "role": "The Best Friend",          "hue": 42,  "initials": "MC",  "look": { "hair": "short", "skin": "tan" } },
     "pete":    { "name": "Pete",        "fullName": "Pete Lindson",        "age": 18, "role": "The Quiet Supporter",      "hue": 96,  "initials": "PL",  "look": { "hair": "wavy",  "skin": "fair" } },

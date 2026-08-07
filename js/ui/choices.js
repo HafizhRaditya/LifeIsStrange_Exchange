@@ -28,7 +28,9 @@ export class Choices {
       clear(this.list);
 
       this.root.hidden = false;
+      this.root.dataset.weight = context.weight ?? "";
       this.stage.classList.add("is-choosing");
+      this.settle(context);
 
       const nodes = options.map((option) => {
         const spoken = SPOKEN.test(option.choice_text);
@@ -53,7 +55,49 @@ export class Choices {
         flush(node);
         node.classList.add("is-surfaced");
       });
+
+      // Four choices in the season are timed. Running out is a decision too —
+      // it picks the last option, which is always the one where Fiz does nothing.
+      if (context.timer) {
+        this.startTimer(context.timer, () => {
+          if (!this.isOpen) return;
+          const fallback = nodes[nodes.length - 1];
+          this.choose(nodes, fallback, options[options.length - 1], resolve);
+        });
+      }
     });
+  }
+
+  /** Prompt line and weight marker — a key choice should feel heavier. */
+  settle({ weight, timer }) {
+    const prompt = $(".choices__prompt");
+    prompt.textContent =
+      weight === "final"    ? "There is no third option" :
+      weight === "defining" ? "This one you don't get back" :
+      weight === "key"      ? "This one matters" :
+      timer                 ? "Now" : "You say nothing yet";
+  }
+
+  startTimer(seconds, onExpire) {
+    this.clearTimer();
+    const bar = el("div", "choices__timer");
+    const fill = el("div", "choices__timer-fill");
+    bar.append(fill);
+    this.root.append(bar);
+    this.timerEl = bar;
+
+    fill.style.transition = `transform ${seconds}s linear`;
+    flush(fill);
+    fill.style.transform = "scaleX(0)";
+
+    this.timer = setTimeout(onExpire, seconds * 1000);
+  }
+
+  clearTimer() {
+    clearTimeout(this.timer);
+    this.timer = null;
+    this.timerEl?.remove();
+    this.timerEl = null;
   }
 
   /** The left column: where he is, who just spoke, and what they said. */
@@ -77,6 +121,7 @@ export class Choices {
   }
 
   async choose(nodes, chosen, option, resolve) {
+    this.clearTimer();
     for (const node of nodes) {
       node.disabled = true;
       node.style.transitionDelay = "0ms";

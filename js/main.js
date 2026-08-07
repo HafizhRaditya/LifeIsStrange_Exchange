@@ -9,6 +9,7 @@ import { Choices } from "./ui/choices.js";
 import { Beacon } from "./ui/beacon.js";
 import { Anomaly } from "./ui/anomaly.js";
 import { Journal } from "./ui/journal.js";
+import { Exploration } from "./ui/exploration.js";
 
 const SEASON = [
   { id: "ep1", num: "01", title: "Blast For The Future" },
@@ -60,12 +61,27 @@ async function boot() {
     choices: new Choices(),
     beacon: new Beacon(beaconData, characters.cast),
     anomaly: new Anomaly(),
-    journal: new Journal(characters.cast)
+    journal: new Journal(characters.cast),
+    exploration: new Exploration()
   };
   ui.onStateChange = () => ui.beacon.refreshBadge();
   ui.onSceneComplete = (scene) => advanceScene(scene);
 
   wireInput();
+
+  $("#btn-continue").addEventListener("click", (e) => {
+    e.stopPropagation();
+    state.load();
+    start({ resume: true });
+  });
+
+  $("#btn-new").addEventListener("click", (e) => {
+    e.stopPropagation();
+    state.reset();
+    state.setPosition("ep1", null, 0);
+    start({ resume: false });
+  });
+
   renderEpisodes();
 }
 
@@ -75,43 +91,46 @@ function renderEpisodes() {
   const list = $("#episode-list");
   clear(list);
 
-  const saved = state.hasSave() && state.load() ? state.data.position : null;
+  const hasSave = state.hasSave() && state.load();
+  const saved = hasSave ? state.data.position : null;
+
+  // Continue picks up exactly where the save left off; New Game starts clean.
+  const cont = $("#btn-continue");
+  cont.hidden = !hasSave;
+  if (hasSave) {
+    const ep = SEASON.find((e) => e.id === saved.episode);
+    const reached = state.episodeState(saved.episode);
+    $("#continue-where").textContent =
+      `Episode ${ep?.num ?? "01"} — ${ep?.title ?? ""}${reached?.chapter ? ` · ${reached.chapter}` : ""}`;
+  }
 
   for (const ep of SEASON) {
-    const built = ep.id === "ep1" || ep.id === "ep2";
     const progress = state.episodeState(ep.id);
-    const isResume = saved?.episode === ep.id && progress;
+    const isCurrent = saved?.episode === ep.id && progress;
 
-    const label = !built ? "Not yet written"
-      : isResume ? "Continue"
-      : progress ? "Replay"
-      : "Begin";
-
-    const cls = !built ? "episode episode--locked"
-      : isResume ? "episode episode--resume"
-      : "episode episode--ready";
+    const label = isCurrent ? "In progress" : progress ? "Played" : "Not started";
+    const cls = isCurrent ? "episode episode--resume"
+      : progress ? "episode episode--ready" : "episode episode--locked";
 
     const row = el("button", cls);
     row.type = "button";
-    row.disabled = !built;
 
     const body = el("span", "episode__body");
     body.append(el("span", "episode__title", ep.title), el("span", "episode__state", label));
     row.append(el("span", "episode__num", ep.num), body);
 
-    if (built) {
-      row.addEventListener("click", () => {
-        if (!isResume) {
-          state.reset();
-          state.setPosition(ep.id, null, 0);
-        }
-        start({ resume: Boolean(isResume) });
-      });
-    }
+    // Jumping straight to a later episode skips its set-up, so it starts that
+    // episode fresh rather than pretending the save covers it.
+    row.addEventListener("click", () => {
+      if (isCurrent) return start({ resume: true });
+      state.setPosition(ep.id, null, 0);
+      start({ resume: false });
+    });
+
     list.append(row);
   }
 
-  $("#title-save").textContent = state.hasSave()
+  $("#title-save").textContent = hasSave
     ? `Save · Local · ${state.data.choices.length} choices`
     : "Save · Local · new";
 }
@@ -135,7 +154,7 @@ async function playScene(scene, from, showSlate) {
   ui.beacon.setClock(scene.meta?.time);
   ui.beacon.refreshBadge();
 
-  state.reachEpisode(`ep${episode.episode}`, scene.scene_id);
+  state.reachEpisode(`ep${episode.episode}`, scene.scene_id, scene.chapter);
 
   runner?.stop();
   runner = new SceneRunner(scene, ui);
@@ -206,6 +225,8 @@ function setDirection(dir) {
 function wireInput() {
   stage.addEventListener("click", () => {
     if (ui.anomaly.isOpen || ui.choices.isOpen || ui.journal.isOpen) return;
+    // during exploration the hub owns clicks, except while a thought is playing
+    if (ui.exploration.isOpen && !ui.exploration.root.classList.contains("is-reading")) return;
     if (ui.beacon.open) { ui.beacon.setOpen(false); return; }
     ui.dialogue.handleInput();
   });

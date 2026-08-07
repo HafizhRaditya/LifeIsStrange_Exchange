@@ -156,11 +156,12 @@ class GameState {
     }
   }
 
-  /** Furthest scene reached per episode, for the title screen's episode select. */
-  reachEpisode(episodeId, sceneId) {
-    const ep = (this.data.episodes[episodeId] ??= { started: true, scene: sceneId });
+  /** Furthest point reached per episode, for the title screen. */
+  reachEpisode(episodeId, sceneId, chapter) {
+    const ep = (this.data.episodes[episodeId] ??= { started: true });
     ep.started = true;
     ep.scene = sceneId;
+    if (chapter) ep.chapter = chapter;
     this.save();
   }
 

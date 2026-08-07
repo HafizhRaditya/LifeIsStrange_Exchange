@@ -25,7 +25,9 @@ export class Viewport {
     $("#rail-clock").textContent = scene.meta?.time ?? "";
     $("#rail-epsc").innerHTML =
       `EP ${String(episode).padStart(2, "0")}<br>SC ${String(index + 1).padStart(2, "0")}`;
-    $("#rail-beat").textContent = short.toUpperCase();
+    // chapter is the beat label when the script provides one
+    const chapter = (scene.chapter ?? "").replace(/^Chapter\s*/i, "").trim();
+    $("#rail-beat").textContent = (chapter || short).toUpperCase();
   }
 
   /**

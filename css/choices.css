@@ -158,6 +158,32 @@
   animation: none;
 }
 
+/* a key choice sits heavier in the frame */
+.choices[data-weight="key"] .choices__prompt,
+.choices[data-weight="defining"] .choices__prompt,
+.choices[data-weight="final"] .choices__prompt { color: var(--accent); }
+
+.choices[data-weight="defining"],
+.choices[data-weight="final"] { background: rgba(4, 5, 7, 0.78); }
+
+/* timed choices — four in the season. Running out is a decision too. */
+.choices__timer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 2px;
+  background: rgba(232, 228, 220, 0.08);
+  overflow: hidden;
+}
+
+.choices__timer-fill {
+  height: 100%;
+  background: var(--accent);
+  transform-origin: left;
+  transform: scaleX(1);
+}
+
 .choices__legend {
   display: flex;
   gap: 22px;

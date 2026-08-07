@@ -80,14 +80,57 @@
 .title__dir:hover { color: var(--bone-dim); }
 .title__dir.is-on { color: var(--bone); border-bottom-color: var(--accent); }
 
+/* ===== Right column ===== */
+.title__right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3vh;
+  padding: 6vh 7vw 6vh 0;
+  border-left: 1px solid var(--hairline);
+  overflow-y: auto;
+}
+
+.title__actions { display: flex; flex-direction: column; gap: 1px; padding-left: 3vw; }
+
+.title__action {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 2vh 2vw 2vh 1.6vw;
+  border-left: 2px solid transparent;
+  transition: border-color var(--fast) var(--ease), background var(--fast) var(--ease);
+}
+
+.title__action:hover { border-left-color: var(--accent); background: rgba(232, 228, 220, 0.03); }
+
+.title__action-label {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(20px, 2.1vw, 34px);
+  line-height: 1.1;
+  color: var(--bone);
+}
+
+.title__action-sub {
+  font-family: var(--font-mono);
+  font-size: clamp(8px, 0.72vw, 11px);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--fog-dim);
+}
+
+.title__action--primary { border-left-color: var(--accent); }
+.title__action--primary .title__action-sub { color: var(--amber-warm); }
+
 /* ===== Episode select ===== */
 .title__episodes {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 6vh 7vw 6vh 0;
-  border-left: 1px solid var(--hairline);
   overflow-y: auto;
+  padding-top: 1vh;
+  border-top: 1px solid var(--hairline);
 }
 
 .episode {
@@ -158,6 +201,7 @@
 @media (max-width: 860px) {
   .title { grid-template-columns: 1fr; overflow-y: auto; }
   .title__left { padding: 6vh 7vw 3vh; }
-  .title__episodes { border-left: none; border-top: 1px solid var(--hairline); padding: 2vh 7vw 6vh; }
+  .title__right { border-left: none; border-top: 1px solid var(--hairline); padding: 2vh 7vw 6vh; }
+  .title__actions { padding-left: 0; }
   .episode { grid-template-columns: 12vw 1fr; padding-left: 0; }
 }
