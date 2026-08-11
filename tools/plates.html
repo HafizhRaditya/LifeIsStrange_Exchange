@@ -7,90 +7,110 @@
 <link rel="stylesheet" href="../css/reset.css">
 <link rel="stylesheet" href="../css/fonts.css">
 <link rel="stylesheet" href="../css/theme.css">
+<link rel="stylesheet" href="../css/plates.css">
 <link rel="stylesheet" href="../css/layout.css">
 <style>
   body { background:#0b0c0e; color:var(--bone); font-family:var(--font-body); font-weight:300;
          padding:3rem 2.5rem 6rem; overflow:auto; }
   h1 { font-family:var(--font-display); font-weight:300; font-size:2.4rem; letter-spacing:-.01em; }
-  .lede { max-width:66ch; margin:.8rem 0 0; color:var(--fog); font-size:.92rem; line-height:1.7; }
+  .lede { max-width:68ch; margin:.8rem 0 0; color:var(--fog); font-size:.92rem; line-height:1.7; }
   .lede code { font-family:var(--font-mono); font-size:.85em; color:var(--bone-dim); }
-  h2 { font-family:var(--font-mono); font-size:.66rem; letter-spacing:.28em; text-transform:uppercase;
-       color:var(--fog-dim); margin:3rem 0 .9rem; }
-  .frame { position:relative; width:100%; aspect-ratio:16/9; overflow:hidden;
-           border:1px solid rgba(232,228,220,.12); container-type:size; }
+  .bar { position:sticky; top:0; z-index:9; display:flex; gap:.4rem; flex-wrap:wrap; align-items:center;
+         padding:1rem 0; margin:1.6rem 0 0; background:#0b0c0e;
+         border-bottom:1px solid rgba(232,228,220,.08); }
+  .bar button { font-family:var(--font-mono); font-size:.62rem; letter-spacing:.16em; text-transform:uppercase;
+                padding:7px 12px; border:1px solid rgba(232,228,220,.12); color:var(--fog-dim);
+                background:none; cursor:pointer; transition:color .16s, border-color .16s; }
+  .bar button:hover { color:var(--bone); border-color:rgba(232,228,220,.4); }
+  .bar button.on { color:var(--accent); border-color:var(--accent); }
+  h2 { font-family:var(--font-mono); font-size:.64rem; letter-spacing:.28em; text-transform:uppercase;
+       color:var(--fog-dim); margin:2.6rem 0 .9rem; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:1.4rem 1rem; }
+  .grid.big { grid-template-columns:1fr; }
+  figure { margin:0; }
+  .frame { position:relative; aspect-ratio:16/9; overflow:hidden;
+           border:1px solid rgba(232,228,220,.1); container-type:size; }
   .frame .plate { position:absolute; inset:0; }
   .frame .grain, .frame .vignette { position:absolute; inset:0; }
-  /* a stand-in for where the dialogue and portraits actually sit */
-  .safe { position:absolute; inset:0; pointer-events:none; opacity:0; transition:opacity .2s; }
-  .frame:hover .safe { opacity:1; }
+  .safe { position:absolute; inset:0; pointer-events:none; opacity:0; transition:opacity .18s; }
+  body.safes .safe { opacity:1; }
   .safe .box { position:absolute; left:0; right:0; bottom:0; height:26%;
-               background:rgba(180,98,58,.14); border-top:1px dashed rgba(180,98,58,.7); }
-  .safe .mid { position:absolute; left:34%; right:34%; bottom:12%; top:22%;
-               border:1px dashed rgba(140,200,220,.5); }
-  .safe span { position:absolute; font-family:var(--font-mono); font-size:10px; letter-spacing:.16em;
-               text-transform:uppercase; color:rgba(255,255,255,.75); }
-  .cap { display:flex; gap:1rem; align-items:baseline; margin-top:.6rem; flex-wrap:wrap; }
-  .cap b { font-family:var(--font-mono); font-size:.66rem; letter-spacing:.2em; text-transform:uppercase;
-           font-weight:400; color:var(--accent); }
-  .cap span { font-family:var(--font-mono); font-size:.6rem; letter-spacing:.14em; color:var(--fog-faint); }
-  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:.6rem; margin-top:.8rem; }
-  .tile { aspect-ratio:16/9; border:1px solid rgba(232,228,220,.08); position:relative; }
-  .tile em { position:absolute; left:6px; bottom:5px; font-style:normal; font-family:var(--font-mono);
-             font-size:.56rem; letter-spacing:.1em; color:rgba(255,255,255,.6); }
+               background:rgba(180,98,58,.16); border-top:1px dashed rgba(180,98,58,.75); }
+  .safe .mid { position:absolute; left:33%; right:33%; bottom:12%; top:22%;
+               border:1px dashed rgba(140,200,220,.55); }
+  figcaption { display:flex; gap:.7rem; align-items:baseline; margin-top:.45rem; flex-wrap:wrap;
+               font-family:var(--font-mono); font-size:.6rem; letter-spacing:.14em; }
+  figcaption b { font-weight:400; color:var(--accent); text-transform:uppercase; }
+  figcaption span { color:var(--fog-faint); text-transform:uppercase; }
+  .hand { color:var(--amber-warm) !important; }
 </style>
 </head>
 <body>
   <h1>Plates</h1>
   <p class="lede">
-    The two hero backgrounds, built procedurally as SVG — no photography, about 7 KB each.
-    Hover a frame to show the safe areas: <b style="color:#b4623a">rust</b> is where the dialogue
-    box sits, <b style="color:#8cc8dc">blue</b> is where portraits stand. Both must stay quiet.
-    Swap for real art by changing the <code>url()</code> in <code>css/theme.css</code>.
-    Everything under “still gradients” is a placeholder.
+    Every background in the season, built as SVG — no photography. Two were drawn by hand
+    (<b class="hand" style="font-family:var(--font-mono);font-size:.85em">lighthouse-dusk</b>,
+    <b class="hand" style="font-family:var(--font-mono);font-size:.85em">pool-night</b>); the rest are
+    composed from shared archetypes by <code>tools/make_plates.py</code>, so they hold one light
+    language and can be regenerated when the palette moves.
+    Swapping any of them for real art means changing a <code>url()</code> in
+    <code>css/plates.css</code> — no JS knows they exist.
   </p>
 
-  <h2>Lighthouse Ruins — 4:41 PM</h2>
-  <div class="frame">
-    <div class="plate bg--lighthouse-dusk"></div>
-    <div class="grain"></div><div class="vignette"></div>
-    <div class="safe">
-      <div class="box"></div><div class="mid"></div>
-      <span style="left:12px;bottom:27%">dialogue</span>
-      <span style="left:35%;top:21%">portraits</span>
-    </div>
+  <div class="bar">
+    <button id="toggleSafe">Safe areas</button>
+    <button id="toggleFX" class="on">Grain + vignette</button>
+    <button id="toggleSize">Large</button>
+    <span style="font-family:var(--font-mono);font-size:.6rem;letter-spacing:.16em;color:var(--fog-faint);margin-left:auto">
+      rust = dialogue box · blue = portraits · both must stay quiet
+    </span>
   </div>
-  <div class="cap"><b>lighthouse-dusk</b><span>Ep1 s11 · Ep5 s07 · the season's bookend</span></div>
 
-  <h2>Blackwell Pool, after hours</h2>
-  <div class="frame">
-    <div class="plate bg--pool-night"></div>
-    <div class="grain"></div><div class="vignette"></div>
-    <div class="safe">
-      <div class="box"></div><div class="mid"></div>
-      <span style="left:12px;bottom:27%">dialogue</span>
-      <span style="left:35%;top:21%">portraits</span>
-    </div>
-  </div>
-  <div class="cap"><b>pool-night</b><span>Ep2 s14 · the emotional spine</span></div>
-
-  <h2>Still gradients</h2>
-  <div class="grid" id="rest"></div>
+  <div id="out"></div>
 
 <script type="module">
-const REST = ["dorm-morning","dorm-night","hallway","cafeteria","stairwell","quad","diner","studio",
-  "darkroom","library","media-lab","archive","science-lab","principal-office","bathroom","taki-room",
-  "gym","art-corridor","cliff-path","beach","harbour","rear-steps","parking-lot","jones-house",
-  "jones-landing","riley-room","theo-room","calder-house","cross-office","gazette","police","hospital",
-  "car","bowling","airport","nexus-voice","dream"];
-const grid = document.getElementById("rest");
-for (const name of REST) {
-  const d = document.createElement("div");
-  d.className = `tile bg--${name}`;
-  const e = document.createElement("em");
-  e.textContent = name;
-  d.append(e);
-  grid.append(d);
+const GROUPS = [
+  ["Hero", ["lighthouse-dusk", "pool-night"]],
+  ["Dorms & bedrooms", ["dorm-morning","dorm-night","riley-room","theo-room","taki-room","calder-house","jones-house"]],
+  ["School interiors", ["library","archive","media-lab","science-lab","studio","darkroom",
+                        "principal-office","bathroom","gym","cafeteria","art-corridor"]],
+  ["Corridors", ["hallway","stairwell","jones-landing"]],
+  ["Town interiors", ["diner","gazette","police","cross-office","hospital","bowling","airport","nexus-voice"]],
+  ["Exteriors", ["quad","rear-steps","parking-lot","cliff-path","beach","harbour","car"]],
+  ["The dreams", ["dream"]]
+];
+const HAND = new Set(["lighthouse-dusk","pool-night"]);
+const out = document.getElementById("out");
+
+for (const [title, names] of GROUPS) {
+  const h = document.createElement("h2");
+  h.textContent = `${title} · ${names.length}`;
+  const grid = document.createElement("div");
+  grid.className = "grid";
+  for (const n of names) {
+    const fig = document.createElement("figure");
+    fig.innerHTML =
+      `<div class="frame"><div class="plate bg--${n}"></div>` +
+      `<div class="grain fx"></div><div class="vignette fx"></div>` +
+      `<div class="safe"><div class="box"></div><div class="mid"></div></div></div>` +
+      `<figcaption><b>${n}</b><span>${HAND.has(n) ? "hand-drawn" : "generated"}</span></figcaption>`;
+    grid.append(fig);
+  }
+  out.append(h, grid);
 }
+
+document.getElementById("toggleSafe").addEventListener("click", (e) => {
+  document.body.classList.toggle("safes");
+  e.target.classList.toggle("on");
+});
+document.getElementById("toggleFX").addEventListener("click", (e) => {
+  const on = e.target.classList.toggle("on");
+  for (const el of document.querySelectorAll(".fx")) el.style.display = on ? "" : "none";
+});
+document.getElementById("toggleSize").addEventListener("click", (e) => {
+  const on = e.target.classList.toggle("on");
+  for (const g of document.querySelectorAll(".grid")) g.classList.toggle("big", on);
+});
 </script>
 </body>
 </html>

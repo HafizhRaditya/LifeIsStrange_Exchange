@@ -787,7 +787,7 @@
           "is_internal_thought": true
         }
       ],
-      "background": "car"
+      "background": "cliff-path"
     },
     {
       "episode": "1",
@@ -2538,7 +2538,7 @@
           "is_internal_thought": true
         }
       ],
-      "background": "dorm-morning"
+      "background": "nexus-voice"
     },
     {
       "episode": "1",

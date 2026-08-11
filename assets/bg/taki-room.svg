@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" preserveAspectRatio="xMidYMid slice"><title>taki-room</title><defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#232a26"/><stop offset="55%" stop-color="#2c332c"/><stop offset="100%" stop-color="#161a17"/>
+    </linearGradient><radialGradient id="key" cx="0.46" cy="0.36" r="0.5">
+          <stop offset="0%" stop-color="#8fa07a" stop-opacity="0.26"/>
+          <stop offset="55%" stop-color="#8fa07a" stop-opacity="0.073"/>
+          <stop offset="100%" stop-color="#8fa07a" stop-opacity="0"/>
+        </radialGradient><radialGradient id="vig" cx="0.5" cy="0.48" r="0.8">
+      <stop offset="42%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.66"/>
+    </radialGradient>
+    <linearGradient id="floorFade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.72"/>
+    </linearGradient></defs><rect width="1920" height="1080" fill="url(#sky)"/><rect width="1920" height="1080" fill="url(#key)"/><rect x="210" y="300" width="520" height="380" fill="#131619"/><rect x="727" y="300" width="3" height="380" fill="#8fa07a" opacity="0.35"/><rect x="780" y="320" width="420" height="360" fill="#131619"/><rect x="1197" y="320" width="3" height="360" fill="#8fa07a" opacity="0.35"/><rect x="1300" y="560" width="300" height="36" fill="#131619"/><rect x="1308" y="596" width="14" height="114" fill="#131619"/><rect x="1578" y="596" width="14" height="114" fill="#131619"/><rect x="1597" y="560" width="3" height="150" fill="#8fa07a" opacity="0.35"/><rect y="700" width="1920" height="380" fill="#0e1114"/><rect y="698" width="1920" height="2" fill="#000" opacity="0.35"/><rect width="1920" height="1080" fill="url(#vig)"/><rect y="700" width="1920" height="380" fill="url(#floorFade)"/></svg>

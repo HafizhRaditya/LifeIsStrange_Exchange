@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" preserveAspectRatio="xMidYMid slice"><title>stairwell</title><defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#20242a"/><stop offset="55%" stop-color="#2a3037"/><stop offset="100%" stop-color="#171b20"/>
+    </linearGradient><radialGradient id="key" cx="0.5" cy="0.5" r="0.45">
+          <stop offset="0%" stop-color="#cfd8dd" stop-opacity="0.14"/>
+          <stop offset="55%" stop-color="#cfd8dd" stop-opacity="0.039"/>
+          <stop offset="100%" stop-color="#cfd8dd" stop-opacity="0"/>
+        </radialGradient><radialGradient id="vig" cx="0.5" cy="0.48" r="0.8">
+      <stop offset="42%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.76"/>
+    </radialGradient>
+    <linearGradient id="floorFade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.72"/>
+    </linearGradient></defs><rect width="1920" height="1080" fill="url(#sky)"/><path d="M0 0 L700 470 L700 710 L0 1080 Z" fill="#151a1f"/><path d="M1920 0 L1220 470 L1220 710 L1920 1080 Z" fill="#151a1f"/><path d="M-490 470 L-306 444 L-306 756 L-490 710 Z" fill="#0b0e11" opacity="0.85"/><path d="M-193 428 L-8 401 L-8 832 L-193 785 Z" fill="#0b0e11" opacity="0.74"/><path d="M105 385 L289 359 L289 906 L105 860 Z" fill="#0b0e11" opacity="0.62"/><path d="M402 342 L587 316 L587 982 L402 935 Z" fill="#0b0e11" opacity="0.51"/><path d="M2410 470 L2226 444 L2226 756 L2410 710 Z" fill="#0b0e11" opacity="0.85"/><path d="M2113 428 L1928 401 L1928 832 L2113 785 Z" fill="#0b0e11" opacity="0.74"/><path d="M1815 385 L1631 359 L1631 906 L1815 860 Z" fill="#0b0e11" opacity="0.62"/><path d="M1518 342 L1333 316 L1333 982 L1518 935 Z" fill="#0b0e11" opacity="0.51"/><rect x="700" y="470" width="520" height="240" fill="#1b2229"/><rect width="1920" height="1080" fill="url(#key)"/><rect x="860" y="120" width="200" height="10" fill="#cfd8dd" opacity="0.16"/><rect x="879" y="165" width="162" height="10" fill="#cfd8dd" opacity="0.15"/><rect x="898" y="210" width="125" height="10" fill="#cfd8dd" opacity="0.15"/><rect x="916" y="255" width="88" height="10" fill="#cfd8dd" opacity="0.14"/><rect y="760" width="1920" height="320" fill="#0d1013"/><path d="M700 710 L1220 710 L1920 1080 L0 1080 Z" fill="#0d1013"/><rect width="1920" height="1080" fill="url(#vig)"/><rect y="760" width="1920" height="320" fill="url(#floorFade)"/></svg>

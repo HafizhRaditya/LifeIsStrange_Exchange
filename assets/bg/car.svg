@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" preserveAspectRatio="xMidYMid slice"><title>car</title><defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0e1116"/><stop offset="52%" stop-color="#151a20"/><stop offset="100%" stop-color="#0a0d10"/>
+    </linearGradient><radialGradient id="key" cx="0.5" cy="0.42" r="0.44">
+          <stop offset="0%" stop-color="#d9a441" stop-opacity="0.22"/>
+          <stop offset="55%" stop-color="#d9a441" stop-opacity="0.062"/>
+          <stop offset="100%" stop-color="#d9a441" stop-opacity="0"/>
+        </radialGradient><radialGradient id="vig" cx="0.5" cy="0.48" r="0.8">
+      <stop offset="42%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.8"/>
+    </radialGradient>
+    <linearGradient id="floorFade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.72"/>
+    </linearGradient></defs><rect width="1920" height="1080" fill="url(#sky)"/><rect width="1920" height="750" fill="url(#key)"/><rect x="0" y="0" width="260" height="1080" fill="#090b0d"/><rect x="1660" y="0" width="260" height="1080" fill="#090b0d"/><path d="M-20 510 Q 538 486 998 508 Q 1498 526 1940 502 L1940 1080 L-20 1080 Z" fill="#0c0f12"/><rect x="0" y="700" width="1920" height="60" fill="#0b0e11"/><rect width="1920" height="1080" fill="url(#vig)"/><rect y="540" width="1920" height="540" fill="url(#floorFade)"/></svg>

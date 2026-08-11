@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" preserveAspectRatio="xMidYMid slice"><title>riley-room</title><defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a241f"/><stop offset="52%" stop-color="#38302a"/><stop offset="100%" stop-color="#1d1916"/>
+    </linearGradient><radialGradient id="key" cx="0.4" cy="0.4" r="0.46">
+          <stop offset="0%" stop-color="#b4623a" stop-opacity="0.24"/>
+          <stop offset="55%" stop-color="#b4623a" stop-opacity="0.067"/>
+          <stop offset="100%" stop-color="#b4623a" stop-opacity="0"/>
+        </radialGradient><radialGradient id="vig" cx="0.5" cy="0.48" r="0.8">
+      <stop offset="42%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.66"/>
+    </radialGradient>
+    <linearGradient id="floorFade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.72"/>
+    </linearGradient></defs><rect width="1920" height="1080" fill="url(#sky)"/><rect width="1920" height="1080" fill="url(#key)"/><rect x="240" y="577" width="400" height="133" fill="#131619"/><rect x="240" y="480" width="104" height="120" rx="6" fill="#131619"/><rect x="637" y="480" width="3" height="230" fill="#b4623a" opacity="0.35"/><rect x="760" y="380" width="280" height="300" fill="#131619"/><rect x="760" y="455" width="280" height="3" fill="#0a0c0e" opacity="0.8"/><rect x="760" y="530" width="280" height="3" fill="#0a0c0e" opacity="0.8"/><rect x="760" y="605" width="280" height="3" fill="#0a0c0e" opacity="0.8"/><rect x="1037" y="380" width="3" height="300" fill="#b4623a" opacity="0.35"/><rect x="1160" y="560" width="300" height="36" fill="#131619"/><rect x="1168" y="596" width="14" height="114" fill="#131619"/><rect x="1438" y="596" width="14" height="114" fill="#131619"/><rect x="1457" y="560" width="3" height="150" fill="#b4623a" opacity="0.35"/><rect y="700" width="1920" height="380" fill="#0e1114"/><rect y="698" width="1920" height="2" fill="#000" opacity="0.35"/><rect width="1920" height="1080" fill="url(#vig)"/><rect y="700" width="1920" height="380" fill="url(#floorFade)"/></svg>

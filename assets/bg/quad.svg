@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" preserveAspectRatio="xMidYMid slice"><title>quad</title><defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3d4550"/><stop offset="50%" stop-color="#4d555f"/><stop offset="100%" stop-color="#6b6f70"/>
+    </linearGradient><radialGradient id="key" cx="0.62" cy="0.2" r="0.5">
+          <stop offset="0%" stop-color="#cfd8dd" stop-opacity="0.16"/>
+          <stop offset="55%" stop-color="#cfd8dd" stop-opacity="0.045"/>
+          <stop offset="100%" stop-color="#cfd8dd" stop-opacity="0"/>
+        </radialGradient><radialGradient id="vig" cx="0.5" cy="0.48" r="0.8">
+      <stop offset="42%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.62"/>
+    </radialGradient>
+    <linearGradient id="floorFade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.72"/>
+    </linearGradient></defs><rect width="1920" height="1080" fill="url(#sky)"/><rect width="1920" height="780" fill="url(#key)"/><ellipse cx="210" cy="520" rx="150.0" ry="220" fill="#232a26"/><ellipse cx="1670" cy="520" rx="170.0" ry="200" fill="#232a26"/><path d="M-20 530 Q 538 506 998 528 Q 1498 546 1940 522 L1940 1080 L-20 1080 Z" fill="#2b322b"/><rect x="310" y="420" width="10" height="180" fill="#161a17"/><path d="M315.0 300 L240 465 L390 465 Z" fill="#161a17" opacity="0.72"/><rect x="1625" y="438" width="10" height="162" fill="#161a17"/><path d="M1630.0 330 L1560 478 L1700 478 Z" fill="#161a17" opacity="0.72"/><rect width="1920" height="1080" fill="url(#vig)"/><rect y="560" width="1920" height="520" fill="url(#floorFade)"/></svg>

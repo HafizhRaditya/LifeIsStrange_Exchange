@@ -24,10 +24,13 @@ NEXT = {"ep1": "ep2", "ep2": "ep3", "ep3": "ep4", "ep4": "ep5", "ep5": None}
 # First match wins, so order matters: more specific patterns sit above general ones.
 RULES = [
     (r"dream|nowhere.*stitched|badly stitched",      "dream"),
+    # Must sit above the room-214 rules: the Nexus scene's location reads
+    # "Blackwell Dormitory, Room 214 — Nexus voice channel", and it is the one
+    # image in the season that should feel safe. It is not an ordinary morning.
+    (r"nexus voice|voice channel",                   "nexus-voice"),
     (r"room 214.*(2:00|2:16|night)|room 214.*am",    "dorm-night"),
     (r"dormitory.*room 214|room 214",                "dorm-morning"),
     (r"east corridor|stairwell landing|stairwell",   "stairwell"),
-    (r"nexus voice|voice channel",                   "nexus-voice"),
     (r"media lab",                                   "media-lab"),
     (r"darkroom",                                    "darkroom"),
     (r"photography studio",                          "studio"),
@@ -59,7 +62,10 @@ RULES = [
     (r"cliff",                                       "cliff-path"),
     (r"beach|driftwood",                             "beach"),
     (r"harbour|north channel|survey vessel|dock",    "harbour"),
-    (r"corolla|route 101|coast road",                "car"),
+    # `car` is the inside of Mason's Corolla only. "Coast Road" on its own is
+    # Fiz walking to school, which is a coastal exterior, not a car interior.
+    (r"corolla|route 101",                           "car"),
+    (r"coast road|front lawn",                       "cliff-path"),
     (r"cascade lanes|bowl",                          "bowling"),
     (r"airport|departures",                          "airport"),
     (r"over the following weeks|late may|late june", "beach"),

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" preserveAspectRatio="xMidYMid slice"><title>parking-lot</title><defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1e23"/><stop offset="52%" stop-color="#22262c"/><stop offset="100%" stop-color="#0f1215"/>
+    </linearGradient><radialGradient id="key" cx="0.66" cy="0.62" r="0.46">
+          <stop offset="0%" stop-color="#d9a441" stop-opacity="0.24"/>
+          <stop offset="55%" stop-color="#d9a441" stop-opacity="0.067"/>
+          <stop offset="100%" stop-color="#d9a441" stop-opacity="0"/>
+        </radialGradient><radialGradient id="vig" cx="0.5" cy="0.48" r="0.8">
+      <stop offset="42%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.74"/>
+    </radialGradient>
+    <linearGradient id="floorFade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.72"/>
+    </linearGradient></defs><rect width="1920" height="1080" fill="url(#sky)"/><rect width="1920" height="810" fill="url(#key)"/><rect x="120" y="380" width="400" height="170" fill="#101315"/><rect x="640" y="390" width="380" height="160" fill="#101315"/><rect x="1140" y="380" width="420" height="170" fill="#101315"/><path d="M-20 550 Q 538 526 998 548 Q 1498 566 1940 542 L1940 1080 L-20 1080 Z" fill="#15181b"/><rect x="1660" y="250" width="16" height="330" fill="#0d0f11"/><rect width="1920" height="1080" fill="url(#vig)"/><rect y="580" width="1920" height="500" fill="url(#floorFade)"/></svg>

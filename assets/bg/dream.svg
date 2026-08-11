@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" preserveAspectRatio="xMidYMid slice"><title>dream</title><defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a0a0d"/><stop offset="48%" stop-color="#171020"/><stop offset="100%" stop-color="#060608"/>
+    </linearGradient><radialGradient id="key" cx="0.5" cy="0.44" r="0.6">
+          <stop offset="0%" stop-color="#b43c3c" stop-opacity="0.3"/>
+          <stop offset="55%" stop-color="#b43c3c" stop-opacity="0.084"/>
+          <stop offset="100%" stop-color="#b43c3c" stop-opacity="0"/>
+        </radialGradient><filter id="fog" x="-30%" y="-60%" width="160%" height="260%"
+          color-interpolation-filters="sRGB">
+          <feTurbulence type="fractalNoise" baseFrequency="0.003 0.02" numOctaves="4" seed="41" result="n"/>
+          <feColorMatrix in="n" type="matrix" values="
+            0 0 0 0 0.55  0 0 0 0 0.5  0 0 0 0 0.6  0 0 0 1.5 -0.62"/>
+        </filter>
+        <linearGradient id="band" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#fff" stop-opacity="0"/>
+          <stop offset="34%" stop-color="#fff" stop-opacity="0.9"/>
+          <stop offset="72%" stop-color="#fff" stop-opacity="0.7"/>
+          <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+        </linearGradient><radialGradient id="vig" cx="0.5" cy="0.48" r="0.8">
+      <stop offset="42%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.84"/>
+    </radialGradient>
+    <linearGradient id="floorFade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.72"/>
+    </linearGradient></defs><mask id="fogMask440"><rect x="-200" y="440" width="2320" height="320" fill="url(#band)"/></mask><rect width="1920" height="1080" fill="url(#sky)"/><rect width="1920" height="1080" fill="url(#key)"/><rect x="180" y="430" width="380" height="280" fill="#131619"/><rect x="557" y="430" width="3" height="280" fill="#b43c3c" opacity="0.35"/><rect x="700" y="460" width="300" height="250" fill="#131619"/><rect x="997" y="460" width="3" height="250" fill="#b43c3c" opacity="0.35"/><rect x="1180" y="420" width="420" height="290" fill="#131619"/><rect x="1597" y="420" width="3" height="290" fill="#b43c3c" opacity="0.35"/><rect y="700" width="1920" height="380" fill="#06060a"/><rect y="698" width="1920" height="2" fill="#000" opacity="0.35"/><g mask="url(#fogMask440)" opacity="0.32"><rect x="-200" y="400" width="2320" height="400" filter="url(#fog)"/></g><rect width="1920" height="1080" fill="url(#vig)"/><rect y="700" width="1920" height="380" fill="url(#floorFade)"/></svg>

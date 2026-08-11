@@ -181,10 +181,17 @@ until the first click. That is correct, not a bug to route around.
 
 ## Art
 
-Two plates are real: `lighthouse-dusk` and `pool-night`, built as procedural SVG
-in `/assets/bg` (~7 KB each). The other 36 are still CSS gradient placeholders
-(`.bg--<name>` in `css/theme.css`). Portraits are generated rim-lit silhouettes
-(`js/ui/portrait.js`) from each character's `look` in `characters.json`.
+**All 39 backgrounds are real SVG plates** in `/assets/bg` — 99 KB for the whole
+season. `lighthouse-dusk` and `pool-night` are hand-drawn; the rest are composed
+from shared archetypes (room, corridor, exterior) by `tools/make_plates.py`, so
+they hold one light language and regenerate when the palette moves.
+
+`css/plates.css` is **generated** — never hand-edit it, change the table in
+`make_plates.py`. Swapping any plate for photography means changing one `url()`;
+no JS knows they exist.
+
+Portraits are still generated rim-lit silhouettes (`js/ui/portrait.js`) from each
+character's `look` in `characters.json`.
 
 `tools/plates.html` shows every plate at frame size, with the dialogue and
 portrait safe areas overlaid on hover — the lower third and the centre must stay
