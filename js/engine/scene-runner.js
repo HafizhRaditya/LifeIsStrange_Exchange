@@ -91,7 +91,7 @@ export class SceneRunner {
 
     if (entry.is_anomaly)  return this.ui.anomaly.play(entry.anomaly);
     if (entry.is_hold)     return this.ui.dialogue.hold(entry.seconds ?? 3, entry.label);
-    if (entry.is_submerge) return this.ui.viewport.submerge(entry.seconds ?? 2);
+    if (entry.is_submerge) return this.ui.viewport.submerge(entry.seconds ?? 2, this.ui.ambience);
     if (entry.is_choice)   return this.runChoice(entry);
 
     const text = this.textFor(entry);

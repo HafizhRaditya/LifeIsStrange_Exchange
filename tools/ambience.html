@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ambience — Life Is Strange: Exchange</title>
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/theme.css">
+<style>
+  body { background:#0b0c0e; color:var(--bone); font-family:var(--font-body); font-weight:300; padding:3rem 2rem 6rem; }
+  h1 { font-family:var(--font-display); font-weight:300; font-size:2.4rem; letter-spacing:-.01em; }
+  .lede { max-width:64ch; margin:.8rem 0 0; color:var(--fog); font-size:.92rem; line-height:1.7; }
+  h2 { font-family:var(--font-mono); font-size:.68rem; letter-spacing:.28em; text-transform:uppercase;
+       color:var(--fog-dim); margin:2.8rem 0 1rem; border-bottom:1px solid rgba(232,228,220,.1); padding-bottom:.6rem; }
+  .bar { position:sticky; top:0; z-index:5; display:flex; align-items:center; gap:1rem; flex-wrap:wrap;
+         padding:1rem 0; background:#0b0c0e; border-bottom:1px solid rgba(232,228,220,.08); margin-bottom:1rem; }
+  .now { font-family:var(--font-mono); font-size:.72rem; letter-spacing:.18em; text-transform:uppercase; color:var(--amber-warm); }
+  input[type=range]{ appearance:none; width:180px; height:3px; border-radius:2px; background:rgba(232,228,220,.18); cursor:pointer; }
+  input[type=range]::-webkit-slider-thumb{ appearance:none; width:12px; height:12px; border-radius:50%; background:var(--bone); }
+  button { font-family:var(--font-mono); font-size:.68rem; letter-spacing:.14em; text-transform:uppercase;
+           padding:9px 14px; border:1px solid rgba(232,228,220,.14); color:var(--bone-dim); background:none; cursor:pointer;
+           transition:border-color .16s, color .16s; }
+  button:hover { border-color:var(--accent); color:var(--bone); }
+  button.on { border-color:var(--accent); color:var(--accent); }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(190px,1fr)); gap:.5rem; }
+  .plate { display:flex; flex-direction:column; gap:0; text-align:left; padding:0; overflow:hidden; }
+  .swatch { height:52px; }
+  .plate span { padding:.55rem .7rem; font-family:var(--font-mono); font-size:.62rem; letter-spacing:.1em; color:var(--fog); }
+  .plate .mix { color:var(--fog-faint); font-size:.56rem; padding-top:0; }
+</style>
+</head>
+<body>
+  <h1>Ambience</h1>
+  <p class="lede">
+    Every bed here is synthesised in the browser — filtered noise with slow movement on the filter.
+    No audio files, nothing downloaded, no music by design. Click a scene to hear its mix and check
+    it against the plate. Tuning lives in <code>js/ui/audio.js</code>.
+  </p>
+
+  <div class="bar">
+    <button id="stop">Stop</button>
+    <label style="font-family:var(--font-mono);font-size:.62rem;letter-spacing:.16em;color:var(--fog-dim)">Volume</label>
+    <input id="vol" type="range" min="0" max="100" value="60">
+    <span id="now" class="now">nothing playing</span>
+  </div>
+
+  <h2>Scenes</h2>
+  <div id="scenes" class="grid"></div>
+
+<script type="module">
+import { Ambience } from "../js/ui/audio.js";
+
+const amb = new Ambience();
+const nowEl = document.getElementById("now");
+let active = null;
+
+// the module keeps SCENES private, so read the mixes back off the stylesheet's
+// bg-- classes and the engine's own behaviour: we just list what we can plate
+const SCENES = [
+  "dorm-morning","dorm-night","hallway","cafeteria","stairwell","quad","diner","studio","darkroom",
+  "library","media-lab","archive","science-lab","principal-office","bathroom","taki-room","gym",
+  "art-corridor","pool-night","lighthouse-dusk","cliff-path","beach","harbour","rear-steps",
+  "parking-lot","jones-house","jones-landing","riley-room","theo-room","calder-house","cross-office",
+  "gazette","police","hospital","car","bowling","airport","nexus-voice","dream"
+];
+
+const grid = document.getElementById("scenes");
+for (const name of SCENES) {
+  const b = document.createElement("button");
+  b.className = "plate";
+  const sw = document.createElement("div");
+  sw.className = `swatch bg--${name}`;
+  const label = document.createElement("span");
+  label.textContent = name;
+  b.append(sw, label);
+  b.addEventListener("click", () => {
+    amb.unlock();
+    amb.play(name);
+    nowEl.textContent = `playing · ${name}`;
+    if (active) active.classList.remove("on");
+    active = b; b.classList.add("on");
+  });
+  grid.append(b);
+}
+
+document.getElementById("vol").addEventListener("input", (e) => amb.setVolume(e.target.value / 100));
+document.getElementById("vol").value = Math.round(amb.volume * 100);
+
+document.getElementById("stop").addEventListener("click", () => {
+  amb.play("void");
+  nowEl.textContent = "nothing playing";
+  active?.classList.remove("on");
+  active = null;
+});
+</script>
+</body>
+</html>

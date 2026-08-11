@@ -168,6 +168,17 @@ picked from the title screen (persisted separately from the save):
 Only `css/dialogue.css` differs between them. The engine has no idea which is on
 — keep it that way.
 
+## Sound
+
+Ambience is **synthesised in the browser** — filtered noise with slow movement,
+no audio files and nothing downloaded (`js/ui/audio.js`, ~6 KB). The bible asks
+for ambience per scene and **no score**, and explicitly no music under the pool
+scene, so there is no music system to add later. Beds are mapped per background
+plate; `tools/ambience.html` plays every scene for tuning.
+
+Browsers refuse audio before a user gesture, so the context stays suspended
+until the first click. That is correct, not a bug to route around.
+
 ## Art
 
 Nothing in `/assets` yet. Backgrounds are CSS gradient placeholders

@@ -1,9 +1,9 @@
 import { $, el } from "../util/dom.js";
 import { getCast } from "../engine/cast.js";
 
-const SPEED = 18;         // ms per character
-const THOUGHT_SPEED = 26; // the inner voice runs slower — it's thinking, not talking
+const DEFAULT_SPEED = 18;  // ms per character
 const PUNCT_PAUSE = 150;
+const SPEED_KEY = "lis_exchange_speed";
 
 export class Dialogue {
   constructor() {
@@ -17,6 +17,12 @@ export class Dialogue {
     this.typing = false;
     this.token = 0;
     this.resolveAdvance = null;
+
+    this.speed = DEFAULT_SPEED;
+    try {
+      const saved = Number(localStorage.getItem(SPEED_KEY));
+      if (Number.isFinite(saved) && saved >= 0) this.speed = saved;
+    } catch { /* storage off — default is fine */ }
 
     $("#advance").addEventListener("click", (e) => {
       e.stopPropagation();
@@ -34,7 +40,7 @@ export class Dialogue {
     this.speakerEl.textContent = person.name;
 
     this.last = { speakerId, text, emotion, thought: false };
-    return this.render(text, SPEED);
+    return this.render(text, this.speed);
   }
 
   /** Fiz's internal monologue — its own voice, no speaker plate. */
@@ -42,7 +48,7 @@ export class Dialogue {
     this.root.className = "dialogue is-thought";
     this.root.dataset.emotion = "";
     this.last = { speakerId: null, text, thought: true };
-    return this.render(text, THOUGHT_SPEED);
+    return this.render(text, this.thoughtSpeed);
   }
 
   /**
@@ -55,7 +61,7 @@ export class Dialogue {
     this.root.dataset.emotion = "";
     this.speakerEl.textContent = "???";
     this.last = { speakerId: null, text, thought: true };
-    return this.render(text, THOUGHT_SPEED);
+    return this.render(text, this.thoughtSpeed);
   }
 
   /** A held shot with no dialogue — the script's [ bracketed ] direction. */
@@ -63,12 +69,22 @@ export class Dialogue {
     this.root.className = "dialogue is-direction";
     this.root.dataset.emotion = "";
     this.last = { speakerId: null, text, thought: false };
-    return this.render(text, SPEED);
+    return this.render(text, this.speed);
   }
 
   /** What the player was just looking at — the choice screen holds it on the left. */
   lastBeat() {
     return this.last ?? null;
+  }
+
+  /** 0 means no typewriter at all; the inner voice always runs a touch slower. */
+  setSpeed(ms) {
+    this.speed = Math.max(0, ms);
+    try { localStorage.setItem(SPEED_KEY, String(this.speed)); } catch { /* storage off */ }
+  }
+
+  get thoughtSpeed() {
+    return this.speed === 0 ? 0 : Math.round(this.speed * 1.45);
   }
 
   async render(text, speed) {
@@ -78,14 +94,51 @@ export class Dialogue {
     const run = ++this.token;
     this.typing = true;
     this.text = text;
+
+    // Speed 0 means instant, and it has to be genuinely instant: even a 0ms
+    // sleep yields a macrotask per character, and the punctuation beat would
+    // still fire, so a long line took most of a second. Skip the loop entirely.
+    if (speed === 0) {
+      this.finish();
+      return this.waitForAdvance();
+    }
+
+    // the beat after a full stop scales with the speed, so fast text isn't
+    // dominated by pauses
+    const beat = Math.round(PUNCT_PAUSE * (speed / DEFAULT_SPEED));
+
+    // When each character is due, in ms from the start of the line. Precomputing
+    // the schedule lets the reveal be driven by elapsed time rather than by a
+    // sleep per character — which matters because background tabs clamp timers
+    // to ~1s. Tab away mid-line and come back and it catches up to where it
+    // should be, instead of making you sit through the backlog.
+    const due = new Array(text.length);
+    let at = 0;
+    for (let i = 0; i < text.length; i++) {
+      at += speed + (".?!…".includes(text[i]) ? beat : 0);
+      due[i] = at;
+    }
+
     this.lineEl.textContent = "";
     this.lineEl.append(this.caret);
 
-    for (let i = 0; i < text.length; i++) {
+    const started = performance.now();
+    let shown = 0;
+
+    while (shown < text.length) {
       if (run !== this.token) return this.waitForAdvance();
-      this.lineEl.textContent = text.slice(0, i + 1);
-      this.lineEl.append(this.caret);
-      await sleep(speed + (".?!…".includes(text[i]) ? PUNCT_PAUSE : 0));
+
+      const elapsed = performance.now() - started;
+      let next = shown;
+      while (next < text.length && due[next] <= elapsed) next++;
+
+      if (next !== shown) {
+        shown = next;
+        this.lineEl.textContent = text.slice(0, shown);
+        this.lineEl.append(this.caret);
+      }
+
+      if (shown < text.length) await sleep(Math.min(due[shown] - elapsed, 60));
     }
 
     this.finish();

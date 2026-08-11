@@ -10,6 +10,7 @@ import { Beacon } from "./ui/beacon.js";
 import { Anomaly } from "./ui/anomaly.js";
 import { Journal } from "./ui/journal.js";
 import { Exploration } from "./ui/exploration.js";
+import { Ambience } from "./ui/audio.js";
 
 const SEASON = [
   { id: "ep1", num: "01", title: "Blast For The Future" },
@@ -62,7 +63,8 @@ async function boot() {
     beacon: new Beacon(beaconData, characters.cast),
     anomaly: new Anomaly(),
     journal: new Journal(characters.cast),
-    exploration: new Exploration()
+    exploration: new Exploration(),
+    ambience: new Ambience()
   };
   ui.onStateChange = () => ui.beacon.refreshBadge();
   ui.onSceneComplete = (scene) => advanceScene(scene);
@@ -75,12 +77,37 @@ async function boot() {
     start({ resume: true });
   });
 
-  $("#btn-new").addEventListener("click", (e) => {
+  // New Game destroys the only save slot, so when one exists it asks first —
+  // inline, on the button, rather than with a dialog nobody reads.
+  const newBtn = $("#btn-new");
+  const newSub = newBtn.querySelector(".title__action-sub");
+  const NEW_SUB = newSub.textContent;
+  let armed = false;
+
+  const disarm = () => {
+    armed = false;
+    newBtn.classList.remove("is-arming");
+    newSub.textContent = NEW_SUB;
+  };
+
+  newBtn.addEventListener("click", (e) => {
     e.stopPropagation();
+
+    if (state.hasSave() && !armed) {
+      armed = true;
+      newBtn.classList.add("is-arming");
+      newSub.textContent = `Erases ${state.data.choices.length} choices — click again`;
+      setTimeout(disarm, 5000);
+      return;
+    }
+
+    disarm();
     state.reset();
     state.setPosition("ep1", null, 0);
     start({ resume: false });
   });
+
+  $("#btn-continue").addEventListener("click", disarm);
 
   renderEpisodes();
 }
@@ -150,6 +177,7 @@ async function playScene(scene, from, showSlate) {
 
   ui.viewport.clearStage();
   ui.viewport.setBackground(scene.background);
+  ui.ambience.play(scene.background);
   ui.viewport.setScene(scene, episode.episode, Math.max(0, index));
   ui.beacon.setClock(scene.meta?.time);
   ui.beacon.refreshBadge();
@@ -222,8 +250,53 @@ function setDirection(dir) {
 
 /* ===== Input ===== */
 
+function wireSettings() {
+  const panel = $("#settings");
+  const vol = $("#set-volume");
+  const volOut = $("#set-volume-out");
+  const speed = $("#set-speed");
+  const speedOut = $("#set-speed-out");
+
+  vol.value = Math.round(ui.ambience.volume * 100);
+  volOut.textContent = `${vol.value}%`;
+  speed.value = ui.dialogue.speed;
+  speedOut.textContent = ui.dialogue.speed === 0 ? "instant" : `${ui.dialogue.speed}ms`;
+
+  vol.addEventListener("input", () => {
+    ui.ambience.setVolume(Number(vol.value) / 100);
+    volOut.textContent = `${vol.value}%`;
+  });
+
+  speed.addEventListener("input", () => {
+    ui.dialogue.setSpeed(Number(speed.value));
+    speedOut.textContent = speed.value === "0" ? "instant" : `${speed.value}ms`;
+  });
+
+  $("#settings-toggle").addEventListener("click", (e) => {
+    e.stopPropagation();
+    panel.hidden = !panel.hidden;
+    $("#settings-toggle").setAttribute("aria-expanded", String(!panel.hidden));
+  });
+
+  $("#settings-title").addEventListener("click", (e) => {
+    e.stopPropagation();
+    panel.hidden = true;
+    backToTitle();
+  });
+
+  panel.addEventListener("click", (e) => e.stopPropagation());
+}
+
 function wireInput() {
+  wireSettings();
+
+  // Browsers refuse to start audio before a gesture. This is the gesture.
+  const unlock = () => ui.ambience.unlock();
+  document.addEventListener("pointerdown", unlock, { once: true });
+  document.addEventListener("keydown", unlock, { once: true });
+
   stage.addEventListener("click", () => {
+    if (!$("#settings").hidden) { $("#settings").hidden = true; return; }
     if (ui.anomaly.isOpen || ui.choices.isOpen || ui.journal.isOpen) return;
     // during exploration the hub owns clicks, except while a thought is playing
     if (ui.exploration.isOpen && !ui.exploration.root.classList.contains("is-reading")) return;

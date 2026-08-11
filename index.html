@@ -103,7 +103,24 @@
         Beacon<span id="beacon-badge" class="hud__badge" hidden>0</span>
       </button>
       <button id="journal-toggle" class="hud__btn" aria-controls="journal" aria-expanded="false">Journal</button>
+      <button id="settings-toggle" class="hud__btn" aria-controls="settings" aria-expanded="false">Settings</button>
     </nav>
+
+    <!-- ===== Settings ===== -->
+    <div id="settings" class="settings" hidden>
+      <div class="settings__row">
+        <label class="settings__label" for="set-volume">Ambience</label>
+        <input id="set-volume" class="settings__range" type="range" min="0" max="100" step="1">
+        <output id="set-volume-out" class="settings__out"></output>
+      </div>
+      <div class="settings__row">
+        <label class="settings__label" for="set-speed">Text speed</label>
+        <input id="set-speed" class="settings__range" type="range" min="0" max="40" step="1">
+        <output id="set-speed-out" class="settings__out"></output>
+      </div>
+      <p class="settings__note">Ambience is generated, not recorded. There is no music by design.</p>
+      <button id="settings-title" class="settings__quit">Back to title</button>
+    </div>
   </main>
 
   <!-- ===== Beacon ===== -->
