@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" preserveAspectRatio="xMidYMid slice">
+  <title>Blackwell Academy — Pool, after hours</title>
+
+  <defs>
+    <!-- The hall lights are off. Everything you can see is lit from under the
+         water, which is the whole point of the scene. -->
+    <linearGradient id="hall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#080b0e"/>
+      <stop offset="46%"  stop-color="#0c1218"/>
+      <stop offset="100%" stop-color="#101a24"/>
+    </linearGradient>
+
+    <radialGradient id="upglow" cx="0.5" cy="1" r="0.86">
+      <stop offset="0%"   stop-color="#4d7a97" stop-opacity="0.50"/>
+      <stop offset="40%"  stop-color="#3a6480" stop-opacity="0.20"/>
+      <stop offset="100%" stop-color="#24384a" stop-opacity="0"/>
+    </radialGradient>
+
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#1c3a4d"/>
+      <stop offset="30%"  stop-color="#245470"/>
+      <stop offset="70%"  stop-color="#1e4660"/>
+      <stop offset="100%" stop-color="#12293a"/>
+    </linearGradient>
+
+    <linearGradient id="deck" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#1a222a"/>
+      <stop offset="100%" stop-color="#0a0e13"/>
+    </linearGradient>
+
+    <!-- Caustics. Fine, restless, and only where the light can reach. -->
+    <filter id="caustic" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.026" numOctaves="3" seed="5" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="
+        0 0 0 0 0.55
+        0 0 0 0 0.82
+        0 0 0 0 0.95
+        0 0 0 2.2 -1.06"/>
+    </filter>
+
+    <!-- the same pattern, stretched and softened, thrown up onto the far wall -->
+    <filter id="causticWall" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.006 0.02" numOctaves="4" seed="19" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="
+        0 0 0 0 0.48
+        0 0 0 0 0.74
+        0 0 0 0 0.90
+        0 0 0 1.5 -0.92"/>
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+
+    <clipPath id="pool">
+      <path d="M368 462 L1552 462 L2040 944 L-120 944 Z"/>
+    </clipPath>
+
+    <linearGradient id="fadeUp" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%"   stop-color="#fff" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <mask id="mWall"><rect x="0" y="150" width="1920" height="320" fill="url(#fadeUp)"/></mask>
+
+    <radialGradient id="vig" cx="0.5" cy="0.54" r="0.8">
+      <stop offset="40%"  stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.72"/>
+    </radialGradient>
+
+    <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.7"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ── the dark hall ── -->
+  <rect width="1920" height="1080" fill="url(#hall)"/>
+
+  <!-- high windows, no moon behind them worth speaking of -->
+  <g fill="#16202b" opacity="0.65">
+    <rect x="150"  y="96" width="182" height="86" rx="3"/>
+    <rect x="418"  y="96" width="182" height="86" rx="3"/>
+    <rect x="686"  y="96" width="182" height="86" rx="3"/>
+    <rect x="1054" y="96" width="182" height="86" rx="3"/>
+    <rect x="1322" y="96" width="182" height="86" rx="3"/>
+    <rect x="1590" y="96" width="182" height="86" rx="3"/>
+  </g>
+
+  <!-- light thrown up from the water onto the wall -->
+  <g mask="url(#mWall)" opacity="0.55">
+    <rect x="0" y="150" width="1920" height="330" filter="url(#causticWall)"/>
+  </g>
+  <rect width="1920" height="620" fill="url(#upglow)" opacity="0.6"/>
+
+  <!-- ── far deck and the pool's back edge ── -->
+  <rect y="440" width="1920" height="34" fill="#141c24"/>
+  <rect x="368" y="452" width="1184" height="12" fill="#2b4d63" opacity="0.7"/>
+
+  <!-- ── the water ── -->
+  <path d="M368 462 L1552 462 L2040 944 L-120 944 Z" fill="url(#water)"/>
+
+  <g clip-path="url(#pool)">
+    <!-- underwater lamps, set into the long walls -->
+    <g>
+      <ellipse cx="250"  cy="880" rx="330" ry="150" fill="#5fa8c8" opacity="0.20"/>
+      <ellipse cx="1670" cy="880" rx="330" ry="150" fill="#5fa8c8" opacity="0.20"/>
+      <ellipse cx="560"  cy="620" rx="210" ry="92"  fill="#5fa8c8" opacity="0.14"/>
+      <ellipse cx="1360" cy="620" rx="210" ry="92"  fill="#5fa8c8" opacity="0.14"/>
+      <ellipse cx="960"  cy="520" rx="240" ry="70"  fill="#7cc4de" opacity="0.10"/>
+    </g>
+
+    <!-- caustics on the surface -->
+    <rect x="-200" y="440" width="2320" height="520" filter="url(#caustic)" opacity="0.5"/>
+
+    <!-- lane markings on the pool floor, converging with the perspective -->
+    <g stroke="#0d2231" stroke-opacity="0.5" stroke-width="7" stroke-linecap="round" fill="none">
+      <path d="M566 470 L326 944"/>
+      <path d="M763 470 L640 944"/>
+      <path d="M960 470 L960 944"/>
+      <path d="M1157 470 L1280 944"/>
+      <path d="M1354 470 L1594 944"/>
+    </g>
+
+    <!-- lane ropes floating on top -->
+    <g opacity="0.5">
+      <path d="M566 470 L326 944" stroke="#8fb9cc" stroke-opacity="0.35" stroke-width="4" stroke-dasharray="14 10"/>
+      <path d="M1354 470 L1594 944" stroke="#8fb9cc" stroke-opacity="0.35" stroke-width="4" stroke-dasharray="14 10"/>
+    </g>
+
+    <!-- surface disturbance, slack. Nobody has been in this water tonight. -->
+    <g stroke="#a9d4e6" stroke-opacity="0.14" stroke-width="2" fill="none">
+      <path d="M-120 560 Q 400 552 900 562 T 2040 556"/>
+      <path d="M-120 636 Q 460 626 940 638 T 2040 630"/>
+      <path d="M-120 724 Q 380 714 880 728 T 2040 718"/>
+      <path d="M-120 826 Q 520 814 1000 830 T 2040 820"/>
+    </g>
+  </g>
+
+  <!-- lit lip along the pool edge -->
+  <path d="M368 462 L1552 462" stroke="#6fb3d0" stroke-opacity="0.45" stroke-width="3"/>
+  <path d="M-120 944 L2040 944" stroke="#6fb3d0" stroke-opacity="0.3" stroke-width="4"/>
+
+  <!-- ── near deck: tiles, wet, quiet. The dialogue box sits over this. ── -->
+  <rect y="944" width="1920" height="136" fill="url(#deck)"/>
+  <g stroke="#243039" stroke-opacity="0.6" stroke-width="1.5">
+    <path d="M0 986 H1920"/><path d="M0 1030 H1920"/>
+    <path d="M160 944 V1080"/><path d="M480 944 V1080"/><path d="M800 944 V1080"/>
+    <path d="M1120 944 V1080"/><path d="M1440 944 V1080"/><path d="M1760 944 V1080"/>
+  </g>
+  <!-- the water's light spilling onto the wet tile -->
+  <rect y="944" width="1920" height="60" fill="#5fa8c8" opacity="0.07"/>
+
+  <!-- ── settle the frame ── -->
+  <rect width="1920" height="1080" fill="url(#vig)"/>
+  <rect y="800" width="1920" height="280" fill="url(#floor)"/>
+</svg>

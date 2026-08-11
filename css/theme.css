@@ -50,16 +50,15 @@
     linear-gradient(90deg, #24262a, #34363c 50%, #1e2023);
 }
 
+/* ── Real plates. Procedural SVG, not gradients. Swapping in photography later
+      means changing the url() and nothing else. ── */
+
 .bg--lighthouse-dusk {
-  background:
-    radial-gradient(ellipse at 72% 30%, rgba(217,164,65,0.22), rgba(0,0,0,0) 55%),
-    linear-gradient(180deg, #3a3f4a 0%, #2b323d 45%, #171b21 100%);
+  background: #171b21 url("../assets/bg/lighthouse-dusk.svg") center / cover no-repeat;
 }
 
 .bg--pool-night {
-  background:
-    radial-gradient(ellipse at 50% 75%, rgba(77,122,151,0.38), rgba(0,0,0,0) 62%),
-    linear-gradient(180deg, #0d1319 0%, #142230 60%, #0a1016 100%);
+  background: #0a1016 url("../assets/bg/pool-night.svg") center / cover no-repeat;
 }
 
 .bg--diner {

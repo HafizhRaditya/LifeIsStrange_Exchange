@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" preserveAspectRatio="xMidYMid slice">
+  <title>Lighthouse Ruins — Arcadia Bay Cliffs, 4:41 PM</title>
+
+  <defs>
+    <!-- dusk: cold slate above, the last of the warmth sitting on the water -->
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#252b34"/>
+      <stop offset="38%"  stop-color="#39414c"/>
+      <stop offset="72%"  stop-color="#5b5d5c"/>
+      <stop offset="92%"  stop-color="#8a7857"/>
+      <stop offset="100%" stop-color="#a08757"/>
+    </linearGradient>
+
+    <radialGradient id="sun" cx="0.72" cy="0.44" r="0.42">
+      <stop offset="0%"   stop-color="#d9a441" stop-opacity="0.34"/>
+      <stop offset="55%"  stop-color="#b4623a" stop-opacity="0.10"/>
+      <stop offset="100%" stop-color="#b4623a" stop-opacity="0"/>
+    </radialGradient>
+
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#7d7561"/>
+      <stop offset="14%"  stop-color="#4e5560"/>
+      <stop offset="55%"  stop-color="#2f3944"/>
+      <stop offset="100%" stop-color="#212932"/>
+    </linearGradient>
+
+    <linearGradient id="cliff" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#2a2b28"/>
+      <stop offset="60%"  stop-color="#1b1d1c"/>
+      <stop offset="100%" stop-color="#101211"/>
+    </linearGradient>
+
+    <!-- Fog. Stretched horizontally so it reads as banks rolling off the water
+         rather than as noise. This is the thing that stops it looking vector. -->
+    <filter id="fogA" x="-30%" y="-60%" width="160%" height="260%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.0016 0.011" numOctaves="4" seed="11" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="
+        0 0 0 0 0.83
+        0 0 0 0 0.86
+        0 0 0 0 0.90
+        0 0 0 1.35 -0.46"/>
+    </filter>
+
+    <filter id="fogB" x="-30%" y="-60%" width="160%" height="260%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.0024 0.016" numOctaves="5" seed="29" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="
+        0 0 0 0 0.86
+        0 0 0 0 0.88
+        0 0 0 0 0.91
+        0 0 0 1.15 -0.52"/>
+    </filter>
+
+    <!-- soft-edged bands so fog fades out instead of ending on a line -->
+    <linearGradient id="bandLow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#fff" stop-opacity="0"/>
+      <stop offset="30%"  stop-color="#fff" stop-opacity="0.9"/>
+      <stop offset="70%"  stop-color="#fff" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <mask id="mBandLow"><rect x="-200" y="430" width="2320" height="330" fill="url(#bandLow)"/></mask>
+    <mask id="mBandHigh"><rect x="-200" y="330" width="2320" height="260" fill="url(#bandLow)"/></mask>
+    <mask id="mBandFoot"><rect x="-200" y="600" width="2320" height="300" fill="url(#bandLow)"/></mask>
+
+    <!-- keeps the centre readable for portraits and the lower third quiet -->
+    <radialGradient id="vig" cx="0.5" cy="0.46" r="0.78">
+      <stop offset="42%"  stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.66"/>
+    </radialGradient>
+
+    <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.72"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ── sky ── -->
+  <rect width="1920" height="1080" fill="url(#sky)"/>
+  <rect width="1920" height="700" fill="url(#sun)"/>
+
+  <!-- ── sea, horizon high because we're standing on a cliff ── -->
+  <rect y="470" width="1920" height="300" fill="url(#sea)"/>
+
+  <!-- a few slack swells, no whitecaps — this water is tired -->
+  <g stroke="#8e8f88" stroke-opacity="0.10" stroke-width="2" fill="none">
+    <path d="M-20 505 Q 300 499 620 506 T 1300 504 T 1940 508"/>
+    <path d="M-20 538 Q 360 531 700 539 T 1400 536 T 1940 541"/>
+    <path d="M-20 578 Q 280 571 640 580 T 1320 576 T 1940 582"/>
+    <path d="M-20 626 Q 420 618 780 628 T 1500 623 T 1940 630"/>
+  </g>
+
+  <!-- ── far headland, barely there ── -->
+  <path d="M-20 470 L 210 452 L 430 462 L 700 447 L 980 460 L 1220 450 L 1500 461 L 1940 452 L 1940 480 L -20 480 Z"
+        fill="#2e343c" fill-opacity="0.72"/>
+
+  <!-- ── high fog, drifting across the headland ── -->
+  <g mask="url(#mBandHigh)" opacity="0.5">
+    <rect x="-200" y="300" width="2320" height="330" filter="url(#fogA)"/>
+  </g>
+
+  <!-- ── the ruin ──
+       Off-centre right, leaving the middle of the frame clear for portraits.
+       Broken at the top: Riley's "get the left side, it's falling down faster". -->
+  <g>
+    <!-- tower body, slightly tapered -->
+    <path d="M1332 742 L1348 452 L1436 452 L1452 742 Z" fill="#191c1e"/>
+    <!-- the break -->
+    <path d="M1348 452 L1356 424 L1372 446 L1392 408 L1408 438 L1424 418 L1436 452 Z" fill="#141618"/>
+    <!-- lamp room remains, hollow -->
+    <rect x="1362" y="392" width="60" height="26" fill="#101214"/>
+    <path d="M1362 392 L1392 372 L1422 392 Z" fill="#0d0f11" opacity="0.9"/>
+    <!-- the dying light catching one edge, and only one -->
+    <path d="M1436 452 L1452 742 L1444 742 L1428 452 Z" fill="#8a7350" fill-opacity="0.45"/>
+    <path d="M1408 438 L1424 418 L1436 452 Z" fill="#a08757" fill-opacity="0.32"/>
+    <!-- courses of stone, faint -->
+    <g stroke="#0c0e0f" stroke-opacity="0.55" stroke-width="1.6">
+      <path d="M1338 520 L1447 520"/><path d="M1341 574 L1449 574"/>
+      <path d="M1344 628 L1451 628"/><path d="M1347 682 L1452 682"/>
+    </g>
+    <!-- collapsed base, spilling right -->
+    <path d="M1452 742 L1520 758 L1596 748 L1660 766 L1452 766 Z" fill="#16191a"/>
+    <path d="M1332 742 L1268 756 L1200 748 L1150 764 L1332 764 Z" fill="#16191a"/>
+  </g>
+
+  <!-- ── the cliff we're standing on ── -->
+  <path d="M-20 770 Q 260 742 520 762 Q 820 786 1080 760 Q 1360 736 1620 764 Q 1800 782 1940 762 L1940 1100 L-20 1100 Z"
+        fill="url(#cliff)"/>
+
+  <!-- broken edge, so the cliff doesn't read as a smooth curve -->
+  <path d="M-20 770 Q 120 758 232 768 L 300 754 L 372 772 Q 470 760 540 770 L 610 758 L 690 776
+           Q 800 786 880 770 L 960 758 L 1046 772 Q 1180 752 1268 762 L 1350 748 L 1440 766
+           Q 1580 758 1668 772 L 1760 760 L 1860 774 L 1940 764"
+        fill="none" stroke="#3a3d38" stroke-opacity="0.5" stroke-width="2.5"/>
+
+  <!-- grass, only on the near edge -->
+  <g stroke="#3c4135" stroke-opacity="0.55" stroke-width="2.2" stroke-linecap="round" fill="none">
+    <path d="M96 790 l -8 -30"/><path d="M120 792 l 6 -36"/><path d="M148 788 l -4 -26"/>
+    <path d="M420 800 l 7 -32"/><path d="M448 796 l -6 -28"/><path d="M472 802 l 4 -22"/>
+    <path d="M910 792 l -7 -30"/><path d="M938 796 l 8 -26"/>
+    <path d="M1622 800 l -6 -30"/><path d="M1652 798 l 7 -28"/><path d="M1682 804 l -4 -22"/>
+  </g>
+
+  <!-- ── low fog off the water, then a bank at the foot of the tower ── -->
+  <g mask="url(#mBandLow)" opacity="0.66">
+    <rect x="-200" y="400" width="2320" height="400" filter="url(#fogB)"/>
+  </g>
+  <g mask="url(#mBandFoot)" opacity="0.42">
+    <rect x="-200" y="570" width="2320" height="360" filter="url(#fogA)"/>
+  </g>
+
+  <!-- ── settle the frame ── -->
+  <rect width="1920" height="1080" fill="url(#vig)"/>
+  <rect y="760" width="1920" height="320" fill="url(#floor)"/>
+</svg>

@@ -181,9 +181,14 @@ until the first click. That is correct, not a bug to route around.
 
 ## Art
 
-Nothing in `/assets` yet. Backgrounds are CSS gradient placeholders
-(`.bg--<name>` in `css/theme.css`); portraits are generated rim-lit silhouettes
-(`js/ui/portrait.js`) built from each character's `look` in `characters.json`.
+Two plates are real: `lighthouse-dusk` and `pool-night`, built as procedural SVG
+in `/assets/bg` (~7 KB each). The other 36 are still CSS gradient placeholders
+(`.bg--<name>` in `css/theme.css`). Portraits are generated rim-lit silhouettes
+(`js/ui/portrait.js`) from each character's `look` in `characters.json`.
+
+`tools/plates.html` shows every plate at frame size, with the dialogue and
+portrait safe areas overlaid on hover — the lower third and the centre must stay
+quiet or the UI stops being readable.
 
 **`docs/DESIGN_BRIEF.md` is the handoff document** — palette, type roles, the full
 asset manifest with dimensions, the six-expression system, and the interaction

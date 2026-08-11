@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plates — Life Is Strange: Exchange</title>
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/theme.css">
+<link rel="stylesheet" href="../css/layout.css">
+<style>
+  body { background:#0b0c0e; color:var(--bone); font-family:var(--font-body); font-weight:300;
+         padding:3rem 2.5rem 6rem; overflow:auto; }
+  h1 { font-family:var(--font-display); font-weight:300; font-size:2.4rem; letter-spacing:-.01em; }
+  .lede { max-width:66ch; margin:.8rem 0 0; color:var(--fog); font-size:.92rem; line-height:1.7; }
+  .lede code { font-family:var(--font-mono); font-size:.85em; color:var(--bone-dim); }
+  h2 { font-family:var(--font-mono); font-size:.66rem; letter-spacing:.28em; text-transform:uppercase;
+       color:var(--fog-dim); margin:3rem 0 .9rem; }
+  .frame { position:relative; width:100%; aspect-ratio:16/9; overflow:hidden;
+           border:1px solid rgba(232,228,220,.12); container-type:size; }
+  .frame .plate { position:absolute; inset:0; }
+  .frame .grain, .frame .vignette { position:absolute; inset:0; }
+  /* a stand-in for where the dialogue and portraits actually sit */
+  .safe { position:absolute; inset:0; pointer-events:none; opacity:0; transition:opacity .2s; }
+  .frame:hover .safe { opacity:1; }
+  .safe .box { position:absolute; left:0; right:0; bottom:0; height:26%;
+               background:rgba(180,98,58,.14); border-top:1px dashed rgba(180,98,58,.7); }
+  .safe .mid { position:absolute; left:34%; right:34%; bottom:12%; top:22%;
+               border:1px dashed rgba(140,200,220,.5); }
+  .safe span { position:absolute; font-family:var(--font-mono); font-size:10px; letter-spacing:.16em;
+               text-transform:uppercase; color:rgba(255,255,255,.75); }
+  .cap { display:flex; gap:1rem; align-items:baseline; margin-top:.6rem; flex-wrap:wrap; }
+  .cap b { font-family:var(--font-mono); font-size:.66rem; letter-spacing:.2em; text-transform:uppercase;
+           font-weight:400; color:var(--accent); }
+  .cap span { font-family:var(--font-mono); font-size:.6rem; letter-spacing:.14em; color:var(--fog-faint); }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:.6rem; margin-top:.8rem; }
+  .tile { aspect-ratio:16/9; border:1px solid rgba(232,228,220,.08); position:relative; }
+  .tile em { position:absolute; left:6px; bottom:5px; font-style:normal; font-family:var(--font-mono);
+             font-size:.56rem; letter-spacing:.1em; color:rgba(255,255,255,.6); }
+</style>
+</head>
+<body>
+  <h1>Plates</h1>
+  <p class="lede">
+    The two hero backgrounds, built procedurally as SVG — no photography, about 7 KB each.
+    Hover a frame to show the safe areas: <b style="color:#b4623a">rust</b> is where the dialogue
+    box sits, <b style="color:#8cc8dc">blue</b> is where portraits stand. Both must stay quiet.
+    Swap for real art by changing the <code>url()</code> in <code>css/theme.css</code>.
+    Everything under “still gradients” is a placeholder.
+  </p>
+
+  <h2>Lighthouse Ruins — 4:41 PM</h2>
+  <div class="frame">
+    <div class="plate bg--lighthouse-dusk"></div>
+    <div class="grain"></div><div class="vignette"></div>
+    <div class="safe">
+      <div class="box"></div><div class="mid"></div>
+      <span style="left:12px;bottom:27%">dialogue</span>
+      <span style="left:35%;top:21%">portraits</span>
+    </div>
+  </div>
+  <div class="cap"><b>lighthouse-dusk</b><span>Ep1 s11 · Ep5 s07 · the season's bookend</span></div>
+
+  <h2>Blackwell Pool, after hours</h2>
+  <div class="frame">
+    <div class="plate bg--pool-night"></div>
+    <div class="grain"></div><div class="vignette"></div>
+    <div class="safe">
+      <div class="box"></div><div class="mid"></div>
+      <span style="left:12px;bottom:27%">dialogue</span>
+      <span style="left:35%;top:21%">portraits</span>
+    </div>
+  </div>
+  <div class="cap"><b>pool-night</b><span>Ep2 s14 · the emotional spine</span></div>
+
+  <h2>Still gradients</h2>
+  <div class="grid" id="rest"></div>
+
+<script type="module">
+const REST = ["dorm-morning","dorm-night","hallway","cafeteria","stairwell","quad","diner","studio",
+  "darkroom","library","media-lab","archive","science-lab","principal-office","bathroom","taki-room",
+  "gym","art-corridor","cliff-path","beach","harbour","rear-steps","parking-lot","jones-house",
+  "jones-landing","riley-room","theo-room","calder-house","cross-office","gazette","police","hospital",
+  "car","bowling","airport","nexus-voice","dream"];
+const grid = document.getElementById("rest");
+for (const name of REST) {
+  const d = document.createElement("div");
+  d.className = `tile bg--${name}`;
+  const e = document.createElement("em");
+  e.textContent = name;
+  d.append(e);
+  grid.append(d);
+}
+</script>
+</body>
+</html>
